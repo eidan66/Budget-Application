@@ -59,6 +59,19 @@
     "@storybook/preset-create-react-app": "^3.1.5",
     "@storybook/react": "^6.1.11",
     "eslint": "^7.15.0",
+    "husky": "^4.3.6",
     "prettier": "2.2.1"
+  },
+
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/*.{js,jsx,ts,tsx}": [
+      "prettier --ignore-path .gitignore --write \"**/*.+(js|json|jsx|ts|tsx)\"",
+      "eslint src/*.+(js|json|jsx|tsx|ts) --fix-dry-run"
+    ]
   }
 }
