@@ -1,7 +1,8 @@
 import React from 'react';
+import Typography from './components/atoms/Typography/Typography';
 
 const App = () => {
-  return <div>Budget Application</div>;
+  return <Typography text="Test Test Test" />;
 };
 
 export default App;

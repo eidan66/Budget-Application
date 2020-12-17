@@ -5,6 +5,16 @@ export enum size {
 }
 
 export enum color {
-  RED = 'red',
-  BLUE = 'blue',
+  MAIN = 'main',
+  ULTRAMARINE = 'ultramarine',
+  BLACKCURRANT = 'blackcurrant',
+  MALIBU = 'malubu',
+  BLUEGEM = 'BlueGem',
+  SERENADE = 'serenade',
+  GHOST = 'ghost,',
+}
+
+export enum weight {
+  BOLD = 'bold',
+  LIGHT = 'light',
 }

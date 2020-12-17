@@ -4,4 +4,5 @@ export interface Typography {
   color?: E.color;
   size?: E.size;
   text: string;
+  weight?: E.weight;
 }
