@@ -6,19 +6,18 @@ export const setSize = (size?: E.size) => {
       return `font-size:45px;`;
 
     case E.size.MD:
+    default:
       return `font-size:30px;`;
 
     case E.size.SM:
       return `font-size:16px;`;
-
-    default:
-      return `font-size:30px;`;
   }
 };
 
 export const setColor = (color?: E.color) => {
   switch (color) {
     case E.color.BLACKCURRANT:
+    default:
       return `color:#1a1440`;
 
     case E.color.ULTRAMARINE:
@@ -38,9 +37,6 @@ export const setColor = (color?: E.color) => {
 
     case E.color.MAIN:
       return `color:rgb(156,143,231);`;
-
-    default:
-      return `color:#1a1440`;
   }
 };
 
