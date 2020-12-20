@@ -1,3 +1,3 @@
 export enum icon {
-  CANCELED = 'canceled',
+  HOME = 'home',
 }
