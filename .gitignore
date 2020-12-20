@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+/mockup
+/desktop.ini
+/.eslintcache
 # production
 /build
 
