@@ -10,3 +10,10 @@ export enum icon {
   USER = 'user',
   SETTING = 'setting',
 }
+
+export enum fontSize {
+  DEFAULT = 'default',
+  INHERIT = 'inherit',
+  LARGE = 'large',
+  SMALL = 'small',
+}
