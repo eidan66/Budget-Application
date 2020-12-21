@@ -3,7 +3,12 @@ import * as A from './components/atoms';
 import * as E from './containers/enums/icon';
 
 const App = () => {
-  return <A.AtomIcon icon={E.icon.HOME} />;
+  return (
+    <>
+      <A.AtomIcon icon={E.icon.DASHBOARD} color="red" />
+      <A.AtomIcon icon={E.icon.CANCELED} />
+    </>
+  );
 };
 
 export default App;
