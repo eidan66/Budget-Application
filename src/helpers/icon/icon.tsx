@@ -1,54 +1,54 @@
-import * as E from '../../enums/icon';
+import { icon as Icon, fontSize as FontSize } from '../../models/icon';
 import * as MUI from '@material-ui/icons';
-import Paypal from '../../../components/atoms/AtomIcon/Paypal';
+import Paypal from '../../components/atoms/Icon/Paypal';
 
-export const setIcon = (icon: E.icon, color?: string, fontSize?: E.fontSize) => {
+export const setIcon = (icon: Icon, color?: string, fontSize?: FontSize) => {
   switch (icon) {
-    case E.icon.CANCELED:
+    case Icon.CANCELED:
       return <MUI.Cancel htmlColor={color} fontSize={fontSize} />;
 
-    case E.icon.PAYPAL:
+    case Icon.PAYPAL:
       return <Paypal color={color} fontSize={setPaypalSize(fontSize)} />;
 
-    case E.icon.INCOME:
+    case Icon.INCOME:
       return <MUI.TrendingUp htmlColor={color} fontSize={fontSize} />;
 
-    case E.icon.DASHBOARD:
+    case Icon.DASHBOARD:
       return <MUI.Dashboard htmlColor={color} fontSize={fontSize} />;
 
-    case E.icon.CHART:
+    case Icon.CHART:
       return <MUI.PieChart htmlColor={color} fontSize={fontSize} />;
 
-    case E.icon.CARD:
+    case Icon.CARD:
       return <MUI.Payment htmlColor={color} fontSize={fontSize} />;
 
-    case E.icon.CALENDAR:
+    case Icon.CALENDAR:
       return <MUI.CalendarToday htmlColor={color} fontSize={fontSize} />;
 
-    case E.icon.MESSAGES:
+    case Icon.MESSAGES:
       return <MUI.MailOutline htmlColor={color} fontSize={fontSize} />;
 
-    case E.icon.USER:
+    case Icon.USER:
       return <MUI.Person htmlColor={color} fontSize={fontSize} />;
 
-    case E.icon.SETTING:
+    case Icon.SETTING:
       return <MUI.Settings htmlColor={color} fontSize={fontSize} />;
   }
 };
 
-export const setPaypalSize = (fontSize?: E.fontSize) => {
+export const setPaypalSize = (fontSize?: FontSize) => {
   switch (fontSize) {
-    case E.fontSize.DEFAULT:
+    case FontSize.DEFAULT:
     default:
       return '1.5rem';
 
-    case E.fontSize.INHERIT:
+    case FontSize.INHERIT:
       return 'inherit';
 
-    case E.fontSize.LARGE:
+    case FontSize.LARGE:
       return '2.1875rem';
 
-    case E.fontSize.SMALL:
+    case FontSize.SMALL:
       return '1.25rem';
   }
 };

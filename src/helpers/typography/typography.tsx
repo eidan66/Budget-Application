@@ -1,50 +1,50 @@
-import * as E from '../../enums/typography/typography';
+import { size as Size, color as Color, weight as Weight } from '../../models/typography';
 
-export const setSize = (size?: E.size) => {
+export const setSize = (size?: Size) => {
   switch (size) {
-    case E.size.LG:
+    case Size.LG:
       return `font-size:45px;`;
 
-    case E.size.MD:
+    case Size.MD:
     default:
       return `font-size:30px;`;
 
-    case E.size.SM:
+    case Size.SM:
       return `font-size:16px;`;
   }
 };
 
-export const setColor = (color?: E.color) => {
+export const setColor = (color?: Color) => {
   switch (color) {
-    case E.color.BLACKCURRANT:
+    case Color.BLACKCURRANT:
     default:
       return `color:#1a1440`;
 
-    case E.color.ULTRAMARINE:
+    case Color.ULTRAMARINE:
       return `color:rgb(11,12,118);`;
 
-    case E.color.MALIBU:
+    case Color.MALIBU:
       return `color:rgb(114,197,229);`;
 
-    case E.color.BLUEGEM:
+    case Color.BLUEGEM:
       return `color:rgb(67,51,160);`;
 
-    case E.color.SERENADE:
+    case Color.SERENADE:
       return `color:rgb(252,237,216);`;
 
-    case E.color.GHOST:
+    case Color.GHOST:
       return `color:rgb(199,199,201);`;
 
-    case E.color.MAIN:
+    case Color.MAIN:
       return `color:rgb(156,143,231);`;
   }
 };
 
-export const setWeight = (weight?: E.weight) => {
+export const setWeight = (weight?: Weight) => {
   switch (weight) {
-    case E.weight.BOLD:
+    case Weight.BOLD:
       return `font-weight:bold;`;
-    case E.weight.LIGHT:
+    case Weight.LIGHT:
       return `font-weight:250;`;
     default:
       return `font-weight:400;`;

@@ -17,3 +17,14 @@ export enum fontSize {
   LARGE = 'large',
   SMALL = 'small',
 }
+
+export interface Icon {
+  icon: icon;
+  color?: string;
+  fontSize?: fontSize;
+}
+
+export interface Paypal {
+  color?: string;
+  fontSize?: string;
+}

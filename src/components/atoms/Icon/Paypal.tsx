@@ -1,7 +1,7 @@
 import React from 'react';
-import * as I from '../../../models/icon/icon';
+import { Paypal as paypal } from '../../../models/icon';
 
-const Paypal: React.FC<I.Paypal> = ({ color, fontSize }) => {
+const Paypal: React.FC<paypal> = ({ color, fontSize }) => {
   return (
     <svg
       aria-hidden="true"

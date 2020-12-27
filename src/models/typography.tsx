@@ -18,3 +18,10 @@ export enum weight {
   BOLD = 'bold',
   LIGHT = 'light',
 }
+
+export interface Typography {
+  color?: color;
+  size?: size;
+  text: string;
+  weight?: weight;
+}
