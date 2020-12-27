@@ -8,8 +8,7 @@
 # testing
 /coverage
 
-# By Idan
-/.env
+/mockup
 /desktop.ini
 /.eslintcache
 

@@ -1,10 +1,17 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
-// import Typography from './components/atoms/Typography/Typography';
-import * as A from './components/atoms';
-import * as E from './containers/enums/typography/typography';
+import { Icon, Typography } from './components/atoms';
+import { icon } from './models/icon';
+import { color } from './models/typography';
 
 const App = () => {
-  return <A.Typography color={E.color.BLUEGEM} text="Test Test Test" />;
+  return (
+    <>
+      <Icon icon={icon.DASHBOARD} color="red" />
+      <Icon icon={icon.CANCELED} />
+      <Typography color={color.BLUEGEM} text="Test Test Test" />
+    </>
+  );
 };
 
 export default App;

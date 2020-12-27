@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import GlobalStyle from './style/global';
 import App from './App';
 import { ThemeProvider } from '@material-ui/core';
 import theme from './style/theme/theme';
-import GlobalStyle from './style/global';
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>

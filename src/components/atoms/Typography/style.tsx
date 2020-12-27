@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import * as T from '../../../types/typography/typography';
-import { setSize, setColor, setWeight } from '../../../containers/helpers/typography/typography';
+import { setSize, setColor, setWeight } from '../../..//helpers/typography/typography';
 
 export const Typography = styled.span<T.TypographyProps>`
   ${(props) => setSize(props.size)}
