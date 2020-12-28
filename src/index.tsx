@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import GlobalStyle from './style/global';
 import App from './App';
 import { ThemeProvider } from '@material-ui/core';
-import theme from './style/theme/theme';
+import defaultTheme from './style/theme/theme';
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={defaultTheme}>
     <GlobalStyle />
     <App />
   </ThemeProvider>,
