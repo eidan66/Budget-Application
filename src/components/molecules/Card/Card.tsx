@@ -2,24 +2,31 @@ import React, { FC } from 'react';
 import { Typography } from '../../atoms';
 import * as S from './style';
 
-const Card: FC = () => {
+interface ICard {
+  cardNumber: string;
+  cardHolderName: string;
+  cardDate: string;
+}
+
+const Card: FC<ICard> = ({ cardNumber, cardHolderName, cardDate }) => {
   return (
     <>
       <S.Card>
         <Typography.CardTitle />
         <S.CardNumberWrapper>
-          <Typography.CardNumber>**** **** **** 6857</Typography.CardNumber>
+          <Typography.CardNumber>{cardNumber}</Typography.CardNumber>
         </S.CardNumberWrapper>
 
         <S.CardDetailsWrapper>
-          <div>
+          <S.CardHolderWrapper>
             <Typography.CardHolderTitle />
-            <Typography.CardHolderName>Ian Kelley</Typography.CardHolderName>
-          </div>
-          <div>
+            <Typography.CardHolderName>{cardHolderName}</Typography.CardHolderName>
+          </S.CardHolderWrapper>
+
+          <S.CardDateWrapper>
             <Typography.CardValidThruTitle />
-            <Typography.CardValidDateNumber>04 / 21</Typography.CardValidDateNumber>
-          </div>
+            <Typography.CardValidDateNumber>{cardDate}</Typography.CardValidDateNumber>
+          </S.CardDateWrapper>
         </S.CardDetailsWrapper>
       </S.Card>
     </>

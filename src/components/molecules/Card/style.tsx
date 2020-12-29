@@ -27,3 +27,6 @@ export const CardNumberWrapper = styled.div`
   padding-top: 4rem;
   word-spacing: 0.5em;
 `;
+
+export const CardHolderWrapper = styled.div``;
+export const CardDateWrapper = styled.div``;

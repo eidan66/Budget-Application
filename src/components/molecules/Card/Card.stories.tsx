@@ -7,3 +7,8 @@ export default {
 };
 
 export const CreditCard = (args) => <Card {...args} />;
+CreditCard.args = {
+  cardNumber: '**** **** **** 6857',
+  cardHolderName: 'Ian Kelley',
+  cardDate: '04 / 21',
+};
