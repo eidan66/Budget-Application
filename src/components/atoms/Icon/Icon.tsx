@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import Paypal from './Paypal';
+import * as S from './style';
 import * as MatIcon from '@material-ui/icons';
 
 interface IIcon {
@@ -7,26 +8,56 @@ interface IIcon {
 }
 
 const Icon: IIcon = {
-  CanceledIcon: () => <MatIcon.Cancel htmlColor="red" />,
-  PaypalIcon: () => <Paypal color="gray" />,
-  IncomeIcon: () => <MatIcon.TrendingUp htmlColor="gray" />,
-  DashboardIcon: () => <MatIcon.Dashboard htmlColor="gray" />,
-  ChartIcon: () => <MatIcon.PieChart htmlColor="gray" />,
-  CardIcon: () => <MatIcon.Payment htmlColor="gray" />,
-  CalendarIcon: () => <MatIcon.CalendarToday htmlColor="gray" />,
-  MessagesIcon: () => <MatIcon.MailOutline htmlColor="gray" />,
-  UserIcon: () => <MatIcon.Person htmlColor="gray" />,
-  SettingsIcon: () => <MatIcon.Settings htmlColor="gray" />,
+  Canceled: () => (
+    <S.IconContainer>
+      <MatIcon.Cancel htmlColor="red" />
+    </S.IconContainer>
+  ),
+  Paypal: () => (
+    <S.IconContainer>
+      <Paypal color="gray" />
+    </S.IconContainer>
+  ),
+  Income: () => (
+    <S.IconContainer>
+      <MatIcon.TrendingUp htmlColor="gray" />
+    </S.IconContainer>
+  ),
+  Dashboard: () => (
+    <S.IconContainer>
+      <MatIcon.Dashboard htmlColor="gray" />
+    </S.IconContainer>
+  ),
+  Charts: () => (
+    <S.IconContainer>
+      <MatIcon.PieChart htmlColor="gray" />
+    </S.IconContainer>
+  ),
+  Cards: () => (
+    <S.IconContainer>
+      <MatIcon.Payment htmlColor="gray" />
+    </S.IconContainer>
+  ),
+  Calendar: () => (
+    <S.IconContainer>
+      <MatIcon.CalendarToday htmlColor="gray" />
+    </S.IconContainer>
+  ),
+  Messages: () => (
+    <S.IconContainer>
+      <MatIcon.MailOutline htmlColor="gray" />
+    </S.IconContainer>
+  ),
+  User: () => (
+    <S.IconContainer>
+      <MatIcon.Person htmlColor="gray" />
+    </S.IconContainer>
+  ),
+  Settings: () => (
+    <S.IconContainer>
+      <MatIcon.Settings htmlColor="gray" />
+    </S.IconContainer>
+  ),
 };
 
 export default Icon;
-
-// import * as React from 'react';
-// import { Icon } from '../../../models/icon';
-// import { setIcon } from '../../../helpers/icon/icon';
-
-// const AtomIcon: React.FC<Icon> = ({ icon, color, fontSize }) => {
-//   return <>{setIcon(icon, color, fontSize)}</>;
-// };
-
-// export default AtomIcon;

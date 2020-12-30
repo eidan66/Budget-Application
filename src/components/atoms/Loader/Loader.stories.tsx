@@ -2,7 +2,7 @@ import * as React from 'react';
 import Loader from './Loader';
 
 export default {
-  title: 'component/atom/Loader',
+  title: 'components/atoms/Loader',
   component: Loader,
 };
 

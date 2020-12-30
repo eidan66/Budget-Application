@@ -3,6 +3,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const defaultTheme = createMuiTheme({
   typography: {
     subtitle1: {
+      lineHeight: 'normal',
       color: 'white',
     },
     subtitle2: {

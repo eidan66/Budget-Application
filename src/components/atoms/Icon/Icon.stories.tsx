@@ -2,17 +2,17 @@ import * as React from 'react';
 import { Icon } from './';
 
 export default {
-  title: 'component/atom/Icon',
+  title: 'components/atoms/Icon',
   component: Icon,
 };
 
-export const CanceledIcon = (args) => <Icon.CanceledIcon {...args} />;
-export const PaypalIcon = (args) => <Icon.PaypalIcon {...args} />;
-export const IncomeIcon = (args) => <Icon.IncomeIcon {...args} />;
-export const DashboardIcon = (args) => <Icon.DashboardIcon {...args} />;
-export const ChartIcon = (args) => <Icon.ChartIcon {...args} />;
-export const CardIcon = (args) => <Icon.CardIcon {...args} />;
-export const CalendarIcon = (args) => <Icon.CalendarIcon {...args} />;
-export const MessagesIcon = (args) => <Icon.MessagesIcon {...args} />;
-export const UserIcon = (args) => <Icon.UserIcon {...args} />;
-export const SettingsIcon = (args) => <Icon.SettingsIcon {...args} />;
+export const CanceledIcon = (args) => <Icon.Canceled {...args} />;
+export const PaypalIcon = (args) => <Icon.Paypal {...args} />;
+export const IncomeIcon = (args) => <Icon.Income {...args} />;
+export const DashboardIcon = (args) => <Icon.Dashboard {...args} />;
+export const ChartsIcon = (args) => <Icon.Charts {...args} />;
+export const CardsIcon = (args) => <Icon.Cards {...args} />;
+export const CalendarIcon = (args) => <Icon.Calendar {...args} />;
+export const MessagesIcon = (args) => <Icon.Messages {...args} />;
+export const UserIcon = (args) => <Icon.User {...args} />;
+export const SettingsIcon = (args) => <Icon.Settings {...args} />;
