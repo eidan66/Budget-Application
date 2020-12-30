@@ -20,10 +20,11 @@ const defaultTheme = createMuiTheme({
     h6: {
       color: 'white',
       fontWeight: 'bold',
+      letterSpacing: '0.25em',
     },
     h5: {
       color: 'white',
-      fontWeight: 'bold',
+      // fontWeight: 'bold',
     },
     button: {
       color: '#c4c0e5',

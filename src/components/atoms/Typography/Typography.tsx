@@ -10,14 +10,16 @@ const Typography: IText = {
   SelectedNavBar: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
   UnSelectedNavBar: ({ children }) => <MatTypography variant="subtitle2">{children}</MatTypography>,
 
-  // Card details Typography
+  // Balance details Typography
   CurrentBalanceNumber: ({ children }) => <MatTypography variant="h6">{children}</MatTypography>,
   CurrentBalance: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
-  CardTitle: ({ children }) => <MatTypography variant="h5">{children}</MatTypography>,
+
+  // Card details Typography
+  CardTitle: () => <MatTypography variant="h5">Card</MatTypography>,
   CardNumber: ({ children }) => <MatTypography variant="h6">{children}</MatTypography>,
-  CardHolderTitle: ({ children }) => <MatTypography variant="button">{children}</MatTypography>,
+  CardHolderTitle: () => <MatTypography variant="button">card holder</MatTypography>,
   CardHolderName: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
-  CardValidThruTitle: ({ children }) => <MatTypography variant="button">{children}</MatTypography>,
+  CardValidThruTitle: () => <MatTypography variant="button">valid thru</MatTypography>,
   CardValidDateNumber: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
 
   // RIGHT Side Bar Typography
