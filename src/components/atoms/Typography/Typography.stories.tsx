@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Typography } from './';
 
 export default {
-  title: 'component/atom/Typography',
+  title: 'components/atoms/Typography',
   component: Typography,
 };
 //LEFT Side Nav Bar Typography
