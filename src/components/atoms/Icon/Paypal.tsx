@@ -1,7 +1,9 @@
 import React from 'react';
-import { Paypal as paypal } from '../../../models/icon';
+export interface IPaypal {
+  color?: string;
+}
 
-const Paypal: React.FC<paypal> = ({ color, fontSize }) => {
+const Paypal: React.FC<IPaypal> = ({ color }) => {
   return (
     <svg
       aria-hidden="true"
@@ -14,7 +16,7 @@ const Paypal: React.FC<paypal> = ({ color, fontSize }) => {
       viewBox="0 0 384 512"
       width="1em"
       height="1em"
-      fontSize={fontSize}
+      fontSize="1.5rem"
     >
       <path
         fill={color}
