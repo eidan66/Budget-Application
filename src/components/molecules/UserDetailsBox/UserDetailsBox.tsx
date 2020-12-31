@@ -2,18 +2,20 @@ import React, { FC } from 'react';
 import * as S from './style';
 import { Typography, Avatar } from '../../atoms';
 
-interface IUserDetailsBox {
+interface IUserDetailsBoxProps {
   userName: string;
   userEmail: string;
   src: string;
 }
-const UserDetailsBox: FC<IUserDetailsBox> = ({ userName, userEmail, src }) => {
+const UserDetailsBox: FC<IUserDetailsBoxProps> = ({ userName, userEmail, src }) => {
   return (
     <S.Box>
       <S.UserDetailsWrapper>
         <Avatar avatarName={userName} src={src} />
-        <Typography.UserFullName>{userName}</Typography.UserFullName>
-        <Typography.UserEmailAddress>{userEmail}</Typography.UserEmailAddress>
+        <Typography.SmallText variant="subtitle1" color="primary">
+          {userName}
+        </Typography.SmallText>
+        <Typography.SmallText variant="subtitle1">{userEmail}</Typography.SmallText>
       </S.UserDetailsWrapper>
     </S.Box>
   );

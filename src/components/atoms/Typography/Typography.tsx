@@ -2,38 +2,45 @@ import React, { FC } from 'react';
 import { Typography as MatTypography } from '@material-ui/core';
 
 interface IText {
-  [property: string]: FC;
+  color?: 'initial' | 'inherit' | 'primary' | 'secondary' | 'textPrimary' | 'textSecondary' | 'error';
+  variant?: 'subtitle1' | 'subtitle2';
+}
+export interface ITextProps {
+  [property: string]: FC<IText>;
 }
 
-const Typography: IText = {
-  //LEFT Side Nav Bar Typography
-  SelectedNavBar: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
-  UnSelectedNavBar: ({ children }) => <MatTypography variant="subtitle2">{children}</MatTypography>,
-
-  // Balance details Typography
-  CurrentBalanceNumber: ({ children }) => <MatTypography variant="h6">{children}</MatTypography>,
-  CurrentBalance: () => <MatTypography variant="subtitle1">Current balance</MatTypography>,
-
-  // Card details Typography
-  CardTitle: () => <MatTypography variant="h5">Card</MatTypography>,
-  CardNumber: ({ children }) => <MatTypography variant="h6">{children}</MatTypography>,
-  CardHolderTitle: () => <MatTypography variant="button">card holder</MatTypography>,
-  CardHolderName: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
-  CardValidThruTitle: () => <MatTypography variant="button">valid thru</MatTypography>,
-  CardValidDateNumber: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
-
-  // RIGHT Side Bar Typography
-  UserFullName: ({ children }) => (
-    <MatTypography variant="subtitle1" color="primary">
+const Typography: ITextProps = {
+  ExtraSmallText: ({ children, color }) => (
+    <MatTypography variant="body2" color={color}>
       {children}
     </MatTypography>
   ),
-  UserEmailAddress: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
-  PaymentHistoryTitle: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
-  PaymentDetailTitle: ({ children }) => <MatTypography variant="body2">{children}</MatTypography>,
-  PaymentDetailDate: ({ children }) => <MatTypography variant="subtitle2">{children}</MatTypography>,
-  PaymentDetailNumber: ({ children }) => <MatTypography variant="body1">{children}</MatTypography>,
-  PaymentDetailCurrency: ({ children }) => <MatTypography variant="button">{children}</MatTypography>,
+  SmallText: ({ children, color, variant }) => (
+    // variant will get `subtitle1` if its use in navbar and selected. `subtitle2` will use if not selected in navbar.
+    <MatTypography variant={variant} color={color}>
+      {children}
+    </MatTypography>
+  ),
+  MediumText: ({ children, color }) => (
+    <MatTypography variant="h5" color={color}>
+      {children}
+    </MatTypography>
+  ),
+  LargeText: ({ children, color }) => (
+    <MatTypography variant="h6" color={color}>
+      {children}
+    </MatTypography>
+  ),
+  UppercaseText: ({ children, color }) => (
+    <MatTypography variant="button" color={color}>
+      {children}
+    </MatTypography>
+  ),
+  SubtitleText: ({ children, color }) => (
+    <MatTypography variant="body1" color={color}>
+      {children}
+    </MatTypography>
+  ),
 };
 
 export default Typography;

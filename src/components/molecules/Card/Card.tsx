@@ -2,30 +2,30 @@ import React, { FC } from 'react';
 import { Typography } from '../../atoms';
 import * as S from './style';
 
-interface ICard {
+interface ICardProps {
   cardNumber: string;
   cardHolderName: string;
   cardDate: string;
 }
 
-const Card: FC<ICard> = ({ cardNumber, cardHolderName, cardDate }) => {
+const Card: FC<ICardProps> = ({ cardNumber, cardHolderName, cardDate }) => {
   return (
     <>
       <S.Card>
-        <Typography.CardTitle />
+        <Typography.MediumText>Card</Typography.MediumText>
         <S.CardNumberWrapper>
-          <Typography.CardNumber>{cardNumber}</Typography.CardNumber>
+          <Typography.LargeText>{cardNumber}</Typography.LargeText>
         </S.CardNumberWrapper>
 
         <S.CardDetailsWrapper>
           <S.CardHolderWrapper>
-            <Typography.CardHolderTitle />
-            <Typography.CardHolderName>{cardHolderName}</Typography.CardHolderName>
+            <Typography.UppercaseText>card holder</Typography.UppercaseText>
+            <Typography.SmallText variant="subtitle1">{cardHolderName}</Typography.SmallText>
           </S.CardHolderWrapper>
 
           <S.CardDateWrapper>
-            <Typography.CardValidThruTitle />
-            <Typography.CardValidDateNumber>{cardDate}</Typography.CardValidDateNumber>
+            <Typography.UppercaseText>valid thru</Typography.UppercaseText>
+            <Typography.SmallText variant="subtitle1">{cardDate}</Typography.SmallText>
           </S.CardDateWrapper>
         </S.CardDetailsWrapper>
       </S.Card>

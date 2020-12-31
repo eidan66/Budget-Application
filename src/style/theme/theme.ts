@@ -5,6 +5,9 @@ const defaultTheme = createMuiTheme({
     primary: {
       main: '#000000',
     },
+    secondary: {
+      main: '#ffffff',
+    },
   },
   typography: {
     subtitle1: {
@@ -30,7 +33,6 @@ const defaultTheme = createMuiTheme({
     },
     h5: {
       color: 'white',
-      // fontWeight: 'bold',
     },
     button: {
       color: '#c4c0e5',

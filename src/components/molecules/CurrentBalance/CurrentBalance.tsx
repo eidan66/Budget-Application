@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { FC } from 'react';
 import * as S from './style';
 import { Typography } from './../../atoms/';
 
-const CurrentBalance = ({ currentBalance }) => {
+interface ICurrentBalanceProps {
+  variant?: 'subtitle1' | 'subtitle2';
+  currentBalance: string;
+}
+
+const CurrentBalance: FC<ICurrentBalanceProps> = ({ currentBalance }) => {
   return (
     <S.Box>
       <S.CurrentBalanceWrapper>
-        <Typography.CurrentBalanceNumber>{currentBalance}</Typography.CurrentBalanceNumber>
-        <Typography.CurrentBalance />
+        <Typography.LargeText>{currentBalance}</Typography.LargeText>
+        <Typography.SmallText variant="subtitle1">Current balance</Typography.SmallText>
       </S.CurrentBalanceWrapper>
     </S.Box>
   );
