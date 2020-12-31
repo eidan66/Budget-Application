@@ -5,6 +5,7 @@ import * as S from './style';
 
 interface INavItem {
   variant?: 'subtitle1' | 'subtitle2';
+  color?: string;
 }
 
 interface INavItemProps {
@@ -12,45 +13,45 @@ interface INavItemProps {
 }
 
 const NavItem: INavItemProps = {
-  Dashboard: ({ variant }) => (
+  Dashboard: ({ variant, color }) => (
     <S.NavItemWrapper>
-      <Icon.Dashboard />
+      <Icon.Dashboard color={color} />
       <Typography.SmallText variant={variant}>Dashboard</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  Charts: ({ variant }) => (
+  Charts: ({ variant, color }) => (
     <S.NavItemWrapper>
-      <Icon.Charts />
+      <Icon.Charts color={color} />
       <Typography.SmallText variant={variant}>Charts</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  Cards: ({ variant }) => (
+  Cards: ({ variant, color }) => (
     <S.NavItemWrapper>
-      <Icon.Cards />
+      <Icon.Cards color={color} />
       <Typography.SmallText variant={variant}>Cards</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  Calendar: ({ variant }) => (
+  Calendar: ({ variant, color }) => (
     <S.NavItemWrapper>
-      <Icon.Calendar />
+      <Icon.Calendar color={color} />
       <Typography.SmallText variant={variant}>Calendar</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  Messages: ({ variant }) => (
+  Messages: ({ variant, color }) => (
     <S.NavItemWrapper>
-      <Icon.Messages />
+      <Icon.Messages color={color} />
       <Typography.SmallText variant={variant}>Messages</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  User: ({ variant }) => (
+  User: ({ variant, color }) => (
     <S.NavItemWrapper>
-      <Icon.User />
+      <Icon.User color={color} />
       <Typography.SmallText variant={variant}>User</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  Settings: ({ variant }) => (
+  Settings: ({ variant, color }) => (
     <S.NavItemWrapper>
-      <Icon.Settings />
+      <Icon.Settings color={color} />
       <Typography.SmallText variant={variant}>Settings</Typography.SmallText>
     </S.NavItemWrapper>
   ),
