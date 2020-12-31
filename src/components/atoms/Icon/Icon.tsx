@@ -4,10 +4,13 @@ import * as S from './style';
 import * as MatIcon from '@material-ui/icons';
 
 interface IIcon {
-  [property: string]: FC;
+  color?: string | '#C5C0E5';
+}
+interface IIconProps {
+  [property: string]: FC<IIcon>;
 }
 
-const Icon: IIcon = {
+const Icon: IIconProps = {
   Canceled: () => (
     <S.IconContainer>
       <MatIcon.Cancel htmlColor="red" />
@@ -15,47 +18,47 @@ const Icon: IIcon = {
   ),
   Paypal: () => (
     <S.IconContainer>
-      <Paypal color="gray" />
+      <Paypal color="#3b7bbf " />
     </S.IconContainer>
   ),
-  Income: () => (
+  Income: ({ color }) => (
     <S.IconContainer>
-      <MatIcon.TrendingUp htmlColor="gray" />
+      <MatIcon.TrendingUp htmlColor={color} />
     </S.IconContainer>
   ),
-  Dashboard: () => (
+  Dashboard: ({ color = '#C5C0E5' }) => (
     <S.IconContainer>
-      <MatIcon.Dashboard htmlColor="gray" />
+      <MatIcon.Dashboard htmlColor={color} />
     </S.IconContainer>
   ),
-  Charts: () => (
+  Charts: ({ color = '#C5C0E5' }) => (
     <S.IconContainer>
-      <MatIcon.PieChart htmlColor="gray" />
+      <MatIcon.PieChart htmlColor={color} />
     </S.IconContainer>
   ),
-  Cards: () => (
+  Cards: ({ color = '#C5C0E5' }) => (
     <S.IconContainer>
-      <MatIcon.Payment htmlColor="gray" />
+      <MatIcon.Payment htmlColor={color} />
     </S.IconContainer>
   ),
-  Calendar: () => (
+  Calendar: ({ color = '#C5C0E5' }) => (
     <S.IconContainer>
-      <MatIcon.CalendarToday htmlColor="gray" />
+      <MatIcon.CalendarToday htmlColor={color} />
     </S.IconContainer>
   ),
-  Messages: () => (
+  Messages: ({ color = '#C5C0E5' }) => (
     <S.IconContainer>
-      <MatIcon.MailOutline htmlColor="gray" />
+      <MatIcon.MailOutline htmlColor={color} />
     </S.IconContainer>
   ),
-  User: () => (
+  User: ({ color = '#C5C0E5' }) => (
     <S.IconContainer>
-      <MatIcon.Person htmlColor="gray" />
+      <MatIcon.Person htmlColor={color} />
     </S.IconContainer>
   ),
-  Settings: () => (
+  Settings: ({ color = '#C5C0E5' }) => (
     <S.IconContainer>
-      <MatIcon.Settings htmlColor="gray" />
+      <MatIcon.Settings htmlColor={color} />
     </S.IconContainer>
   ),
 };
