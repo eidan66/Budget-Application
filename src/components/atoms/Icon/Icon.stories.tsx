@@ -6,7 +6,7 @@ export default {
   component: Icon,
 };
 
-export const CanceledIcon = (args) => <Icon.Canceled {...args} />;
+export const CancelledIcon = (args) => <Icon.Cancelled {...args} />;
 export const PaypalIcon = (args) => <Icon.Paypal {...args} />;
 export const IncomeIcon = (args) => <Icon.Income {...args} />;
 export const DashboardIcon = (args) => <Icon.Dashboard {...args} />;
