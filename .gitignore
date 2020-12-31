@@ -12,6 +12,7 @@
 /desktop.ini
 /.eslintcache
 
+/src/assets/images/avatar.jpg
 # production
 /build
 

@@ -1,14 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
-import { Icon, Typography } from './components/atoms';
 
 const App = () => {
-  return (
-    <>
-      <Icon.SettingsIcon />
-      <Typography.UnSelectedNavBar>Charts</Typography.UnSelectedNavBar>
-    </>
-  );
+  return <div>Budget Application</div>;
 };
 
 export default App;

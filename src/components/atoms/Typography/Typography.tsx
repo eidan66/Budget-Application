@@ -23,7 +23,11 @@ const Typography: IText = {
   CardValidDateNumber: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
 
   // RIGHT Side Bar Typography
-  UserFullName: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
+  UserFullName: ({ children }) => (
+    <MatTypography variant="subtitle1" color="primary">
+      {children}
+    </MatTypography>
+  ),
   UserEmailAddress: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
   PaymentHistoryTitle: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
   PaymentDetailTitle: ({ children }) => <MatTypography variant="body2">{children}</MatTypography>,
