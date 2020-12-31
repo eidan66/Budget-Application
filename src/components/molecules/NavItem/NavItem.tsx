@@ -4,50 +4,54 @@ import Typography from './../../atoms/Typography/Typography';
 import * as S from './style';
 
 interface INavItem {
-  [property: string]: FC;
+  variant?: 'subtitle1' | 'subtitle2';
 }
 
-const NavItem: INavItem = {
-  Dashboard: () => (
+interface INavItemProps {
+  [property: string]: FC<INavItem>;
+}
+
+const NavItem: INavItemProps = {
+  Dashboard: ({ variant }) => (
     <S.NavItemWrapper>
       <Icon.Dashboard />
-      <Typography.SelectedNavBar>Dashboard</Typography.SelectedNavBar>
+      <Typography.SmallText variant={variant}>Dashboard</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  Charts: () => (
+  Charts: ({ variant }) => (
     <S.NavItemWrapper>
       <Icon.Charts />
-      <Typography.UnSelectedNavBar>Charts</Typography.UnSelectedNavBar>
+      <Typography.SmallText variant={variant}>Charts</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  Cards: () => (
+  Cards: ({ variant }) => (
     <S.NavItemWrapper>
       <Icon.Cards />
-      <Typography.UnSelectedNavBar>Cards</Typography.UnSelectedNavBar>
+      <Typography.SmallText variant={variant}>Cards</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  Calendar: () => (
+  Calendar: ({ variant }) => (
     <S.NavItemWrapper>
       <Icon.Calendar />
-      <Typography.UnSelectedNavBar>Calendar</Typography.UnSelectedNavBar>
+      <Typography.SmallText variant={variant}>Calendar</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  Messages: () => (
+  Messages: ({ variant }) => (
     <S.NavItemWrapper>
       <Icon.Messages />
-      <Typography.UnSelectedNavBar>Messages</Typography.UnSelectedNavBar>
+      <Typography.SmallText variant={variant}>Messages</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  User: () => (
+  User: ({ variant }) => (
     <S.NavItemWrapper>
       <Icon.User />
-      <Typography.UnSelectedNavBar>User</Typography.UnSelectedNavBar>
+      <Typography.SmallText variant={variant}>User</Typography.SmallText>
     </S.NavItemWrapper>
   ),
-  Settings: () => (
+  Settings: ({ variant }) => (
     <S.NavItemWrapper>
       <Icon.Settings />
-      <Typography.UnSelectedNavBar>Settings</Typography.UnSelectedNavBar>
+      <Typography.SmallText variant={variant}>Settings</Typography.SmallText>
     </S.NavItemWrapper>
   ),
 };
