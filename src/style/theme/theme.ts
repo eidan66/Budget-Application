@@ -1,6 +1,11 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const defaultTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#000000',
+    },
+  },
   typography: {
     subtitle1: {
       lineHeight: 'normal',
