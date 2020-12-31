@@ -11,19 +11,19 @@ interface IIconProps {
 }
 
 const Icon: IIconProps = {
-  Canceled: () => (
+  Cancelled: () => (
     <S.IconContainer>
-      <MatIcon.Cancel htmlColor="red" />
+      <MatIcon.Cancel htmlColor="red" fontSize="large" />
     </S.IconContainer>
   ),
   Paypal: () => (
     <S.IconContainer>
-      <Paypal color="#3b7bbf " />
+      <Paypal color="#3b7bbf " fontSize="2.1875rem" />
     </S.IconContainer>
   ),
   Income: ({ color }) => (
     <S.IconContainer>
-      <MatIcon.TrendingUp htmlColor={color} />
+      <MatIcon.TrendingUp htmlColor={color} fontSize="large" />
     </S.IconContainer>
   ),
   Dashboard: ({ color = '#C5C0E5' }) => (
