@@ -12,7 +12,7 @@ const Typography: IText = {
 
   // Balance details Typography
   CurrentBalanceNumber: ({ children }) => <MatTypography variant="h6">{children}</MatTypography>,
-  CurrentBalance: ({ children }) => <MatTypography variant="subtitle1">{children}</MatTypography>,
+  CurrentBalance: () => <MatTypography variant="subtitle1">Current balance</MatTypography>,
 
   // Card details Typography
   CardTitle: () => <MatTypography variant="h5">Card</MatTypography>,
