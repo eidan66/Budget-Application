@@ -10,7 +10,7 @@ interface IPaymentHistory {
   color?: 'initial' | 'inherit' | 'primary' | 'secondary' | 'textPrimary' | 'textSecondary' | 'error';
 }
 
-interface IPaymentHistoryProps {
+export interface IPaymentHistoryProps {
   [property: string]: FC<IPaymentHistory>;
 }
 
