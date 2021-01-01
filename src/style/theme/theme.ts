@@ -8,6 +8,9 @@ const defaultTheme = createMuiTheme({
     secondary: {
       main: '#ffffff',
     },
+    text: {
+      primary: 'gray',
+    },
   },
   typography: {
     subtitle1: {

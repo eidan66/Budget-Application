@@ -15,7 +15,9 @@ const UserDetailsBox: FC<IUserDetailsBoxProps> = ({ userName, userEmail, src }) 
         <Typography.SmallText variant="subtitle1" color="primary">
           {userName}
         </Typography.SmallText>
-        <Typography.SmallText variant="subtitle1">{userEmail}</Typography.SmallText>
+        <Typography.SmallText variant="subtitle1" color="textPrimary">
+          {userEmail}
+        </Typography.SmallText>
       </S.UserDetailsWrapper>
     </S.Box>
   );

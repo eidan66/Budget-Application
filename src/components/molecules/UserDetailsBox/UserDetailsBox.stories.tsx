@@ -9,7 +9,7 @@ export default {
 
 export const Userdetails = (args) => <UserDetailsBox {...args} />;
 Userdetails.args = {
-  userName: 'Ian Kelley',
-  userEmail: 'ian_kelley@gmail.com',
+  userName: 'Idan Levian',
+  userEmail: 'eidan47@gmail.com',
   src: pic,
 };

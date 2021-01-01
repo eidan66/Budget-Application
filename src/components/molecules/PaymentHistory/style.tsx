@@ -5,6 +5,7 @@ export const PaymentHistoryWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   max-width: 15rem;
+  padding-bottom: 1rem;
 `;
 
 export const PaymentIconWrapper = styled.div`

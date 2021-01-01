@@ -16,5 +16,5 @@ export const Box = styled.div<PaletteProps & SpacingProps>`
   display: inline-block;
   padding: 1rem;
   border-radius: 1rem;
-  background-color: #c7c7c926;
+  background-color: #fdf4e794;
 `;
