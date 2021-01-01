@@ -81,6 +81,11 @@ const Icon: IIconProps = {
       <MatIcon.DateRangeOutlined htmlColor={color} />
     </S.IconContainer>
   ),
+  Circle: ({ color = '#C5C0E5' }) => (
+    <S.IconContainer>
+      <MatIcon.FiberManualRecordOutlined htmlColor={color} />
+    </S.IconContainer>
+  ),
 };
 
 export default Icon;
