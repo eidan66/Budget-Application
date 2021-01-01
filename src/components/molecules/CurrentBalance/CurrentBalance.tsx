@@ -3,7 +3,6 @@ import * as S from './style';
 import { Typography } from './../../atoms/';
 
 interface ICurrentBalanceProps {
-  variant?: 'subtitle1' | 'subtitle2';
   currentBalance: string;
 }
 

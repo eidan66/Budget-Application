@@ -34,32 +34,3 @@ export const Settings = (args) => <NavItem.Settings {...args} />;
 Settings.args = {
   variant: 'subtitle2',
 };
-
-/*  import React, { FC } from 'react';
-import { Icon, Typography } from '../../atoms';
-
-interface IPaymentHistory {
-  paymentDetail?: string;
-  paymentDate?: string;
-  paymentNumber?: string;
-  paymentCurrency?: string;
-}
-
-interface IPaymentHistoryProps {
-  [property: string]: FC<IPaymentHistory>;
-}
-
-const PaymentHistory: IPaymentHistoryProps = {
-  CancelPayment: ({ paymentDetail, paymentDate, paymentNumber, paymentCurrency }) => (
-    <div>
-      <Icon.Cancelled />
-      <Typography.ExtraSmall>{paymentDetail}</Typography.ExtraSmall>
-      <Typography.Small variant="subtitle2">{paymentDate}</Typography.Small>
-      <Typography.Subtitle>{paymentNumber}</Typography.Subtitle>
-      <Typography.UppercaseText>{paymentCurrency}</Typography.UppercaseText>
-    </div>
-  ),
-};
-
-export default PaymentHistory;
-*/
