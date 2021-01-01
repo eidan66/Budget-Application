@@ -16,3 +16,4 @@ export const CalendarIcon = (args) => <Icon.Calendar {...args} />;
 export const MessagesIcon = (args) => <Icon.Messages {...args} />;
 export const UserIcon = (args) => <Icon.User {...args} />;
 export const SettingsIcon = (args) => <Icon.Settings {...args} />;
+export const Expense = (args) => <Icon.Expense {...args} />;
