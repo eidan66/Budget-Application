@@ -17,3 +17,6 @@ export const MessagesIcon = (args) => <Icon.Messages {...args} />;
 export const UserIcon = (args) => <Icon.User {...args} />;
 export const SettingsIcon = (args) => <Icon.Settings {...args} />;
 export const Expense = (args) => <Icon.Expense {...args} />;
+export const Person = (args) => <Icon.Person {...args} />;
+export const Clock = (args) => <Icon.Clock {...args} />;
+export const TimeDate = (args) => <Icon.TimeDate {...args} />;

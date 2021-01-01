@@ -66,6 +66,21 @@ const Icon: IIconProps = {
       <MatIcon.SwapHoriz htmlColor={color} />
     </S.IconContainer>
   ),
+  Person: ({ color = '#C5C0E5' }) => (
+    <S.IconContainer>
+      <MatIcon.EmojiPeople htmlColor={color} />
+    </S.IconContainer>
+  ),
+  Clock: ({ color = '#C5C0E5' }) => (
+    <S.IconContainer>
+      <MatIcon.QueryBuilderSharp htmlColor={color} />
+    </S.IconContainer>
+  ),
+  TimeDate: ({ color = '#C5C0E5' }) => (
+    <S.IconContainer>
+      <MatIcon.DateRangeOutlined htmlColor={color} />
+    </S.IconContainer>
+  ),
 };
 
 export default Icon;
