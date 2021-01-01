@@ -61,6 +61,11 @@ const Icon: IIconProps = {
       <MatIcon.Settings htmlColor={color} />
     </S.IconContainer>
   ),
+  Expense: ({ color = '#C5C0E5' }) => (
+    <S.IconContainer>
+      <MatIcon.SwapHoriz htmlColor={color} />
+    </S.IconContainer>
+  ),
 };
 
 export default Icon;
