@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
-export const CategoryWrapper = styled.div`
+export const ExpenseWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  border-radius: 1rem;
+  background-color: white;
+  padding: 1.2rem;
+  max-width: 9rem;
+  min-height: 6rem;
 `;
+// Category
 
 export const CategoryDetailsWrapper = styled.div`
   display: flex;
@@ -20,11 +26,7 @@ export const CategoryDetailsWrapper = styled.div`
   margin-top: 0.7rem;
 `;
 
-export const AmountWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
+// Amount
 export const AmountDetailsWrapper = styled.div`
   display: flex;
   flex-direction: column;

@@ -15,17 +15,17 @@ interface IExpenseMiniCardProps {
 
 const ExpenseMiniCards: IExpenseMiniCardProps = {
   Category: ({ category, color }) => (
-    <S.CategoryWrapper>
+    <S.ExpenseWrapper>
       <Typography.SmallText variant="subtitle2">Category</Typography.SmallText>
 
       <S.CategoryDetailsWrapper color={color}>
         <Icon.Circle color={color} />
         <Typography.SubtitleText>{category}</Typography.SubtitleText>
       </S.CategoryDetailsWrapper>
-    </S.CategoryWrapper>
+    </S.ExpenseWrapper>
   ),
   Amount: ({ amount, status, color }) => (
-    <S.AmountWrapper>
+    <S.ExpenseWrapper>
       <Typography.SmallText variant="subtitle2">Amount</Typography.SmallText>
 
       <S.AmountDetailsWrapper color={color}>
@@ -35,7 +35,7 @@ const ExpenseMiniCards: IExpenseMiniCardProps = {
           <Typography.SubtitleText>{status}</Typography.SubtitleText>
         </S.AmountStatusDetailsWrapper>
       </S.AmountDetailsWrapper>
-    </S.AmountWrapper>
+    </S.ExpenseWrapper>
   ),
 };
 
