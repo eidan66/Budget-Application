@@ -1,10 +1,9 @@
 import React from 'react';
-export interface IPaypalProps {
+export interface IPaypal {
   color?: string;
-  fontSize?: string;
 }
 
-const Paypal: React.FC<IPaypalProps> = ({ color, fontSize = '1.5rem' }) => {
+const Paypal: React.FC<IPaypal> = ({ color }) => {
   return (
     <svg
       aria-hidden="true"
@@ -17,7 +16,7 @@ const Paypal: React.FC<IPaypalProps> = ({ color, fontSize = '1.5rem' }) => {
       viewBox="0 0 384 512"
       width="1em"
       height="1em"
-      fontSize={fontSize}
+      fontSize="1.5rem"
     >
       <path
         fill={color}
