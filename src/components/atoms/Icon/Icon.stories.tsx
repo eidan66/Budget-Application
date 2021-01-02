@@ -20,3 +20,4 @@ export const Expense = (args) => <Icon.Expense {...args} />;
 export const Person = (args) => <Icon.Person {...args} />;
 export const Clock = (args) => <Icon.Clock {...args} />;
 export const TimeDate = (args) => <Icon.TimeDate {...args} />;
+export const Circle = (args) => <Icon.Circle {...args} />;
