@@ -4,16 +4,18 @@ import * as S from './style';
 
 interface IExpenseMiniCard {
   color?: string;
-  category: string;
-  amount: string;
-  status: string;
+  category?: string;
+  amount?: string;
+  status?: string;
+  note?: string;
+  receipt?: 'Cancelled' | 'Income' | 'Expense';
 }
 
 interface IExpenseMiniCardProps {
   [property: string]: FC<IExpenseMiniCard>;
 }
 
-const ExpenseMiniCards: IExpenseMiniCardProps = {
+const ExpenseMiniCard: IExpenseMiniCardProps = {
   Category: ({ category, color }) => (
     <S.ExpenseWrapper>
       <Typography.SmallText variant="subtitle2">Category</Typography.SmallText>
@@ -21,6 +23,24 @@ const ExpenseMiniCards: IExpenseMiniCardProps = {
       <S.CategoryDetailsWrapper color={color}>
         <Icon.Circle color={color} />
         <Typography.SubtitleText>{category}</Typography.SubtitleText>
+      </S.CategoryDetailsWrapper>
+    </S.ExpenseWrapper>
+  ),
+  AddNote: ({ note, color }) => (
+    <S.ExpenseWrapper>
+      <Typography.SmallText variant="subtitle2">Add Note</Typography.SmallText>
+
+      <S.CategoryDetailsWrapper color={color}>
+        <Typography.SubtitleText>{note}</Typography.SubtitleText>
+      </S.CategoryDetailsWrapper>
+    </S.ExpenseWrapper>
+  ),
+  Receipt: ({ receipt, color }) => (
+    <S.ExpenseWrapper>
+      <Typography.SmallText variant="subtitle2">Receipt</Typography.SmallText>
+
+      <S.CategoryDetailsWrapper color={color}>
+        <Typography.SubtitleText>{receipt}</Typography.SubtitleText>
       </S.CategoryDetailsWrapper>
     </S.ExpenseWrapper>
   ),
@@ -39,4 +59,4 @@ const ExpenseMiniCards: IExpenseMiniCardProps = {
   ),
 };
 
-export default ExpenseMiniCards;
+export default ExpenseMiniCard;

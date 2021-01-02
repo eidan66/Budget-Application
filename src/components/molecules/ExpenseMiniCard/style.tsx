@@ -6,8 +6,8 @@ export const ExpenseWrapper = styled.div`
   border-radius: 1rem;
   background-color: white;
   padding: 1.2rem;
-  max-width: 9rem;
-  min-height: 6rem;
+  width: 9rem;
+  height: 6rem;
 `;
 // Category
 

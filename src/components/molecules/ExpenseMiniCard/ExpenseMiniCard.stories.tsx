@@ -12,6 +12,16 @@ CategoryExpenseMiniCard.args = {
   category: 'Software',
 };
 
+export const NoteExpenseMiniCard = (args) => <ExpenseMiniCard.AddNote {...args} />;
+NoteExpenseMiniCard.args = {
+  note: 'Bought softs',
+};
+
+export const ReceiptExpenseMiniCard = (args) => <ExpenseMiniCard.Receipt {...args} />;
+ReceiptExpenseMiniCard.args = {
+  receipt: 'Cancelled',
+};
+
 export const AmountExpenseMiniCard = (args) => <ExpenseMiniCard.Amount {...args} />;
 AmountExpenseMiniCard.args = {
   color: 'lightGreen',
