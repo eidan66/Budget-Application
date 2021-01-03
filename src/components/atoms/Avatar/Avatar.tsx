@@ -12,13 +12,13 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface IAvatar {
-  src: string;
+  avatar: string;
   avatarName: string;
 }
-const Avatar: FC<IAvatar> = ({ avatarName, src }) => {
+const Avatar: FC<IAvatar> = ({ avatarName, avatar }) => {
   const classes = useStyles();
 
-  return <MatAvatar alt={avatarName} src={src} className={classes.large}></MatAvatar>;
+  return <MatAvatar alt={avatarName} src={avatar} className={classes.large}></MatAvatar>;
 };
 
 export default Avatar;

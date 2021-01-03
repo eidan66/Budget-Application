@@ -9,5 +9,4 @@ export default {
 export const SideNavbar = (args) => <Navbar {...args} />;
 SideNavbar.args = {
   currentBalance: '$25,650',
-  variant: 'subtitle2',
 };
