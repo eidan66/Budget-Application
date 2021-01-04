@@ -44,16 +44,12 @@ const ExpenseMiniCard: IExpenseMiniCardProps = {
       </S.CategoryDetailsWrapper>
     </S.ExpenseWrapper>
   ),
-  Amount: ({ amount, status, color }) => (
+  Amount: ({ amount }) => (
     <S.ExpenseWrapper>
       <Typography.SmallText variant="subtitle2">Amount</Typography.SmallText>
 
-      <S.AmountDetailsWrapper color={color}>
+      <S.AmountDetailsWrapper>
         <Typography.SubtitleText>{amount}</Typography.SubtitleText>
-
-        <S.AmountStatusDetailsWrapper color={color}>
-          <Typography.SubtitleText>{status}</Typography.SubtitleText>
-        </S.AmountStatusDetailsWrapper>
       </S.AmountDetailsWrapper>
     </S.ExpenseWrapper>
   ),
