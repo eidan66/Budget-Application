@@ -11,6 +11,6 @@ export const numberWithCommas = (number) => {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
-export const amountColorPicker = (amount) => {
-  return amount > 0 ? 'textSecondary' : amount < 0 ? 'secondary' : 'primary';
+export const amountColorPicker = ({ paymentType }) => {
+  return paymentType === 'Expenses' ? 'error' : 'primary';
 };

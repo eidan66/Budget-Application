@@ -2,40 +2,46 @@ import React, { FC } from 'react';
 import { Typography } from '../../atoms';
 import { UserDetailsBox, PaymentHistory } from '../../molecules';
 import dataBase from '../../../mockup-tests/smallmockup.json';
+import { numberWithCommas, amountColorPicker } from '../../../helpers';
 import * as S from './style';
-import { numberWithCommas, amountColorPicker, dateSorting } from '../../../helpers';
 
-const userPaymentRendered = (payments) => {
-  payments.sort(dateSorting);
+const userPaymentRender = (payments) => {
   let keyNumber = 0;
   return payments.map((payment) => {
     keyNumber++;
-    return payment.paypal ? (
-      <PaymentHistory.Paypal
-        paymentDate={payment.date + ' ' + payment.time}
-        paymentNumber={numberWithCommas(payment.amount)}
-        paymentCurrency={payment.currency}
-        color={amountColorPicker(payment.amount)}
-        key={keyNumber}
-      />
-    ) : payment.transactionType === 'cancelled' ? (
+    return payment.cancelled ? (
       <PaymentHistory.Cancelled
         paymentDate={payment.date + ' ' + payment.time}
         paymentNumber={numberWithCommas(payment.amount)}
         paymentCurrency={payment.currency}
-        color={amountColorPicker(payment.amount)}
         key={keyNumber}
       />
-    ) : payment.transactionType === 'Income' ? (
+    ) : payment.paymentMethod === 'paypal' ? (
+      <PaymentHistory.Paypal
+        paymentDate={payment.date + ' ' + payment.time}
+        paymentNumber={numberWithCommas(payment.amount)}
+        paymentCurrency={payment.currency}
+        color={amountColorPicker(payment)}
+        key={keyNumber}
+      />
+    ) : payment.paymentType === 'Income' && payment.paymentMethod === 'credit card' ? (
       <PaymentHistory.Income
         paymentDate={payment.date + ' ' + payment.time}
         paymentNumber={numberWithCommas(payment.amount)}
         paymentCurrency={payment.currency}
-        color={amountColorPicker(payment.amount)}
+        color={amountColorPicker(payment)}
+        key={keyNumber}
+      />
+    ) : payment.paymentType === 'Expenses' && payment.paymentMethod === 'credit card' ? (
+      <PaymentHistory.Expense
+        paymentDate={payment.date + ' ' + payment.time}
+        paymentNumber={numberWithCommas(payment.amount)}
+        paymentCurrency={payment.currency}
+        color={amountColorPicker(payment)}
         key={keyNumber}
       />
     ) : (
-      ''
+      <p>Test</p>
     );
   });
 };
@@ -57,7 +63,7 @@ const UserPayment: FC<IUserPaymentProps> = ({ first_name, last_name, email, avat
       <S.PaymentTitleWrapper>
         <Typography.MediumText color="primary">Payment history</Typography.MediumText>
       </S.PaymentTitleWrapper>
-      <S.UserPaymentHistoryWrapper>{userPaymentRendered(dataBase.slice(0, 10))}</S.UserPaymentHistoryWrapper>
+      <S.UserPaymentHistoryWrapper>{userPaymentRender(dataBase.slice(0, 10))}</S.UserPaymentHistoryWrapper>
     </S.UserPaymentWrapper>
   );
 };

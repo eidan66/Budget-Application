@@ -6,11 +6,14 @@ const defaultTheme = createMuiTheme({
       main: '#000000',
     },
     secondary: {
-      main: '#ff0000',
+      main: '#4cc1ef',
+    },
+    error: {
+      main: '#ff000075',
     },
     text: {
       primary: 'gray',
-      secondary: 'darkblue',
+      secondary: '#4cc1ef',
     },
   },
   typography: {
