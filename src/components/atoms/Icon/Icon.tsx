@@ -21,9 +21,9 @@ const Icon: IIconProps = {
       <Paypal color="#3b7bbf " fontSize="2.1875rem" />
     </S.IconContainer>
   ),
-  Income: ({ color }) => (
+  Income: () => (
     <S.IconContainer>
-      <MatIcon.TrendingUp htmlColor={color} fontSize="large" />
+      <MatIcon.TrendingUp htmlColor="#3c8c30" fontSize="large" />
     </S.IconContainer>
   ),
   Dashboard: ({ color = '#C5C0E5' }) => (
@@ -61,9 +61,9 @@ const Icon: IIconProps = {
       <MatIcon.Settings htmlColor={color} />
     </S.IconContainer>
   ),
-  Expense: ({ color = '#C5C0E5' }) => (
+  Expense: () => (
     <S.IconContainer>
-      <MatIcon.SwapHoriz htmlColor={color} />
+      <MatIcon.TrendingDown htmlColor="#ff0000" fontSize="large" />
     </S.IconContainer>
   ),
   Person: ({ color = '#C5C0E5' }) => (

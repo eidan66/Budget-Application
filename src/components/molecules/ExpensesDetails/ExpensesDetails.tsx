@@ -14,7 +14,7 @@ const ExpensesDetails: FC<IExpensesDetailsProps> = ({ business, name, time, date
   return (
     <S.ExpensesDetailsWrapper>
       <S.AvatarWrapper>
-        <Avatar avatarName={name} src={avatarSrc} />
+        <Avatar avatarName={name} avatar={avatarSrc} />
       </S.AvatarWrapper>
 
       <S.InformationWrapper>

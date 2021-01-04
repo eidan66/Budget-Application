@@ -3,20 +3,23 @@ import * as S from './style';
 import { Typography, Avatar } from '../../atoms';
 
 interface IUserDetailsBoxProps {
-  userName: string;
-  userEmail: string;
-  src: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  avatar: string;
 }
-const UserDetailsBox: FC<IUserDetailsBoxProps> = ({ userName, userEmail, src }) => {
+const UserDetailsBox: FC<IUserDetailsBoxProps> = ({ last_name, first_name, email, avatar }) => {
   return (
     <S.Box>
       <S.UserDetailsWrapper>
-        <Avatar avatarName={userName} src={src} />
+        <Avatar avatarName={first_name} avatar={avatar} />
         <Typography.SmallText variant="subtitle1" color="primary">
-          {userName}
+          {first_name}
+          {''}
+          {last_name}
         </Typography.SmallText>
         <Typography.SmallText variant="subtitle1" color="textPrimary">
-          {userEmail}
+          {email}
         </Typography.SmallText>
       </S.UserDetailsWrapper>
     </S.Box>

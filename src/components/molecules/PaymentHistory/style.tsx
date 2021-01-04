@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const PaymentHistoryWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  max-width: 15rem;
+  max-width: 17rem;
   padding-bottom: 1rem;
 `;
 

@@ -7,13 +7,10 @@ export default {
   component: UserPayment,
 };
 
-export const UserPaymentDetails = (args) => <UserPayment {...args} />;
-UserPaymentDetails.args = {
-  userName: 'Idan Levian',
-  userEmail: 'eidan47@gmail.com',
-  src: pic,
-  paymentDetail: 'Deposit Paypal',
-  paymentDate: '4 march, 14:30',
-  paymentNumber: '+ 2,220',
-  paymentCurrency: 'usd',
+export const StoryPaymentHistory = (args) => <UserPayment {...args} />;
+StoryPaymentHistory.args = {
+  first_name: 'Idan',
+  last_name: 'Levian',
+  email: 'eidan47@gmail.com',
+  avatar: pic,
 };

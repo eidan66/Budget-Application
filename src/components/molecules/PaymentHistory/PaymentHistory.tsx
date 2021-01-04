@@ -3,7 +3,6 @@ import { Icon, Typography } from '../../atoms';
 import * as S from './style';
 
 interface IPaymentHistory {
-  paymentDetail?: string;
   paymentDate?: string;
   paymentNumber?: string;
   paymentCurrency?: string;
@@ -13,9 +12,9 @@ interface IPaymentHistory {
 export interface IPaymentHistoryProps {
   [property: string]: FC<IPaymentHistory>;
 }
-
+// change it like in navbar - they are all the same except of icon
 const PaymentHistory: IPaymentHistoryProps = {
-  Cancelled: ({ paymentDetail, paymentDate, paymentNumber, paymentCurrency, color }) => (
+  Cancelled: ({ paymentDate, paymentNumber, paymentCurrency, color }) => (
     <S.PaymentHistoryWrapper>
       <S.PaymentIconWrapper>
         <Icon.Cancelled />
@@ -23,7 +22,7 @@ const PaymentHistory: IPaymentHistoryProps = {
 
       <S.PaymentTypographyWrapper>
         <S.PaymentDetailsWrapper>
-          <Typography.ExtraSmallText>{paymentDetail}</Typography.ExtraSmallText>
+          <Typography.ExtraSmallText color={color}>Cancelled</Typography.ExtraSmallText>
           <Typography.SmallText variant="subtitle2">{paymentDate}</Typography.SmallText>
         </S.PaymentDetailsWrapper>
 
@@ -34,7 +33,7 @@ const PaymentHistory: IPaymentHistoryProps = {
       </S.PaymentTypographyWrapper>
     </S.PaymentHistoryWrapper>
   ),
-  Paypal: ({ paymentDetail, paymentDate, paymentNumber, paymentCurrency, color }) => (
+  Paypal: ({ paymentDate, paymentNumber, paymentCurrency, color }) => (
     <S.PaymentHistoryWrapper>
       <S.PaymentIconWrapper>
         <Icon.Paypal />
@@ -42,7 +41,7 @@ const PaymentHistory: IPaymentHistoryProps = {
 
       <S.PaymentTypographyWrapper>
         <S.PaymentDetailsWrapper>
-          <Typography.ExtraSmallText>{paymentDetail}</Typography.ExtraSmallText>
+          <Typography.ExtraSmallText>Deposit Paypal</Typography.ExtraSmallText>
           <Typography.SmallText variant="subtitle2">{paymentDate}</Typography.SmallText>
         </S.PaymentDetailsWrapper>
 
@@ -53,15 +52,34 @@ const PaymentHistory: IPaymentHistoryProps = {
       </S.PaymentTypographyWrapper>
     </S.PaymentHistoryWrapper>
   ),
-  Income: ({ paymentDetail, paymentDate, paymentNumber, paymentCurrency, color }) => (
+  Income: ({ paymentDate, paymentNumber, paymentCurrency, color }) => (
     <S.PaymentHistoryWrapper>
       <S.PaymentIconWrapper>
-        <Icon.Income color="#3c8c30" />
+        <Icon.Income />
       </S.PaymentIconWrapper>
 
       <S.PaymentTypographyWrapper>
         <S.PaymentDetailsWrapper>
-          <Typography.ExtraSmallText>{paymentDetail}</Typography.ExtraSmallText>
+          <Typography.ExtraSmallText>Deposit from ATL</Typography.ExtraSmallText>
+          <Typography.SmallText variant="subtitle2">{paymentDate}</Typography.SmallText>
+        </S.PaymentDetailsWrapper>
+
+        <S.PaymentWrapper>
+          <Typography.SubtitleText color={color}>{paymentNumber}</Typography.SubtitleText>
+          <Typography.UppercaseText>{paymentCurrency}</Typography.UppercaseText>
+        </S.PaymentWrapper>
+      </S.PaymentTypographyWrapper>
+    </S.PaymentHistoryWrapper>
+  ),
+  Expense: ({ paymentDate, paymentNumber, paymentCurrency, color }) => (
+    <S.PaymentHistoryWrapper>
+      <S.PaymentIconWrapper>
+        <Icon.Expense />
+      </S.PaymentIconWrapper>
+
+      <S.PaymentTypographyWrapper>
+        <S.PaymentDetailsWrapper>
+          <Typography.ExtraSmallText>Deposit from ATL</Typography.ExtraSmallText>
           <Typography.SmallText variant="subtitle2">{paymentDate}</Typography.SmallText>
         </S.PaymentDetailsWrapper>
 
