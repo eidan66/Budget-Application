@@ -1,11 +1,15 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import React from 'react';
+import React, { FC } from 'react';
 import Chart from 'react-apexcharts';
-import { lineChartOptions, lineChartSeries } from '../../../constants/chrats';
-import { getTime } from '../../../helpers';
+import { lineChartOptions, lineChartSeries, barChartSeries, barChartOptions } from '../../../constants/charts';
 
-const Charts = () => {
-  return <Chart options={lineChartOptions} series={lineChartSeries} type="line" height={350} />;
+interface IChartsProps {
+  [property: string]: FC;
+}
+
+const Charts: IChartsProps = {
+  Income: () => <Chart options={lineChartOptions} series={lineChartSeries} type="line" height={350} />,
+  Activity: () => <Chart options={barChartOptions} series={barChartSeries} type="bar" height={350} />,
 };
 
 export default Charts;
