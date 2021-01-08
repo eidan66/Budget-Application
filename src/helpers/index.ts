@@ -7,13 +7,12 @@ export const dateSorting = (a, b) => {
   }
 };
 
-export const numberWithCommas = (number) => {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-};
+export const numberWithCommas = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-export const amountColorPicker = ({ paymentType }) => {
-  return paymentType === 'Expenses' ? 'error' : 'primary';
-};
+export const amountColorPicker = ({ paymentType }) => (paymentType === 'Expenses' ? 'error' : 'primary');
 
 export const summaryColor = (summary) => (summary === 'Income' ? '#3c8c30' : '#ff0000');
+
 export const titleChecker = (summary) => (summary === 'Income' ? 'Revenue' : 'Outgoings');
+
+export const getTime = (date) => new Date(date).getMonth();
