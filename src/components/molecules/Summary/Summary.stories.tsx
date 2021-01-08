@@ -8,17 +8,16 @@ export default {
 
 export const IncomeSummary = (args) => <Summary {...args} />;
 IncomeSummary.args = {
-  icon: 'Income',
-  revenueTitle: 'Revenue',
+  summary: 'Income',
+  summarySubtitle: 'Revenue',
   percent: '+5.08%',
   revenue: '$90,524',
-  summary: 'Income',
 };
+
 export const ExpenseSummary = (args) => <Summary {...args} />;
 ExpenseSummary.args = {
-  icon: 'Expense',
-  revenueTitle: 'Outgoings',
+  summary: 'Expense',
+  summarySubtitle: 'Outgoings',
   percent: '-3.14%',
   revenue: '$60,228',
-  summary: 'Expense',
 };

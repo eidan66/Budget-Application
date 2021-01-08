@@ -14,3 +14,6 @@ export const numberWithCommas = (number) => {
 export const amountColorPicker = ({ paymentType }) => {
   return paymentType === 'Expenses' ? 'error' : 'primary';
 };
+
+export const summaryColor = (summary) => (summary === 'Income' ? '#3c8c30' : '#ff0000');
+export const titleChecker = (summary) => (summary === 'Income' ? 'Revenue' : 'Outgoings');

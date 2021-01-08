@@ -1,29 +1,24 @@
 import React, { FC } from 'react';
 import { Typography, Icon } from '../../atoms';
+import { summaryColor, titleChecker } from '../../../helpers';
 import * as S from './style';
 
 interface ISummaryProps {
-  summary: string;
-  revenueTitle: string;
+  summary: 'Income' | 'Expenses';
   revenue: string;
   percent: string;
-  icon: 'Expense' | 'Income';
 }
 
-const revenueColor = (icon) => {
-  return icon === 'Income' ? '#3c8c30' : '#ff0000';
-};
-
-const Summary: FC<ISummaryProps> = ({ summary, revenueTitle, revenue, percent, icon }) => {
-  const IconComp = Icon[icon];
+const Summary: FC<ISummaryProps> = ({ summary, revenue, percent }) => {
+  const IconComp = Icon[summary];
   return (
     <S.SummaryWrapper>
       <S.TitleWrapper>
         <Typography.MediumText color="primary">{summary}</Typography.MediumText>
       </S.TitleWrapper>
 
-      <S.RevenueWrapper color={revenueColor(icon)}>
-        <Typography.SmallText variant="subtitle2">{revenueTitle}</Typography.SmallText>
+      <S.RevenueWrapper color={summaryColor(summary)}>
+        <Typography.SmallText variant="subtitle2">{titleChecker(summary)}</Typography.SmallText>
         <Typography.MediumText>{revenue}</Typography.MediumText>
         <S.IconWrapper>
           <IconComp />
