@@ -14,9 +14,7 @@ const UserDetailsBox: FC<IUserDetailsBoxProps> = ({ last_name, first_name, email
       <S.UserDetailsWrapper>
         <Avatar avatarName={first_name} avatar={avatar} />
         <Typography.SmallText variant="subtitle1" color="primary">
-          {first_name}
-          {''}
-          {last_name}
+          {first_name + ' ' + last_name}
         </Typography.SmallText>
         <Typography.SmallText variant="subtitle1" color="textPrimary">
           {email}

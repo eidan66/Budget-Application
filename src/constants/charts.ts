@@ -48,7 +48,10 @@ export const lineChartOptions = {
     enabled: false,
   },
   stroke: {
-    curve: 'straight',
+    curve: 'smooth',
+  },
+  markers: {
+    size: 1,
   },
   title: {
     text: 'Income',
@@ -63,6 +66,7 @@ export const lineChartOptions = {
   xaxis: {
     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   },
+
   tooltip: {
     y: {
       formatter: (val) => {
@@ -88,7 +92,8 @@ export const barChartSeries = [
 export const barChartOptions = {
   chart: {
     type: 'bar',
-    height: 350,
+    redrawOnParentResize: true,
+    redrawOnWindowResize: true,
   },
   plotOptions: {
     bar: {
@@ -96,6 +101,10 @@ export const barChartOptions = {
       columnWidth: '55%',
       endingShape: 'rounded',
     },
+  },
+  title: {
+    text: 'Activity',
+    align: 'left',
   },
   dataLabels: {
     enabled: false,
@@ -105,7 +114,7 @@ export const barChartOptions = {
     width: 2,
     colors: ['transparent'],
   },
-  colors: ['blue', 'red'],
+  colors: ['#4333a0', '#ff0000'],
   xaxis: {
     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   },

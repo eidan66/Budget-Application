@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 import cardBackground from '../../../assets/images/cardBackground.png';
@@ -8,8 +7,9 @@ export const Card = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 1rem;
-  width: 20rem;
-  height: 12rem;
+  box-shadow: 0 10px 6px -6px #777;
+  width: 21.5rem;
+  height: 12.89rem;
   padding: 0.75rem;
   display: flex;
   flex-direction: column;

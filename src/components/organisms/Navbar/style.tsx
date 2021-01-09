@@ -5,7 +5,7 @@ export const NavbarWrapper = styled.div`
   flex-direction: column;
   padding: 1rem;
   max-width: 12rem;
-  min-height: 30rem;
+  height: 64rem;
   border-radius: 1rem;
   background-color: #4333a0;
 `;

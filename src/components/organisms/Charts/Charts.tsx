@@ -2,14 +2,22 @@
 import React, { FC } from 'react';
 import Chart from 'react-apexcharts';
 import { lineChartOptions, lineChartSeries, barChartSeries, barChartOptions } from '../../../constants/charts';
-
+import * as S from './style';
 interface IChartsProps {
   [property: string]: FC;
 }
 
 const Charts: IChartsProps = {
-  Income: () => <Chart options={lineChartOptions} series={lineChartSeries} type="line" height={350} />,
-  Activity: () => <Chart options={barChartOptions} series={barChartSeries} type="bar" height={350} />,
+  Income: () => (
+    <S.LineChartWrapper>
+      <Chart options={lineChartOptions} series={lineChartSeries} type="line" />
+    </S.LineChartWrapper>
+  ),
+  Activity: () => (
+    <S.BarChartWrapper>
+      <Chart options={barChartOptions} series={barChartSeries} type="bar" height={350} />
+    </S.BarChartWrapper>
+  ),
 };
 
 export default Charts;
