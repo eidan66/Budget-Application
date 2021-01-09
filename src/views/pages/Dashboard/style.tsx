@@ -6,7 +6,7 @@ flex-direction: row;
 
 `;
 
-export const Temp = styled.div`
+export const PageWrapper = styled.div`
   ${flex_row}
 `;
 export const DashboardWrapper = styled.div`

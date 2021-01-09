@@ -16,3 +16,12 @@ export const summaryColor = (summary) => (summary === 'Income' ? '#3c8c30' : '#f
 export const titleChecker = (summary) => (summary === 'Income' ? 'Revenue' : 'Outgoings');
 
 export const getTime = (date) => new Date(date).getMonth();
+
+export const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
