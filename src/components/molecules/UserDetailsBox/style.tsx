@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { palette, PaletteProps, spacing, SpacingProps } from '@material-ui/system'; //From material-ui box style.
 

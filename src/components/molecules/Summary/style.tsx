@@ -5,10 +5,11 @@ export const SummaryWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   border-radius: 1rem;
+  box-shadow: 0 10px 6px -6px #777;
   background-color: white;
   padding: 1.2rem;
-  width: 20rem;
-  height: 10 rem;
+  width: 21.5rem;
+  height: 11rem;
 `;
 
 export const TitleWrapper = styled.div`

@@ -5,7 +5,7 @@ export const UserPaymentWrapper = styled.div`
   flex-direction: column;
   padding: 1rem;
   width: 16.5rem;
-  min-height: 30rem;
+  height: 64rem;
   border-radius: 1rem;
   justify-content: center;
   align-items: center;

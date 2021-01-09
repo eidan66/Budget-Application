@@ -4,7 +4,7 @@ import { summaryColor, titleChecker } from '../../../helpers';
 import * as S from './style';
 
 interface ISummaryProps {
-  summary: 'Income' | 'Expenses';
+  summary: 'Income' | 'Expense';
   revenue: string;
   percent: string;
 }
