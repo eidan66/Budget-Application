@@ -21,7 +21,7 @@ export const categoriesRender = (database, categories, categoriesColors) => {
       flag = false;
       return (
         <S.CardWrapper>
-          <ExpenseMiniCard.Category category={data.category} color={color} />
+          <ExpenseMiniCard.Category onClick={() => console.log('hey!')} category={data.category} color={color} />
         </S.CardWrapper>
       );
     }
