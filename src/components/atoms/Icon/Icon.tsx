@@ -86,6 +86,11 @@ const Icon: IIconProps = {
       <MatIcon.FiberManualRecordOutlined htmlColor={color} />
     </S.IconContainer>
   ),
+  Location: ({ color = '#C5C0E5' }) => (
+    <S.IconContainer>
+      <MatIcon.MyLocationTwoTone htmlColor={color} />
+    </S.IconContainer>
+  ),
 };
 
 export default Icon;
