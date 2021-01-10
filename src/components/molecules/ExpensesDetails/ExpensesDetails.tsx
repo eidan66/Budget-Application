@@ -2,19 +2,47 @@ import React, { FC } from 'react';
 import * as S from './style';
 import { Avatar, Typography, Icon } from '../../atoms';
 
+const forMapInformation = (flag, location) => {
+  return flag ? (
+    <S.MapWrapper>
+      <Icon.Location />
+      <Typography.SmallText variant="subtitle2">{location}</Typography.SmallText>
+    </S.MapWrapper>
+  ) : (
+    ''
+  );
+};
+
 interface IExpensesDetailsProps {
   business: string;
-  name: string;
+  first_name: string;
+  last_name: string;
   time: string;
   date: string;
   avatarSrc: string;
+  map?: boolean;
+  country?: string;
+  city?: string;
+  street?: string;
 }
 
-const ExpensesDetails: FC<IExpensesDetailsProps> = ({ business, name, time, date, avatarSrc }) => {
+const ExpensesDetails: FC<IExpensesDetailsProps> = ({
+  business,
+  first_name,
+  last_name,
+  time,
+  date,
+  avatarSrc,
+  map,
+  country,
+  city,
+  street,
+}) => {
+  const location = country + ', ' + city + ', ' + street + '.';
   return (
     <S.ExpensesDetailsWrapper>
       <S.AvatarWrapper>
-        <Avatar avatarName={name} avatar={avatarSrc} />
+        <Avatar avatarName={first_name + ' ' + last_name} avatar={avatarSrc} />
       </S.AvatarWrapper>
 
       <S.InformationWrapper>
@@ -24,7 +52,7 @@ const ExpensesDetails: FC<IExpensesDetailsProps> = ({ business, name, time, date
 
         <S.NameWrapper>
           <Icon.Person />
-          <Typography.SmallText variant="subtitle2">{name}</Typography.SmallText>
+          <Typography.SmallText variant="subtitle2">{first_name + ' ' + last_name}</Typography.SmallText>
         </S.NameWrapper>
 
         <S.TimeInfoWrapper>
@@ -38,6 +66,8 @@ const ExpensesDetails: FC<IExpensesDetailsProps> = ({ business, name, time, date
             <Typography.SmallText variant="subtitle2">{date}</Typography.SmallText>
           </S.DateWrapper>
         </S.TimeInfoWrapper>
+
+        {forMapInformation(map, location)}
       </S.InformationWrapper>
     </S.ExpensesDetailsWrapper>
   );

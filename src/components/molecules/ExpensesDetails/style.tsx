@@ -29,6 +29,15 @@ export const NameWrapper = styled.div`
   }
   margin-bottom: 0.5rem;
 `;
+
+export const MapWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  & > div {
+    padding-right: 0.3rem;
+  }
+  margin-top: 0.5rem;
+`;
 export const TimeInfoWrapper = styled.div`
   display: flex;
   flex-direction: row;
