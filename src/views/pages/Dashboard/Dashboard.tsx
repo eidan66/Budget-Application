@@ -32,7 +32,7 @@ const Dashboard: FC<IDashboardProps> = ({
   avatar,
 }) => {
   return (
-    <S.Temp>
+    <S.PageWrapper>
       <S.DashboardWrapper>
         <S.HeaderWrapper>
           <Card
@@ -55,7 +55,7 @@ const Dashboard: FC<IDashboardProps> = ({
       <S.PaymentWrapper>
         <UserPayment email={email} avatar={avatar} first_name={first_name} last_name={last_name} />
       </S.PaymentWrapper>
-    </S.Temp>
+    </S.PageWrapper>
   );
 };
 

@@ -8,6 +8,7 @@ interface IExpenseMiniCard {
   amount?: string;
   status?: string;
   note?: string;
+  onClick?: () => void;
   receipt?: 'Cancelled' | 'Income' | 'Expense';
 }
 
@@ -16,8 +17,8 @@ interface IExpenseMiniCardProps {
 }
 
 const ExpenseMiniCard: IExpenseMiniCardProps = {
-  Category: ({ category, color }) => (
-    <S.ExpenseWrapper>
+  Category: ({ category, color, onClick }) => (
+    <S.ExpenseWrapper onClick={() => onClick()}>
       <Typography.SmallText variant="subtitle2">Category</Typography.SmallText>
 
       <S.CategoryDetailsWrapper color={color}>
@@ -26,8 +27,8 @@ const ExpenseMiniCard: IExpenseMiniCardProps = {
       </S.CategoryDetailsWrapper>
     </S.ExpenseWrapper>
   ),
-  AddNote: ({ note, color }) => (
-    <S.ExpenseWrapper>
+  AddNote: ({ note, color, onClick }) => (
+    <S.ExpenseWrapper onClick={() => onClick()}>
       <Typography.SmallText variant="subtitle2">Add Note</Typography.SmallText>
 
       <S.CategoryDetailsWrapper color={color}>
@@ -35,8 +36,8 @@ const ExpenseMiniCard: IExpenseMiniCardProps = {
       </S.CategoryDetailsWrapper>
     </S.ExpenseWrapper>
   ),
-  Receipt: ({ receipt, color }) => (
-    <S.ExpenseWrapper>
+  Receipt: ({ receipt, color, onClick }) => (
+    <S.ExpenseWrapper onClick={() => onClick()}>
       <Typography.SmallText variant="subtitle2">Receipt</Typography.SmallText>
 
       <S.CategoryDetailsWrapper color={color}>
@@ -44,8 +45,8 @@ const ExpenseMiniCard: IExpenseMiniCardProps = {
       </S.CategoryDetailsWrapper>
     </S.ExpenseWrapper>
   ),
-  Amount: ({ amount }) => (
-    <S.ExpenseWrapper>
+  Amount: ({ amount, onClick }) => (
+    <S.ExpenseWrapper onClick={() => onClick()}>
       <Typography.SmallText variant="subtitle2">Amount</Typography.SmallText>
 
       <S.AmountDetailsWrapper>
