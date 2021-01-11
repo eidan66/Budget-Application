@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ExpenseWrapper = styled.div`
   border-radius: 1rem;
   border-top: 0.45rem solid ${({ color }) => (color ? color : 'none')};
-  background-color: #d3d3d324;
+  background-color: rgba(199, 199, 201, 0.192);
   padding: 1rem;
   height: 28rem;
   width: 25rem;

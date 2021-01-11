@@ -91,6 +91,11 @@ const Icon: IIconProps = {
       <MatIcon.MyLocationTwoTone htmlColor={color} />
     </S.IconContainer>
   ),
+  Map: ({ color = 'rgba(148, 0, 20, 0.671)' }) => (
+    <S.IconContainer>
+      <MatIcon.MapOutlined htmlColor={color} fontSize="large" />
+    </S.IconContainer>
+  ),
 };
 
 export default Icon;

@@ -13,7 +13,7 @@ export const DashboardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: #f1edee;
+  background-color: #f8f8f8;
   border-radius: 1rem;
   padding: 1rem;
   width: 60rem;
