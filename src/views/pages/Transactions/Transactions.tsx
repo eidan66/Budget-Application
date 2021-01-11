@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import {} from '../../../components/molecules';
 import transactionData from '../../../mockup-tests/Payment_History.json';
 import userData from '../../../mockup-tests/userDetails.json';
@@ -6,33 +6,56 @@ import { ExpenseCard } from '../../../components/organisms';
 import * as S from './style';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import asoSetting from '../../../constants/asoSetting.json';
-
-AOS.init(asoSetting);
-//  TODO: add infinite scroll with AOS effects.
+import aosSetting from '../../../constants/aosSetting.json';
 
 const transactionRenderByCategory = (transactions, userdata, category: string) => {
+  let countForFade = 0;
   return transactions.map((transaction) => {
-    return transaction.category === category ? (
-      <S.TransactionWrapper>
-        <ExpenseCard
-          key={transaction.id}
-          amount={transaction.amount}
-          status={status}
-          //   categoryColor={categoryColor}
-          category={transaction.category}
-          business={transaction.company}
-          first_name={userdata.first_name}
-          last_name={userdata.last_name}
-          time={transaction.time}
-          date={transaction.date}
-          avatarSrc={userdata.avatar}
-          type={transaction.paymentType}
-        />
-      </S.TransactionWrapper>
-    ) : (
-      ''
-    );
+    if (countForFade < 4) {
+      countForFade += 1;
+
+      return transaction.category === category ? (
+        <S.TransactionWrapper>
+          <ExpenseCard
+            key={transaction.id}
+            amount={transaction.amount}
+            status={status}
+            //   categoryColor={categoryColor}
+            category={transaction.category}
+            business={transaction.company}
+            first_name={userdata.first_name}
+            last_name={userdata.last_name}
+            time={transaction.time}
+            date={transaction.date}
+            avatarSrc={userdata.avatar}
+            type={transaction.paymentType}
+          />
+        </S.TransactionWrapper>
+      ) : (
+        ''
+      );
+    } else {
+      return transaction.category === category ? (
+        <S.TransactionWrapper data-aos="fade-up">
+          <ExpenseCard
+            key={transaction.id}
+            amount={transaction.amount}
+            status={status}
+            //   categoryColor={categoryColor}
+            category={transaction.category}
+            business={transaction.company}
+            first_name={userdata.first_name}
+            last_name={userdata.last_name}
+            time={transaction.time}
+            date={transaction.date}
+            avatarSrc={userdata.avatar}
+            type={transaction.paymentType}
+          />
+        </S.TransactionWrapper>
+      ) : (
+        ''
+      );
+    }
   });
 };
 
@@ -67,10 +90,16 @@ const Transactions: FC<ITransactionProps> = ({
   avatarSrc,
   type,
 }) => {
+  useEffect(() => {
+    AOS.init({ duration: 750 });
+  }, []);
+
   return (
-    <S.AllTransactionsWrapper>
-      {transactionRenderByCategory(transactionData, userData, category)}
-    </S.AllTransactionsWrapper>
+    <S.TransactionContainer>
+      <S.AllTransactionsWrapper>
+        {transactionRenderByCategory(transactionData, userData, category)}
+      </S.AllTransactionsWrapper>
+    </S.TransactionContainer>
   );
 };
 
