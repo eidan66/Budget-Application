@@ -4,7 +4,8 @@ import * as S from './style';
 
 interface IExpenseCardProps {
   business: string;
-  name: string;
+  first_name: string;
+  last_name: string;
   time: string;
   date: string;
   avatarSrc: string;
@@ -14,8 +15,8 @@ interface IExpenseCardProps {
   category: string;
   amount: string;
   status: string;
-  note: string;
-  receipt?: 'Cancelled' | 'Income' | 'Expense';
+  type?: 'Cancelled' | 'Income' | 'Expense';
+  onClick?: () => void;
 }
 
 const ExpenseCard: FC<IExpenseCardProps> = ({
@@ -26,28 +27,36 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
   categoryColor,
   category,
   business,
-  name,
+  first_name,
+  last_name,
   time,
   date,
   avatarSrc,
-  note,
-  receipt,
+  type,
+  onClick,
 }) => {
   return (
     <S.ExpenseWrapper color={clickedColor}>
       <S.ExpenseDetailsWrapper>
-        <ExpensesDetails business={business} name={name} time={time} date={date} avatarSrc={avatarSrc} />
+        <ExpensesDetails
+          business={business}
+          first_name={first_name}
+          last_name={last_name}
+          time={time}
+          date={date}
+          avatarSrc={avatarSrc}
+        />
       </S.ExpenseDetailsWrapper>
 
       <S.ExpenseCardsWrapper>
         <S.ExpenseMiniCardsWrapper>
           <ExpenseMiniCard.Category category={category} color={categoryColor} />
-          <ExpenseMiniCard.AddNote note={note} />
+          <ExpenseMiniCard.Type type={type} />
         </S.ExpenseMiniCardsWrapper>
 
         <S.ExpenseMiniCardsWrapper>
           <ExpenseMiniCard.Amount amount={amount} status={status} color={amountColor} />
-          <ExpenseMiniCard.Receipt receipt={receipt} />
+          <ExpenseMiniCard.Map onClick={() => onClick()} />
         </S.ExpenseMiniCardsWrapper>
       </S.ExpenseCardsWrapper>
     </S.ExpenseWrapper>

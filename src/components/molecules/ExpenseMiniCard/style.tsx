@@ -25,6 +25,15 @@ export const CategoryDetailsWrapper = styled.div`
   }
   margin-top: 0.7rem;
 `;
+export const MapWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  & > div > svg {
+    font-size: 3.188rem;
+  }
+  margin-top: 0.5rem;
+`;
 
 // Amount
 export const AmountDetailsWrapper = styled.div`

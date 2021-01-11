@@ -16,12 +16,12 @@ ClickedExpenseCard.args = {
   categoryColor: 'orange',
   category: 'Software',
   avatarSrc: pic,
-  name: 'Idan Levian',
+  first_name: 'Idan',
+  last_name: 'Levian',
   business: 'Amazon',
   time: '15:12',
   date: '13 Aug 2016',
-  note: 'Bought softs',
-  receipt: 'Income',
+  type: 'Income',
 };
 
 export const UnClickedExpenseCard = (args) => <ExpenseCard {...args} />;
@@ -32,10 +32,10 @@ UnClickedExpenseCard.args = {
   categoryColor: 'orange',
   category: 'Software',
   avatarSrc: pic,
-  name: 'Idan Levian',
+  first_name: 'Idan',
+  last_name: 'Levian',
   business: 'Amazon',
   time: '15:12',
   date: '13 Aug 2016',
-  note: 'Bought softs',
-  receipt: 'Income',
+  type: 'Income',
 };
