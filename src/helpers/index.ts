@@ -1,3 +1,4 @@
+import currencyCommon from './commonCurrency.json';
 export const numberWithCommas = (number: string): string => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
 export const amountColorPicker = (type: { paymentType: string }) =>
@@ -8,6 +9,10 @@ export const summaryColor = (summary: string) => (summary === 'Income' ? '#3c8c3
 export const titleChecker = (summary: string) => (summary === 'Income' ? 'Revenue' : 'Outgoings');
 
 export const getTime = (date: string | number | Date) => new Date(date).getMonth();
+
+// export const getSymbolFromCurrency = (currency: string) => {
+//   currencyCommon.map((data, index) => {});
+// };
 
 export const getRandomColor = () => {
   const letters = '0123456789ABCDEF';

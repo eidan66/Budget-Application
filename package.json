@@ -17,6 +17,7 @@
     "aos": "^2.3.4",
     "apexcharts": "^3.23.1",
     "axios": "^0.21.1",
+    "currency-code-symbol-map": "^1.0.1",
     "currency-symbol-map": "^4.0.4",
     "eslint-config-prettier": "^7.1.0",
     "leaflet": "^1.7.1",

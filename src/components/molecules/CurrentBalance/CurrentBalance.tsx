@@ -2,12 +2,15 @@ import React, { FC } from 'react';
 import * as S from './style';
 import { Typography } from './../../atoms/';
 import { numberWithCommas } from '../../../helpers';
-import '../../../types/currency-symbol-map/index';
-import getSymbolFromCurrency from 'currency-symbol-map';
+import { getSymbolFromCode } from 'currency-code-symbol-map';
+import type { CurrencyCode } from '../../../../node_modules/currency-code-symbol-map/lib/currencyCodeSymbolMapping';
+
+// import '../../../types/currency-symbol-map/index.d.ts';
+// import getSymbolFromCurrency from 'currency-symbol-map';
 
 interface ICurrentBalanceProps {
   currentBalance: string;
-  userCurrency: string;
+  userCurrency: CurrencyCode;
 }
 
 const CurrentBalance: FC<ICurrentBalanceProps> = ({ userCurrency, currentBalance }) => {
@@ -16,7 +19,7 @@ const CurrentBalance: FC<ICurrentBalanceProps> = ({ userCurrency, currentBalance
       <S.CurrentBalanceWrapper>
         <Typography.MediumText>
           {numberWithCommas(currentBalance)}
-          {getSymbolFromCurrency(userCurrency)}
+          {getSymbolFromCode(userCurrency)}
         </Typography.MediumText>
         <Typography.SmallText variant="subtitle1">Current balance</Typography.SmallText>
       </S.CurrentBalanceWrapper>

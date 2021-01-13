@@ -1,11 +1,11 @@
 import dataBase from '../mockup-tests/Payment_History.json';
 import { getTime, numberWithCommas } from '../helpers';
 
-const incomeDataChart = (dataBase) => {
+const incomeDataChart = (dataBase: any[]) => {
   let month = 0;
   const newData = [...Array(12).fill(0)];
 
-  dataBase.map((data) => {
+  dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
     if (data.paymentType === 'Income' && !data.cancelled) {
       month = getTime(data.date);
       newData[month] += parseInt(data.amount);
@@ -15,11 +15,11 @@ const incomeDataChart = (dataBase) => {
   return newData;
 };
 
-const expenseDataChart = (dataBase) => {
+const expenseDataChart = (dataBase: any[]) => {
   let month = 0;
   const newData = [...Array(12).fill(0)];
 
-  dataBase.map((data) => {
+  dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
     if (data.paymentType === 'Expenses' && !data.cancelled) {
       month = getTime(data.date);
       newData[month] += parseInt(data.amount);
@@ -69,7 +69,7 @@ export const lineChartOptions = {
 
   tooltip: {
     y: {
-      formatter: (val) => {
+      formatter: (val: string) => {
         return '$ ' + numberWithCommas(val);
       },
     },
@@ -124,7 +124,7 @@ export const barChartOptions = {
   },
   tooltip: {
     y: {
-      formatter: (val) => {
+      formatter: (val: string) => {
         return '$ ' + numberWithCommas(val);
       },
     },

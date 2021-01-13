@@ -7,8 +7,8 @@ import Categories from './views/pages/Categories/index';
 const App = () => {
   return (
     <StoreProvider>
-      <ContextTest />
-      {/* <Categories /> */}
+      {/* <ContextTest /> */}
+      <Categories />
     </StoreProvider>
   );
 };
