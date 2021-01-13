@@ -1,21 +1,13 @@
-export const dateSorting = (a, b) => {
-  const sortByDate = new Date(a.date).getTime() - new Date(b.date).getTime();
-  console.log('sortByDate ~ ', sortByDate);
-  if (sortByDate === 0) {
-    //   TODO: Fix this helper function!!
-    console.log(new Date(a.time));
-  }
-};
+export const numberWithCommas = (number: string): string => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-export const numberWithCommas = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+export const amountColorPicker = (type: { paymentType: string }) =>
+  type.paymentType === 'Expenses' ? 'error' : 'primary';
 
-export const amountColorPicker = ({ paymentType }) => (paymentType === 'Expenses' ? 'error' : 'primary');
+export const summaryColor = (summary: string) => (summary === 'Income' ? '#3c8c30' : '#ff0000');
 
-export const summaryColor = (summary) => (summary === 'Income' ? '#3c8c30' : '#ff0000');
+export const titleChecker = (summary: string) => (summary === 'Income' ? 'Revenue' : 'Outgoings');
 
-export const titleChecker = (summary) => (summary === 'Income' ? 'Revenue' : 'Outgoings');
-
-export const getTime = (date) => new Date(date).getMonth();
+export const getTime = (date: string | number | Date) => new Date(date).getMonth();
 
 export const getRandomColor = () => {
   const letters = '0123456789ABCDEF';

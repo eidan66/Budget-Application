@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import * as S from './style';
 import { Avatar, Typography, Icon } from '../../atoms';
 
-const forMapInformation = (flag, location) => {
+const forMapInformation = (flag: boolean, location: string) => {
   return flag ? (
     <S.MapWrapper>
       <Icon.Location />
@@ -20,7 +20,7 @@ interface IExpensesDetailsProps {
   time: string;
   date: string;
   avatarSrc: string;
-  map?: boolean;
+  map: boolean;
   country?: string;
   city?: string;
   street?: string;

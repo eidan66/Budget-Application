@@ -7,8 +7,7 @@ interface IExpenseMiniCard {
   category?: string;
   amount?: string;
   status?: string;
-  map?: string;
-  onClick?: () => void;
+  onClick?: (() => void) | any;
   type?: 'Cancelled' | 'Income' | 'Expense';
 }
 
@@ -36,7 +35,7 @@ const ExpenseMiniCard: IExpenseMiniCardProps = {
       </S.CategoryDetailsWrapper>
     </S.ExpenseWrapper>
   ),
-  Map: ({ map, color, onClick }) => (
+  Map: ({ color, onClick }) => (
     <S.ExpenseWrapper onClick={() => onClick()}>
       <Typography.SmallText variant="subtitle2">Map</Typography.SmallText>
 

@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import * as S from './style';
 import { Typography } from './../../atoms/';
 import { numberWithCommas } from '../../../helpers';
+import '../../../types/currency-symbol-map/index';
 import getSymbolFromCurrency from 'currency-symbol-map';
 
 interface ICurrentBalanceProps {
