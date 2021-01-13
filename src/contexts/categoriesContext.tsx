@@ -17,8 +17,8 @@ interface IAction {
 const initialState: IState = {
   categories: [
     {
-      name: ' ',
-      color: ' ',
+      name: '',
+      color: '',
     },
   ],
 };

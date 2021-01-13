@@ -1,5 +1,5 @@
 import React from 'react';
-import { Store } from './contexts/budgetContext';
+import { Store } from './contexts/categoriesContext';
 
 const contextTest = (): JSX.Element => {
   const { state, dispatch } = React.useContext(Store);

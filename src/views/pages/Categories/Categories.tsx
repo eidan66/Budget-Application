@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
-import {} from '../../../components/organisms';
+import React from 'react';
+
 import { ExpenseMiniCard } from '../../../components/molecules';
 import { Typography } from '../../../components/atoms';
+import { getRandomColor } from '../../../helpers';
+
 import db from '../../../mockup-tests/Payment_History.json';
 import * as S from './style';
-import { getRandomColor } from '../../../helpers';
 
 export const categoriesRender = (database: any[], categories: any[], categoriesColors: any[]) => {
   return database.map((data: { category: string | undefined }) => {
@@ -33,7 +34,7 @@ interface ICategoryProp {
   color: string;
 }
 
-const Categories = () => {
+const Categories = (): JSX.Element => {
   const categories: never[] = [];
   const categoriesColors: never[] = [];
 
