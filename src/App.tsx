@@ -27,17 +27,18 @@ const App = () => {
       birthDate: '05/08/1995',
     },
   ];
-  console.table(smallDB);
-  console.log('***');
-  const lod = smallDB.sort(compareFunction);
-  console.log('***');
-  console.table(lod);
+  // const lod = smallDB.sort(compareFunction);
 
-  // const [state, setState] = useState([{}]);
+  const [state, setState] = useState([{}]);
 
-  // useEffect(() => {
-  //   console.log(smallDB.sort(compareValues('date', 'desc')));
-  // }, []);
+  useEffect(() => {
+    const sortedDB = smallDB.sort(compareFunction);
+    setState(sortedDB);
+  }, []);
+
+  useEffect(() => {
+    console.table(state);
+  }, [state]);
 
   return (
     <>
