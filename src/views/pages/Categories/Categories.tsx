@@ -1,16 +1,17 @@
-import React, { FC } from 'react';
-import {} from '../../../components/organisms';
+import React from 'react';
+
 import { ExpenseMiniCard } from '../../../components/molecules';
 import { Typography } from '../../../components/atoms';
-import db from '../../../mockup-tests/Payment_History.json';
-import * as S from './style';
 import { getRandomColor } from '../../../helpers';
 
-export const categoriesRender = (database, categories, categoriesColors) => {
-  return database.map((data) => {
+import db from '../../../mockup-tests/Payment_History.json';
+import * as S from './style';
+
+export const categoriesRender = (database: any[], categories: any[], categoriesColors: any[]) => {
+  return database.map((data: { category: string | undefined }) => {
     let flag = false;
 
-    categories.map((x) => {
+    categories.map((x: any) => {
       if (x === data.category) return (flag = true);
     });
 
@@ -33,9 +34,9 @@ interface ICategoryProp {
   color: string;
 }
 
-const Categories: FC<ICategoryProp> = () => {
-  const categories = [];
-  const categoriesColors = [];
+const Categories = (): JSX.Element => {
+  const categories: never[] = [];
+  const categoriesColors: never[] = [];
 
   return (
     <S.CategoryWrapper>

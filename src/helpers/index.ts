@@ -1,21 +1,53 @@
-export const dateSorting = (a, b) => {
-  const sortByDate = new Date(a.date).getTime() - new Date(b.date).getTime();
-  console.log('sortByDate ~ ', sortByDate);
-  if (sortByDate === 0) {
-    //   TODO: Fix this helper function!!
-    console.log(new Date(a.time));
-  }
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-prototype-builtins */
+
+export const compareFunction = (elmA: { date: string; time: string }, elmB: { date: string; time: string }) => {
+  const partsOfTimeA = elmA.time.split(' ');
+  const partsTwoOfTimeA = partsOfTimeA[0].split(':');
+  const partsOfTimeAMPM_A = ampmFunction(parseInt(partsTwoOfTimeA[0]), partsOfTimeA[1]);
+  const comparableTimeA = `${partsOfTimeAMPM_A.padStart(2, '0')}${partsTwoOfTimeA[1].padStart(2, '0')}`;
+
+  const partsOfTimeB = elmB.time.split(' ');
+  const partsTwoOfTimeB = partsOfTimeB[0].split(':');
+  const partsOfTimeAMPM_B = ampmFunction(parseInt(partsTwoOfTimeB[0]), partsOfTimeB[1]);
+  const comparableTimeB = `${partsOfTimeAMPM_B.padStart(2, '0')}${partsTwoOfTimeB[1].padStart(2, '0')}`;
+
+  const partsOfDateA = elmA.date.split('/');
+  const comparableDateA = `${partsOfDateA[2]}-${partsOfDateA[0].padStart(2, '0')}-${partsOfDateA[1].padStart(2, '0')}`;
+
+  const partsOfDateB = elmB.date.split('/');
+  const comparableDateB = `${partsOfDateB[2]}-${partsOfDateB[0].padStart(2, '0')}-${partsOfDateB[1].padStart(2, '0')}`;
+
+  return comparableDateA > comparableDateB
+    ? -1
+    : comparableDateA < comparableDateB
+    ? 1
+    : comparableDateA == comparableDateB
+    ? comparableTimeA < comparableTimeB
+      ? -1
+      : comparableTimeA > comparableTimeB
+      ? 1
+      : 0
+    : 0;
 };
 
-export const numberWithCommas = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+export const ampmFunction = (time: number, ampm: string) => {
+  const am = time;
+  const pm = time + 12;
+  return ampm === 'PM' ? `${pm}` : `${am}`;
+};
 
-export const amountColorPicker = ({ paymentType }) => (paymentType === 'Expenses' ? 'error' : 'primary');
+export const numberWithCommas = (number: string): string => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-export const summaryColor = (summary) => (summary === 'Income' ? '#3c8c30' : '#ff0000');
+export const amountColorPicker = (type: { paymentType: string }) =>
+  type.paymentType === 'Expenses' ? 'error' : 'primary';
 
-export const titleChecker = (summary) => (summary === 'Income' ? 'Revenue' : 'Outgoings');
+export const summaryColor = (summary: string) => (summary === 'Income' ? '#3c8c30' : '#ff0000');
 
-export const getTime = (date) => new Date(date).getMonth();
+export const titleChecker = (summary: string) => (summary === 'Income' ? 'Revenue' : 'Outgoings');
+
+export const getTime = (date: string | number | Date) => new Date(date).getMonth();
 
 export const getRandomColor = () => {
   const letters = '0123456789ABCDEF';

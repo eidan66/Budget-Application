@@ -5,45 +5,55 @@ import dataBase from '../../../mockup-tests/smallmockup.json';
 import { numberWithCommas, amountColorPicker } from '../../../helpers';
 import * as S from './style';
 
-const userPaymentRender = (payments) => {
+const userPaymentRender = (payments: any[]) => {
   let keyNumber = 0;
-  return payments.map((payment) => {
-    keyNumber++;
-    return payment.cancelled ? (
-      <PaymentHistory.Cancelled
-        paymentDate={payment.date + ' ' + payment.time}
-        paymentNumber={numberWithCommas(payment.amount)}
-        paymentCurrency={payment.currency}
-        key={keyNumber}
-      />
-    ) : payment.paymentMethod === 'paypal' ? (
-      <PaymentHistory.Paypal
-        paymentDate={payment.date + ' ' + payment.time}
-        paymentNumber={numberWithCommas(payment.amount)}
-        paymentCurrency={payment.currency}
-        color={amountColorPicker(payment)}
-        key={keyNumber}
-      />
-    ) : payment.paymentType === 'Income' && payment.paymentMethod === 'credit card' ? (
-      <PaymentHistory.Income
-        paymentDate={payment.date + ' ' + payment.time}
-        paymentNumber={numberWithCommas(payment.amount)}
-        paymentCurrency={payment.currency}
-        color={amountColorPicker(payment)}
-        key={keyNumber}
-      />
-    ) : payment.paymentType === 'Expenses' && payment.paymentMethod === 'credit card' ? (
-      <PaymentHistory.Expense
-        paymentDate={payment.date + ' ' + payment.time}
-        paymentNumber={numberWithCommas(payment.amount)}
-        paymentCurrency={payment.currency}
-        color={amountColorPicker(payment)}
-        key={keyNumber}
-      />
-    ) : (
-      <p>Test</p>
-    );
-  });
+  return payments.map(
+    (payment: {
+      cancelled?: any;
+      date?: any;
+      time?: any;
+      amount?: any;
+      currency?: any;
+      paymentMethod?: any;
+      paymentType: any;
+    }) => {
+      keyNumber++;
+      return payment.cancelled ? (
+        <PaymentHistory.Cancelled
+          paymentDate={payment.date + ' ' + payment.time}
+          paymentNumber={numberWithCommas(payment.amount)}
+          paymentCurrency={payment.currency}
+          key={keyNumber}
+        />
+      ) : payment.paymentMethod === 'paypal' ? (
+        <PaymentHistory.Paypal
+          paymentDate={payment.date + ' ' + payment.time}
+          paymentNumber={numberWithCommas(payment.amount)}
+          paymentCurrency={payment.currency}
+          color={amountColorPicker(payment)}
+          key={keyNumber}
+        />
+      ) : payment.paymentType === 'Income' && payment.paymentMethod === 'credit card' ? (
+        <PaymentHistory.Income
+          paymentDate={payment.date + ' ' + payment.time}
+          paymentNumber={numberWithCommas(payment.amount)}
+          paymentCurrency={payment.currency}
+          color={amountColorPicker(payment)}
+          key={keyNumber}
+        />
+      ) : payment.paymentType === 'Expenses' && payment.paymentMethod === 'credit card' ? (
+        <PaymentHistory.Expense
+          paymentDate={payment.date + ' ' + payment.time}
+          paymentNumber={numberWithCommas(payment.amount)}
+          paymentCurrency={payment.currency}
+          color={amountColorPicker(payment)}
+          key={keyNumber}
+        />
+      ) : (
+        <p>Test</p>
+      );
+    }
+  );
 };
 
 interface IUserPaymentProps {

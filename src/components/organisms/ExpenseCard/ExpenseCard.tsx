@@ -15,8 +15,9 @@ interface IExpenseCardProps {
   category: string;
   amount: string;
   status: string;
+  map: boolean;
   type?: 'Cancelled' | 'Income' | 'Expense';
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 const ExpenseCard: FC<IExpenseCardProps> = ({
@@ -33,12 +34,14 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
   date,
   avatarSrc,
   type,
+  map,
   onClick,
 }) => {
   return (
     <S.ExpenseWrapper color={clickedColor}>
       <S.ExpenseDetailsWrapper>
         <ExpensesDetails
+          map={map}
           business={business}
           first_name={first_name}
           last_name={last_name}

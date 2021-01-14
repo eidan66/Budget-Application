@@ -2,8 +2,12 @@ import React, { FC, useState } from 'react';
 import * as S from './style';
 import { NavItem, CurrentBalance } from '../../molecules';
 import routes from '../../../constants/routes';
+import type { CurrencyCode } from '../../../../node_modules/currency-code-symbol-map/lib/currencyCodeSymbolMapping';
 
-const navbarRender = (currentIndex, setCurrentIndex) =>
+const navbarRender = (
+  currentIndex: number,
+  setCurrentIndex: { (value: React.SetStateAction<number>): void; (index: number): void }
+) =>
   routes.map(({ label, icon }, index) => {
     return (
       <NavItem index={index} onClick={setCurrentIndex} current={index === currentIndex} label={label} icon={icon} />
@@ -13,7 +17,7 @@ const navbarRender = (currentIndex, setCurrentIndex) =>
 interface INavbarProps {
   variant?: 'subtitle1' | 'subtitle2';
   currentBalance: string;
-  userCurrency: string;
+  userCurrency: CurrencyCode;
 }
 const Navbar: FC<INavbarProps> = ({ currentBalance, userCurrency }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
