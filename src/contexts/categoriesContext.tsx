@@ -1,40 +1,77 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-empty-function */
+import React, { createContext } from 'react';
 
-interface IState {
-  categories: [
-    {
-      name: any;
-      color: any;
-    }
-  ];
+export interface ICategory {
+  name: string;
+  color: string;
 }
 
-interface IAction {
+export interface ICategories {
+  categories: Array<ICategory>;
+  addCategory: (categories: ICategory) => void;
+}
+
+export interface IAction {
   type: string;
-  name: any;
-  color: any;
+  payload: Array<ICategories> | any;
 }
-const initialState: IState = {
-  categories: [
-    {
-      name: '',
-      color: '',
-    },
-  ],
+
+export const initialState = {
+  categories: [],
+  addCategory: () => {},
 };
 
-export const Store = React.createContext<IState | any>(initialState);
+export const CategoriesContext = createContext<ICategories>(initialState);
 
-export const reducer = (state: IState, action: IAction): IState => {
+const reducer = (state: ICategories, action: IAction) => {
   switch (action.type) {
-    case 'FETCH_DATA':
-      return { ...state, categories: [{ name: action.name, color: action.color }] };
+    case 'add':
+      console.log('switch', action.payload, Date.now());
+      return {
+        ...state,
+        categories: [...state.categories, action.payload],
+      };
+
     default:
       return state;
   }
 };
 
-export const StoreProvider = (props: any): JSX.Element => {
+export const CategoriesContextProvider = (props: any) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-  return <Store.Provider value={{ state, dispatch }}>{props.children}</Store.Provider>;
+  console.log('PROVIDER STATE', state);
+
+  const addCategory = (categories: ICategory) => {
+    dispatch({
+      type: 'add',
+      payload: categories,
+    });
+  };
+
+  return (
+    <CategoriesContext.Provider
+      value={{
+        ...state,
+        addCategory,
+      }}
+    >
+      {props.children}
+    </CategoriesContext.Provider>
+  );
 };
+
+//   const removeCategory = (id) => {
+//     const newList = state.categories.slice().filter((item) => item.id !== id);
+//     dispatch({
+//       type: 'remove',
+//       payload: newList,
+//     });
+//   };
+
+// case 'remove':
+//   return {
+//     ...state,
+//     categories: action.payload,
+//   };
