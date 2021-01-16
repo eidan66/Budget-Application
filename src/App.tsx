@@ -3,11 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Categories from './views/pages/Categories/index';
 // import smallDB from './mockup-tests/smallmockup.json';
 // import { compareFunction } from './helpers';
-// import { StoreProvider } from './contexts/tryContext';
 
-// import ComponentTest from './ComponentTest';
-import { CategoriesContextProvider } from './contexts/categoriesContext';
-// import { UserContextProvider } from './contexts/testComponent';
+import GlobalStore from './contexts/GlobalStore';
 
 const App = () => {
   // const [state, setState] = useState([{}]);
@@ -22,9 +19,9 @@ const App = () => {
   // }, [state]);
 
   return (
-    <CategoriesContextProvider>
+    <GlobalStore>
       <Categories />
-    </CategoriesContextProvider>
+    </GlobalStore>
   );
 };
 
