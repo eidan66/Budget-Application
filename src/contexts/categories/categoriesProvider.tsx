@@ -1,15 +1,15 @@
 import React from 'react';
 import { ICategory } from '../../interfaces/context';
-import { ACTIONS } from '../actionContext';
-import { reducer } from '../reducerContext';
+import { CATEGORIES_ACTIONS } from '../actionContext';
+import { categoriesReducer } from '../reducerContext';
 import { initialState, CategoriesContext } from './categoriesContext';
 
 export const CategoriesContextProvider = (props: any) => {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [state, dispatch] = React.useReducer(categoriesReducer, initialState);
 
   const addCategory = (categories: ICategory) => {
     dispatch({
-      type: ACTIONS.SET_CATEGORIES,
+      type: CATEGORIES_ACTIONS.SET_CATEGORIES,
       payload: categories,
     });
   };

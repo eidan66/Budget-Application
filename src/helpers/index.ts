@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-prototype-builtins */
 
+// ************* HELPER FUNCTIONS ************* \\
 export const compareFunction = (elmA: { date: string; time: string }, elmB: { date: string; time: string }) => {
   const partsOfTimeA = elmA.time.split(' ');
   const partsTwoOfTimeA = partsOfTimeA[0].split(':');
@@ -56,4 +57,25 @@ export const getRandomColor = () => {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
+};
+
+export const categoriesCollector = (
+  database: { category: string; id: string }[],
+  addCategory: (arg0: { name: string; color: string; id: string }) => any,
+  setCategoriesFlag: (arg0: boolean) => void
+) => {
+  const category: string[] = [];
+  let isThere = false;
+
+  database.map((data: { category: string; id: string }) => {
+    category.map((c) => {
+      c === data.category ? (isThere = true) : '';
+    });
+
+    !isThere
+      ? (category.push(data.category), addCategory({ name: data.category, color: getRandomColor(), id: data.id }))
+      : '';
+    isThere = false;
+  });
+  setCategoriesFlag(true);
 };
