@@ -12,3 +12,7 @@ export enum APP_ACTIONS {
 export enum USER_ACTIONS {
   SET_USER_DETAILS = 'set_user_details',
 }
+
+export enum PAYMENT_ACTION {
+  SET_PAYMENT_DETAILS = 'set_payment_details',
+}

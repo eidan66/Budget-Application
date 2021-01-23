@@ -1,6 +1,15 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { ICategories, ICategoriesAction, IApp, IAppAction, IUser, IUserAction } from '../interfaces/context';
-import { CATEGORIES_ACTIONS, APP_ACTIONS, USER_ACTIONS } from './actionContext';
+import {
+  ICategories,
+  ICategoriesAction,
+  IApp,
+  IAppAction,
+  IUser,
+  IUserAction,
+  IPayment,
+  IPaymentAction,
+} from '../interfaces/context';
+import { CATEGORIES_ACTIONS, APP_ACTIONS, USER_ACTIONS, PAYMENT_ACTION } from './actionContext';
 
 export const categoriesReducer = (state: ICategories, action: ICategoriesAction) => {
   switch (action.type) {
@@ -49,6 +58,19 @@ export const userReducer = (state: IUser, action: IUserAction) => {
       return {
         ...state,
         userDetails: [...state.userDetails, action.payload],
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const paymentReducer = (state: IPayment, action: IPaymentAction) => {
+  switch (action.type) {
+    case PAYMENT_ACTION.SET_PAYMENT_DETAILS:
+      return {
+        ...state,
+        paymentDetails: [...state.paymentDetails, action.payload],
       };
 
     default:

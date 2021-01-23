@@ -59,3 +59,38 @@ export interface IUserAction {
   type: string;
   payload: Array<IUser> | any;
 }
+
+//  ******** Payment Context ********  \\
+
+export interface IPaymentLocation {
+  country: string;
+  city: string;
+  street: string;
+  lat: number;
+  lng: number;
+}
+
+export interface IPaymentDetails {
+  length(length: any);
+  id: string;
+  paymentType: string;
+  paymentMethod: string;
+  cancelled: boolean;
+  time: string;
+  date: string;
+  currency: string;
+  category: string;
+  company: string;
+  amount: string;
+  location: Array<IPaymentLocation>;
+}
+
+export interface IPayment {
+  paymentDetails: Array<IPaymentDetails>;
+  setPaymentDetails: (paymentDetails: any) => void;
+}
+
+export interface IPaymentAction {
+  type: string;
+  payload: Array<IPayment> | any;
+}
