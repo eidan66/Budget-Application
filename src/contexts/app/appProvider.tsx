@@ -2,7 +2,6 @@ import { useReducer } from 'react';
 import { AppContext, initialState } from './appContext';
 import { appReducer } from '../reducerContext';
 import { APP_ACTIONS } from '../actionContext';
-import { IApp } from '../../interfaces/context';
 
 export const AppContextProvide = (props: any) => {
   const [state, dispatch] = useReducer(appReducer, initialState);

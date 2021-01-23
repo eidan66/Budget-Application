@@ -8,3 +8,7 @@ export enum APP_ACTIONS {
   SET_SORTED = 'set_sorted',
   SET_CATEGORIES_FLAG = 'set_categories_flag',
 }
+
+export enum USER_ACTIONS {
+  SET_USER_DETAILS = 'set_user_details',
+}

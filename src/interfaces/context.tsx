@@ -9,7 +9,6 @@ export interface ICategories {
   categories: Array<ICategory>;
   addCategory: (categories: ICategory) => void;
 }
-// ******** Categories Context ********  \\
 
 export interface ICategoriesAction {
   type: string;
@@ -32,4 +31,31 @@ export interface IAppAction {
   type: string;
   payload: Array<IApp> | any;
 }
-/*  ******** App Context ********  */
+
+//  ******** User Context ********  \\
+
+export interface IUserCreditCard {
+  exp_year: number;
+  exp_month: number;
+  last4Digits: number;
+}
+
+export interface IUserDetails {
+  first_name: string;
+  last_name: string;
+  email: string;
+  avatar: string;
+  current_balance: string;
+  current_balance_currency: string;
+  credit_card: Array<IUserCreditCard>;
+}
+
+export interface IUser {
+  userDetails: Array<IUserDetails>;
+  setUserDetails: (userDetails: any) => void;
+}
+
+export interface IUserAction {
+  type: string;
+  payload: Array<IUser> | any;
+}
