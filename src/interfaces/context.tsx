@@ -71,7 +71,6 @@ export interface IPaymentLocation {
 }
 
 export interface IPaymentDetails {
-  length(length: any);
   id: string;
   paymentType: string;
   paymentMethod: string;
