@@ -23,3 +23,5 @@ export const TimeDate = (args) => <Icon.TimeDate {...args} />;
 export const Circle = (args) => <Icon.Circle {...args} />;
 export const Location = (args) => <Icon.Location {...args} />;
 export const Map = (args) => <Icon.Map {...args} />;
+export const Categories = (args) => <Icon.Categories {...args} />;
+export const Transactions = (args) => <Icon.Transactions {...args} />;
