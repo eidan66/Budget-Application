@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Charts, UserPayment } from '../../../components/organisms';
+import { Charts } from '../../../components/organisms';
 import { Card, Summary } from '../../../components/molecules';
 import * as S from './style';
 
@@ -13,8 +13,6 @@ interface IDashboardProps {
   incomePercent: string;
   expenseRevenue: string;
   expensePercent: string;
-  email: string;
-  avatar: string;
 }
 
 const Dashboard: FC<IDashboardProps> = ({
@@ -28,8 +26,6 @@ const Dashboard: FC<IDashboardProps> = ({
   incomePercent,
   expenseRevenue,
   expensePercent,
-  email,
-  avatar,
 }) => {
   return (
     <S.PageWrapper>
@@ -52,9 +48,6 @@ const Dashboard: FC<IDashboardProps> = ({
           <Charts.Activity />
         </S.ActivityWrapper>
       </S.DashboardWrapper>
-      <S.PaymentWrapper>
-        <UserPayment email={email} avatar={avatar} first_name={first_name} last_name={last_name} />
-      </S.PaymentWrapper>
     </S.PageWrapper>
   );
 };

@@ -1,10 +1,10 @@
-const routes = [
+import { IRouteConstants } from '../interfaces/routes';
+
+const routes: IRouteConstants[] = [
   { label: 'Dashboard', icon: 'Dashboard' },
+  { label: 'Categories', icon: 'Categories' },
+  { label: 'Transactions', icon: 'Transactions' },
   { label: 'Charts', icon: 'Charts' },
-  { label: 'Cards', icon: 'Cards' },
-  { label: 'Calendar', icon: 'Calendar' },
-  { label: 'Messages', icon: 'Messages' },
-  { label: 'User', icon: 'User' },
   { label: 'Settings', icon: 'Settings' },
 ];
 export default routes;

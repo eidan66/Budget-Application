@@ -96,6 +96,16 @@ const Icon: IIconProps = {
       <MatIcon.MapOutlined htmlColor={color} fontSize="large" />
     </S.IconContainer>
   ),
+  Categories: ({ color = '#C5C0E5' }) => (
+    <S.IconContainer>
+      <MatIcon.CategoryTwoTone htmlColor={color} />
+    </S.IconContainer>
+  ),
+  Transactions: ({ color = '#C5C0E5' }) => (
+    <S.IconContainer>
+      <MatIcon.SyncAlt htmlColor={color} />
+    </S.IconContainer>
+  ),
 };
 
 export default Icon;
