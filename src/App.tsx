@@ -1,50 +1,45 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import React, { useEffect, useState } from 'react';
-import Categories from './views/pages/Categories/index';
-import smallDB from './mockup-tests/smallmockup.json';
-import { compareFunction } from './helpers';
+import React, { useEffect, useContext, useState } from 'react';
+import DATABASE from './mockup-tests/Payment_History.json';
+import USER_DETAILS from './mockup-tests/userDetails.json';
+import { compareFunction, categoriesCollector } from './helpers';
+import { UserContext } from './contexts/user/userContext';
+import { AppContext } from './contexts/app/appContext';
+import { PaymentContext } from './contexts/payment/paymentContext';
+import { CategoriesContext } from './contexts/categories/categoriesContext';
+import { Loader } from './components/atoms';
 
 const App = () => {
-  const data = [
-    {
-      firstName: 'First1',
-      lastName: 'Last1',
-      birthDate: '30/12/1990',
-    },
-    {
-      firstName: 'First2',
-      lastName: 'Last2',
-      birthDate: '30/12/1995',
-    },
-    {
-      firstName: 'First3',
-      lastName: 'Last3',
-      birthDate: '03/10/1990',
-    },
-    {
-      firstName: 'First4',
-      lastName: 'Last4',
-      birthDate: '05/08/1995',
-    },
-  ];
-  // const lod = smallDB.sort(compareFunction);
-
-  const [state, setState] = useState([{}]);
+  const [userFlag, setUserFlag] = useState(false);
+  const { sorted, categoriesFlag, setSorted, setCategoriesFlag } = useContext(AppContext);
+  const { paymentDetails, setPaymentDetails } = useContext(PaymentContext);
+  const { addCategory } = useContext(CategoriesContext);
+  const { setUserDetails } = useContext(UserContext);
 
   useEffect(() => {
-    const sortedDB = smallDB.sort(compareFunction);
-    setState(sortedDB);
+    userFlag === false ? (setUserDetails(USER_DETAILS), setUserFlag(true)) : console.error('Waiting for user...');
+
+    setTimeout(() => {
+      const sortedDB = DATABASE.sort(compareFunction);
+      setPaymentDetails(sortedDB);
+    }, 5000);
   }, []);
 
   useEffect(() => {
-    console.table(state);
-  }, [state]);
+    paymentDetails.length >= 1 ? setSorted(true) : '';
+  }, [paymentDetails]);
 
-  return (
-    <>
-      <Categories />
-    </>
-  );
+  useEffect(() => {
+    sorted ? categoriesCollector(DATABASE, addCategory, setCategoriesFlag) : '';
+  }, [sorted]);
+
+  useEffect(() => {
+    sorted && userFlag && categoriesFlag
+      ? console.info('Successfully received the data !')
+      : console.info('Waiting for the required data ...');
+  }, [categoriesFlag, userFlag, sorted]);
+
+  return <div>{sorted && categoriesFlag ? 'App' : <Loader.Spinner />}</div>;
 };
 
 export default App;
