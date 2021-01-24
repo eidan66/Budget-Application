@@ -9,7 +9,7 @@ import { PaymentContext } from './contexts/payment/paymentContext';
 import { CategoriesContext } from './contexts/categories/categoriesContext';
 import { Loader } from './components/atoms';
 
-const App = () => {
+const App: React.FC = () => {
   const [userFlag, setUserFlag] = useState(false);
   const { sorted, categoriesFlag, setSorted, setCategoriesFlag } = useContext(AppContext);
   const { paymentDetails, setPaymentDetails } = useContext(PaymentContext);

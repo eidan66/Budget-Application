@@ -1,35 +1,54 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 
-// import { ExpenseMiniCard } from '../../../components/molecules';
-import db from '../../../mockup-tests/smallmockup.json';
+import { ExpenseMiniCard } from '../../../components/molecules';
+import db from '../../../mockup-tests/Payment_History.json';
 import { Typography } from '../../../components/atoms';
 import { getRandomColor } from '../../../helpers';
 import * as S from './style';
 
-import { CategoriesContext, ICategory } from '../../../contexts/categoriesContext';
+import { CategoriesContext } from '../../../contexts/categories/categoriesContext';
+import { ICategory } from './../../../interfaces/context';
 
 const Categories = (): JSX.Element => {
   const { categories, addCategory } = useContext(CategoriesContext);
+  const [flag, setFlag] = useState(false);
 
-  const categoriesRender = (database: any) => {
-    database.map((data: { category: string }) => {
-      console.log('print type - ', typeof categories[0]);
+  const categoriesCollector = (database: { category: string; id: string }[]) => {
+    const category: string[] = [];
+    let isThere = false;
 
-      addCategory({ name: data.category, color: getRandomColor() });
+    database.map((data: { category: string; id: string }) => {
+      category.map((c) => {
+        c === data.category ? (isThere = true) : '';
+      });
+
+      !isThere
+        ? (category.push(data.category), addCategory({ name: data.category, color: getRandomColor(), id: data.id }))
+        : '';
+      isThere = false;
     });
+    setFlag(true);
+  };
 
-    console.log('late print type - ', typeof categories[0]);
+  const categoriesRender = (c: ICategory[]) => {
+    return c.map((category: { name: string; color: string; id: string }) => {
+      return (
+        <S.CardWrapper>
+          <ExpenseMiniCard.Category
+            key={category.id}
+            onClick={() => console.log('hey!')}
+            category={category.name}
+            color={category.color}
+          />
+        </S.CardWrapper>
+      );
+    });
   };
 
   useEffect(() => {
-    console.log('start function');
-    categoriesRender(db);
+    categoriesCollector(db);
   }, []);
-
-  useEffect(() => {
-    console.log('useEffect', categories);
-  }, [categories]);
 
   return (
     <S.CategoryWrapper>
@@ -37,29 +56,9 @@ const Categories = (): JSX.Element => {
         <Typography.MediumText color="primary">Categories</Typography.MediumText>
       </S.TitleWrapper>
 
-      <S.CategoriesWrapper>
-        {/* <button
-          onClick={() => {
-            categories.length === 0 ? console.log('yes') : console.log('no');
-
-            for (let index = 0; index < 4; index++) {
-              addCategory({ name: 'test' + index, color: '#00' + index });
-            }
-            categories.length === 0 ? console.log('2yes') : console.log('2no');
-          }}
-        >
-          Click To Add !
-        </button> */}
-      </S.CategoriesWrapper>
+      {<S.CategoriesWrapper>{flag ? categoriesRender(categories) : null}</S.CategoriesWrapper>}
     </S.CategoryWrapper>
   );
 };
 
 export default Categories;
-
-/* 
-<S.CardWrapper>
-          <ExpenseMiniCard.Category onClick={() => console.log('hey!')} category={data.category} color={color} />
-        </S.CardWrapper>
-
-*/
