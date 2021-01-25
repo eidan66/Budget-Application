@@ -1,9 +1,11 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import { ExpenseMiniCard, ExpensesDetails } from '../../molecules';
 import Icon from './../../atoms/Icon/Icon';
 import * as S from './style';
-
+import { FavoritesContext } from '../../../contexts/favorites/favoritesContext';
+import { IPayment } from '../../../interfaces/context';
 interface IExpenseCardProps {
+  paymentData: IPayment;
   business: string;
   first_name: string;
   last_name: string;
@@ -22,6 +24,7 @@ interface IExpenseCardProps {
 }
 
 const ExpenseCard: FC<IExpenseCardProps> = ({
+  paymentData,
   amount,
   status,
   clickedColor,
@@ -39,6 +42,8 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
   onClick,
 }) => {
   const [toggle, setToggle] = useState(false);
+  const { paymentFavorites, setPaymentFavorites } = useContext(FavoritesContext);
+
   return (
     <S.ExpenseWrapper color={clickedColor}>
       <S.ExpenseDetailsWrapper>
@@ -53,11 +58,21 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
         />
         <S.ToggleWrapper>
           {!toggle ? (
-            <div onClick={() => setToggle(!toggle)}>
+            <div
+              onClick={() => {
+                setToggle(!toggle);
+                setPaymentFavorites(paymentData);
+              }}
+            >
               <Icon.FavoriteEmpty />
             </div>
           ) : (
-            <div onClick={() => setToggle(!toggle)}>
+            <div
+              onClick={() => {
+                setToggle(!toggle);
+                setPaymentFavorites(paymentData);
+              }}
+            >
               <Icon.FavoriteSelected />
             </div>
           )}

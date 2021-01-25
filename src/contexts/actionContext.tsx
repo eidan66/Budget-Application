@@ -23,4 +23,5 @@ export enum LOADER_ACTION {
 
 export enum FAVORITES_ACTION {
   SET_FAVORITES = 'set_favorites',
+  DELETE_FAVORITES = 'delete_favorites',
 }

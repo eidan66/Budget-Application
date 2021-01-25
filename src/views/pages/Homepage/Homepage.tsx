@@ -9,14 +9,6 @@ import { PaymentContext } from '../../../contexts/payment/paymentContext';
 import { UserContext } from '../../../contexts/user/userContext';
 
 import * as S from './style';
-
-interface IHomepageProps {
-  first_name: string;
-  last_name: string;
-  email: string;
-  avatar: string;
-}
-
 const Homepage: React.FC = () => {
   const { userDetails } = React.useContext(UserContext);
   const { paymentDetails } = React.useContext(PaymentContext);
