@@ -16,7 +16,6 @@ import { UserContext } from './contexts/user/userContext';
 import { AppContext } from './contexts/app/appContext';
 import { PaymentContext } from './contexts/payment/paymentContext';
 import { CategoriesContext } from './contexts/categories/categoriesContext';
-import { LoaderContext } from './contexts/loader/loaderContext';
 //  ************* CONTEXT *************   \\
 
 import { Loader } from './components/atoms';
@@ -37,7 +36,7 @@ const App: React.FC = () => {
   const { sorted, categoriesFlag, setSorted, setCategoriesFlag } = useContext(AppContext);
   const { paymentDetails, setPaymentDetails } = useContext(PaymentContext);
   const { addCategory } = useContext(CategoriesContext);
-  const { userDetails, setUserDetails } = useContext(UserContext);
+  const { setUserDetails } = useContext(UserContext);
 
   useEffect(() => {
     userFlag === false ? (setUserDetails(USER_DETAILS), setUserFlag(true)) : console.error('Waiting for user...');
@@ -76,8 +75,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-/* 
-{sorted && categoriesFlag ? 'App' : <Loader.Spinner />}
-
-*/

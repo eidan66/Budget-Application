@@ -28,6 +28,6 @@ export const CategoriesWrapper = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-  flex: 1 0 21%;
+  flex: 0.12 0 21%;
   margin-bottom: 1rem;
 `;
