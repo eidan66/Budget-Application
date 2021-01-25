@@ -16,3 +16,7 @@ export enum USER_ACTIONS {
 export enum PAYMENT_ACTION {
   SET_PAYMENT_DETAILS = 'set_payment_details',
 }
+
+export enum LOADER_ACTION {
+  SET_LOADER = 'set_loader',
+}
