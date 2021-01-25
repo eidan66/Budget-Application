@@ -15,7 +15,7 @@ const transactionRenderByCategory = (transactions, userdata, category: string) =
       return transaction.category === category ? (
         <S.TransactionWrapper>
           <ExpenseCard
-            paymentData={transaction}
+            id={transaction.id}
             onClick={() => console.log('Hey from expenseCard !')}
             map={false}
             key={transaction.id}
@@ -38,7 +38,7 @@ const transactionRenderByCategory = (transactions, userdata, category: string) =
       return transaction.category === category ? (
         <S.TransactionWrapper data-aos="fade-up">
           <ExpenseCard
-            paymentData={transaction}
+            id={transaction.id}
             onClick={() => console.log('Hey from expenseCard !')}
             map={false}
             key={transaction.id}

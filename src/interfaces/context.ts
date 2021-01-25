@@ -107,11 +107,11 @@ export interface ILoaderAction {
 
 //  ******** Favorites Context ********  \\
 export interface IFavorites {
-  paymentFavorites: Array<IPaymentDetails>;
-  setPaymentFavorites: (paymentFavorites: any) => void;
+  favoritePaymentID: string;
+  setPaymentFavorites: (favoritePaymentID: string) => void;
 }
 
 export interface IFavoritesAction {
   type: string;
-  payload: Array<IFavorites> | any;
+  payload: IFavorites | any;
 }

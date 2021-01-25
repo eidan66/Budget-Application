@@ -4,22 +4,18 @@ import { favoritesReducer } from '../reducerContext';
 import { FAVORITES_ACTION } from '../actionContext';
 
 export const FavoritesContextProvider = (props: any) => {
-  const [state, dispatch] = useReducer(favoritesReducer, initialState, () => {
-    const localData = localStorage.getItem('fav');
-    return localData ? JSON.parse(localData) : initialState;
-  });
-
+  const [state, dispatch] = useReducer(favoritesReducer, initialState);
   console.log('~ state', state);
 
   useEffect(() => {
-    localStorage.setItem('fav', JSON.stringify(state.paymentFavorites));
-    console.log(localStorage);
+    localStorage.setItem('paymentFav', state.favoritePaymentID);
+    console.table(localStorage);
   }, [state]);
 
-  const setPaymentFavorites = (paymentFavorites: any) => {
+  const setPaymentFavorites = (favoritePaymentID: string) => {
     dispatch({
       type: FAVORITES_ACTION.SET_FAVORITES,
-      payload: paymentFavorites,
+      payload: favoritePaymentID,
     });
   };
 
@@ -29,5 +25,10 @@ export const FavoritesContextProvider = (props: any) => {
 };
 
 /* 
-! JSON.parse(localStorage.fav).map((data)=>data.id)
+! This make problems !! 
+!, () => {
+!    const localData = localStorage.getItem('paymentFav');
+!    return localData ? localData : initialState;
+!  }
+
 */

@@ -107,7 +107,7 @@ export const favoritesReducer = (state: IFavorites, action: IFavoritesAction) =>
     case FAVORITES_ACTION.SET_FAVORITES:
       return {
         ...state,
-        paymentFavorites: [...state.paymentFavorites, action.payload],
+        favoritePaymentID: action.payload,
       };
 
     default:

@@ -3,9 +3,9 @@ import { ExpenseMiniCard, ExpensesDetails } from '../../molecules';
 import Icon from './../../atoms/Icon/Icon';
 import * as S from './style';
 import { FavoritesContext } from '../../../contexts/favorites/favoritesContext';
-import { IPayment } from '../../../interfaces/context';
+
 interface IExpenseCardProps {
-  paymentData: IPayment;
+  id: string;
   business: string;
   first_name: string;
   last_name: string;
@@ -24,7 +24,7 @@ interface IExpenseCardProps {
 }
 
 const ExpenseCard: FC<IExpenseCardProps> = ({
-  paymentData,
+  id,
   amount,
   status,
   clickedColor,
@@ -42,7 +42,7 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
   onClick,
 }) => {
   const [toggle, setToggle] = useState(false);
-  const { paymentFavorites, setPaymentFavorites } = useContext(FavoritesContext);
+  const { favoritePaymentID, setPaymentFavorites } = useContext(FavoritesContext);
 
   return (
     <S.ExpenseWrapper color={clickedColor}>
@@ -61,7 +61,7 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
             <div
               onClick={() => {
                 setToggle(!toggle);
-                setPaymentFavorites(paymentData);
+                setPaymentFavorites(id);
               }}
             >
               <Icon.FavoriteEmpty />
@@ -70,7 +70,7 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
             <div
               onClick={() => {
                 setToggle(!toggle);
-                setPaymentFavorites(paymentData);
+                setPaymentFavorites(id);
               }}
             >
               <Icon.FavoriteSelected />

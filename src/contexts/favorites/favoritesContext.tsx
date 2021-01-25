@@ -4,7 +4,8 @@ import { createContext } from 'react';
 import { IFavorites } from '../../interfaces/context';
 
 export const initialState = {
-  paymentFavorites: [],
+  favoritePaymentID: '',
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setPaymentFavorites: () => {},
 };
 
