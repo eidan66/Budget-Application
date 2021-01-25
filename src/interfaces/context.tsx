@@ -93,3 +93,14 @@ export interface IPaymentAction {
   type: string;
   payload: Array<IPayment> | any;
 }
+
+//  ******** Loader Context ********  \\
+export interface ILoader {
+  loading: boolean;
+  setLoader: (loading: boolean) => void;
+}
+
+export interface ILoaderAction {
+  type: string;
+  payload: ILoader | any;
+}

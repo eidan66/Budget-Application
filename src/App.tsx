@@ -2,17 +2,37 @@
 import React, { useEffect, useContext, useState } from 'react';
 import * as S from './style';
 import DATABASE from './mockup-tests/Payment_History.json';
+
+//  ************* Backdrop *************   \\
+import { Backdrop } from '@material-ui/core';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+//  ************* Backdrop *************   \\
+
 import USER_DETAILS from './mockup-tests/userDetails.json';
 import { compareFunction, categoriesCollector } from './helpers';
+
+//  ************* CONTEXT *************   \\
 import { UserContext } from './contexts/user/userContext';
 import { AppContext } from './contexts/app/appContext';
 import { PaymentContext } from './contexts/payment/paymentContext';
 import { CategoriesContext } from './contexts/categories/categoriesContext';
+import { LoaderContext } from './contexts/loader/loaderContext';
+//  ************* CONTEXT *************   \\
+
 import { Loader } from './components/atoms';
 
 import Homepage from './views/pages/Homepage/index';
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    backdrop: {
+      zIndex: theme.zIndex.drawer + 1,
+    },
+  })
+);
+
 const App: React.FC = () => {
+  const classes = useStyles();
   const [userFlag, setUserFlag] = useState(false);
   const { sorted, categoriesFlag, setSorted, setCategoriesFlag } = useContext(AppContext);
   const { paymentDetails, setPaymentDetails } = useContext(PaymentContext);
@@ -45,14 +65,11 @@ const App: React.FC = () => {
   return (
     <S.AppWrapper>
       {sorted && categoriesFlag ? (
-        <Homepage
-          email={userDetails[0].email}
-          avatar={userDetails[0].avatar}
-          first_name={userDetails[0].first_name}
-          last_name={userDetails[0].last_name}
-        />
+        <Homepage />
       ) : (
-        <Loader.Spinner />
+        <Backdrop className={classes.backdrop} open={true}>
+          <Loader.Spinner />
+        </Backdrop>
       )}
     </S.AppWrapper>
   );

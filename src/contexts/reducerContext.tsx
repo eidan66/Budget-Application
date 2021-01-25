@@ -8,8 +8,10 @@ import {
   IUserAction,
   IPayment,
   IPaymentAction,
+  ILoader,
+  ILoaderAction,
 } from '../interfaces/context';
-import { CATEGORIES_ACTIONS, APP_ACTIONS, USER_ACTIONS, PAYMENT_ACTION } from './actionContext';
+import { CATEGORIES_ACTIONS, APP_ACTIONS, USER_ACTIONS, PAYMENT_ACTION, LOADER_ACTION } from './actionContext';
 
 export const categoriesReducer = (state: ICategories, action: ICategoriesAction) => {
   switch (action.type) {
@@ -71,6 +73,19 @@ export const paymentReducer = (state: IPayment, action: IPaymentAction) => {
       return {
         ...state,
         paymentDetails: [...state.paymentDetails, action.payload],
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const loaderReducer = (state: ILoader, action: ILoaderAction) => {
+  switch (action.type) {
+    case LOADER_ACTION.SET_LOADER:
+      return {
+        ...state,
+        loading: action.payload,
       };
 
     default:
