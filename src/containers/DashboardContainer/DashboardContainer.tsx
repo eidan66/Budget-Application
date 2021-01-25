@@ -1,12 +1,10 @@
 import React from 'react';
 import { Dashboard } from '../../views/pages';
 
-// import { PaymentContext } from '../../contexts/payment/paymentContext';
 import { UserContext } from '../../contexts/user/userContext';
 
 const DashboardContainer = () => {
   const { userDetails } = React.useContext(UserContext);
-  // const { paymentDetails } = React.useContext(PaymentContext);
 
   return (
     <Dashboard
