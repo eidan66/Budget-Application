@@ -17,7 +17,7 @@ interface IHomepageProps {
   avatar: string;
 }
 
-const Homepage: React.FC<IHomepageProps> = ({ email, avatar, first_name, last_name }) => {
+const Homepage: React.FC = () => {
   const { userDetails } = React.useContext(UserContext);
   const { paymentDetails } = React.useContext(PaymentContext);
 
@@ -46,7 +46,12 @@ const Homepage: React.FC<IHomepageProps> = ({ email, avatar, first_name, last_na
           })}
         </Switch>
         <S.PaymentWrapper>
-          <UserPayment email={email} avatar={avatar} first_name={first_name} last_name={last_name} />
+          <UserPayment
+            email={userDetails[0].email}
+            avatar={userDetails[0].avatar}
+            first_name={userDetails[0].first_name}
+            last_name={userDetails[0].last_name}
+          />
         </S.PaymentWrapper>
       </BrowserRouter>
     </S.HomepageWrapper>

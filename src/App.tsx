@@ -16,6 +16,7 @@ import { UserContext } from './contexts/user/userContext';
 import { AppContext } from './contexts/app/appContext';
 import { PaymentContext } from './contexts/payment/paymentContext';
 import { CategoriesContext } from './contexts/categories/categoriesContext';
+import { LoaderContext } from './contexts/loader/loaderContext';
 //  ************* CONTEXT *************   \\
 
 import { Loader } from './components/atoms';
@@ -64,12 +65,7 @@ const App: React.FC = () => {
   return (
     <S.AppWrapper>
       {sorted && categoriesFlag ? (
-        <Homepage
-          email={userDetails[0].email}
-          avatar={userDetails[0].avatar}
-          first_name={userDetails[0].first_name}
-          last_name={userDetails[0].last_name}
-        />
+        <Homepage />
       ) : (
         <Backdrop className={classes.backdrop} open={true}>
           <Loader.Spinner />
