@@ -37,7 +37,6 @@ const Homepage: React.FC = () => {
                 key={index}
                 path={route.path}
                 exact={route.exact}
-                props={paymentDetails}
                 render={(props: RouteComponentProps<any>) => (
                   <route.component name={route.name} {...props} {...route.props} />
                 )}
