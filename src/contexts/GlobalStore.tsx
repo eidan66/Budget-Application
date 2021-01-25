@@ -4,6 +4,7 @@ import { AppContextProvide } from './app/appProvider';
 import { UserContextProvide } from './user/userProvider';
 import { PaymentContextProvide } from './payment/paymentProvider';
 import { LoaderContextProvider } from './loader/loaderProvider';
+import { FavoritesContextProvider } from './favorites/favoritesProvider';
 
 export interface IGlobalStore {
   children: ReactNode;
@@ -15,7 +16,9 @@ const GlobalStore: FC<IGlobalStore> = ({ children }) => {
       <PaymentContextProvide>
         <UserContextProvide>
           <LoaderContextProvider>
-            <CategoriesContextProvider>{children}</CategoriesContextProvider>
+            <FavoritesContextProvider>
+              <CategoriesContextProvider>{children}</CategoriesContextProvider>
+            </FavoritesContextProvider>
           </LoaderContextProvider>
         </UserContextProvide>
       </PaymentContextProvide>

@@ -20,3 +20,7 @@ export enum PAYMENT_ACTION {
 export enum LOADER_ACTION {
   SET_LOADER = 'set_loader',
 }
+
+export enum FAVORITES_ACTION {
+  SET_FAVORITES = 'set_favorites',
+}
