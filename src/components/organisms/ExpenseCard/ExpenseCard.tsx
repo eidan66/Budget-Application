@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { ExpenseMiniCard, ExpensesDetails } from '../../molecules';
+import Icon from './../../atoms/Icon/Icon';
 import * as S from './style';
 
 interface IExpenseCardProps {
@@ -37,6 +38,7 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
   map,
   onClick,
 }) => {
+  const [toggle, setToggle] = useState(false);
   return (
     <S.ExpenseWrapper color={clickedColor}>
       <S.ExpenseDetailsWrapper>
@@ -49,6 +51,17 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
           date={date}
           avatarSrc={avatarSrc}
         />
+        <S.ToggleWrapper>
+          {!toggle ? (
+            <div onClick={() => setToggle(!toggle)}>
+              <Icon.FavoriteEmpty />
+            </div>
+          ) : (
+            <div onClick={() => setToggle(!toggle)}>
+              <Icon.FavoriteSelected />
+            </div>
+          )}
+        </S.ToggleWrapper>
       </S.ExpenseDetailsWrapper>
 
       <S.ExpenseCardsWrapper>
@@ -59,7 +72,7 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
 
         <S.ExpenseMiniCardsWrapper>
           <ExpenseMiniCard.Amount amount={amount} status={status} color={amountColor} />
-          <ExpenseMiniCard.Map onClick={() => onClick()} />
+          <ExpenseMiniCard.Map onClick={onClick} />
         </S.ExpenseMiniCardsWrapper>
       </S.ExpenseCardsWrapper>
     </S.ExpenseWrapper>

@@ -25,3 +25,5 @@ export const Location = (args) => <Icon.Location {...args} />;
 export const Map = (args) => <Icon.Map {...args} />;
 export const Categories = (args) => <Icon.Categories {...args} />;
 export const Transactions = (args) => <Icon.Transactions {...args} />;
+export const FavoriteEmpty = (args) => <Icon.FavoriteEmpty {...args} />;
+export const FavoriteSelected = (args) => <Icon.FavoriteSelected {...args} />;

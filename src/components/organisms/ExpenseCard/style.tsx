@@ -25,3 +25,9 @@ export const ExpenseMiniCardsWrapper = styled.div`
   justify-content: space-between;
   padding-bottom: 2rem;
 `;
+
+export const ToggleWrapper = styled.div`
+  display: flex;
+  flex: content;
+  justify-content: end;
+`;
