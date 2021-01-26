@@ -1,59 +1,61 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import { Typography } from '../../atoms';
 import { UserDetailsBox, PaymentHistory } from '../../molecules';
-import dataBase from '../../../mockup-tests/smallmockup.json';
 import { numberWithCommas, amountColorPicker } from '../../../helpers';
 import * as S from './style';
 
+import { PaymentContext } from '../../../contexts/payment/paymentContext';
+
 const userPaymentRender = (payments: any[]) => {
-  let keyNumber = 0;
-  return payments.map(
-    (payment: {
-      cancelled?: any;
-      date?: any;
-      time?: any;
-      amount?: any;
-      currency?: any;
-      paymentMethod?: any;
-      paymentType: any;
-    }) => {
-      keyNumber++;
-      return payment.cancelled ? (
-        <PaymentHistory.Cancelled
-          paymentDate={payment.date + ' ' + payment.time}
-          paymentNumber={numberWithCommas(payment.amount)}
-          paymentCurrency={payment.currency}
-          key={keyNumber}
-        />
-      ) : payment.paymentMethod === 'paypal' ? (
-        <PaymentHistory.Paypal
-          paymentDate={payment.date + ' ' + payment.time}
-          paymentNumber={numberWithCommas(payment.amount)}
-          paymentCurrency={payment.currency}
-          color={amountColorPicker(payment)}
-          key={keyNumber}
-        />
-      ) : payment.paymentType === 'Income' && payment.paymentMethod === 'credit card' ? (
-        <PaymentHistory.Income
-          paymentDate={payment.date + ' ' + payment.time}
-          paymentNumber={numberWithCommas(payment.amount)}
-          paymentCurrency={payment.currency}
-          color={amountColorPicker(payment)}
-          key={keyNumber}
-        />
-      ) : payment.paymentType === 'Expenses' && payment.paymentMethod === 'credit card' ? (
-        <PaymentHistory.Expense
-          paymentDate={payment.date + ' ' + payment.time}
-          paymentNumber={numberWithCommas(payment.amount)}
-          paymentCurrency={payment.currency}
-          color={amountColorPicker(payment)}
-          key={keyNumber}
-        />
-      ) : (
-        <p>Test</p>
-      );
-    }
-  );
+  return payments[0]
+    .slice(0, 10)
+    .map(
+      (payment: {
+        cancelled: boolean;
+        date: string;
+        time: string;
+        amount: string;
+        currency: string;
+        id: string;
+        paymentMethod: string;
+        paymentType: string;
+      }) => {
+        return payment.cancelled ? (
+          <PaymentHistory.Cancelled
+            paymentDate={payment.date + ' ' + payment.time}
+            paymentNumber={numberWithCommas(payment.amount)}
+            paymentCurrency={payment.currency}
+            key={payment.id}
+          />
+        ) : payment.paymentMethod === 'paypal' ? (
+          <PaymentHistory.Paypal
+            paymentDate={payment.date + ' ' + payment.time}
+            paymentNumber={numberWithCommas(payment.amount)}
+            paymentCurrency={payment.currency}
+            color={amountColorPicker(payment)}
+            key={payment.id}
+          />
+        ) : payment.paymentType === 'Income' && payment.paymentMethod === 'credit card' ? (
+          <PaymentHistory.Income
+            paymentDate={payment.date + ' ' + payment.time}
+            paymentNumber={numberWithCommas(payment.amount)}
+            paymentCurrency={payment.currency}
+            color={amountColorPicker(payment)}
+            key={payment.id}
+          />
+        ) : payment.paymentType === 'Expenses' && payment.paymentMethod === 'credit card' ? (
+          <PaymentHistory.Expense
+            paymentDate={payment.date + ' ' + payment.time}
+            paymentNumber={numberWithCommas(payment.amount)}
+            paymentCurrency={payment.currency}
+            color={amountColorPicker(payment)}
+            key={payment.id}
+          />
+        ) : (
+          ''
+        );
+      }
+    );
 };
 
 interface IUserPaymentProps {
@@ -65,6 +67,8 @@ interface IUserPaymentProps {
 }
 
 const UserPayment: FC<IUserPaymentProps> = ({ first_name, last_name, email, avatar }) => {
+  const { paymentDetails } = useContext(PaymentContext);
+
   return (
     <S.UserPaymentWrapper>
       <S.UserDetailsWrapper>
@@ -73,7 +77,7 @@ const UserPayment: FC<IUserPaymentProps> = ({ first_name, last_name, email, avat
       <S.PaymentTitleWrapper>
         <Typography.MediumText color="primary">Payment history</Typography.MediumText>
       </S.PaymentTitleWrapper>
-      <S.UserPaymentHistoryWrapper>{userPaymentRender(dataBase.slice(0, 10))}</S.UserPaymentHistoryWrapper>
+      <S.UserPaymentHistoryWrapper>{userPaymentRender(paymentDetails)}</S.UserPaymentHistoryWrapper>
     </S.UserPaymentWrapper>
   );
 };
