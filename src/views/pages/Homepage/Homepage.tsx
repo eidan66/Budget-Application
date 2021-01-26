@@ -5,13 +5,11 @@ import { Navbar, UserPayment } from '../../../components/organisms';
 
 import type { CurrencyCode } from '../../../../node_modules/currency-code-symbol-map/lib/currencyCodeSymbolMapping';
 
-import { PaymentContext } from '../../../contexts/payment/paymentContext';
 import { UserContext } from '../../../contexts/user/userContext';
 
 import * as S from './style';
 const Homepage: React.FC = () => {
   const { userDetails } = React.useContext(UserContext);
-  const { paymentDetails } = React.useContext(PaymentContext);
 
   return (
     <S.HomepageWrapper>
@@ -29,7 +27,6 @@ const Homepage: React.FC = () => {
                 key={index}
                 path={route.path}
                 exact={route.exact}
-                props={paymentDetails}
                 render={(props: RouteComponentProps<any>) => (
                   <route.component name={route.name} {...props} {...route.props} />
                 )}

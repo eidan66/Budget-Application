@@ -17,7 +17,7 @@ interface IExpenseMiniCardProps {
 
 const ExpenseMiniCard: IExpenseMiniCardProps = {
   Category: ({ category, color, onClick }) => (
-    <S.ExpenseWrapper onClick={() => onClick()}>
+    <S.ExpenseWrapper onClick={onClick}>
       <Typography.SmallText variant="subtitle2">Category</Typography.SmallText>
 
       <S.CategoryDetailsWrapper color={color}>
@@ -27,7 +27,7 @@ const ExpenseMiniCard: IExpenseMiniCardProps = {
     </S.ExpenseWrapper>
   ),
   Type: ({ type, color, onClick }) => (
-    <S.ExpenseWrapper onClick={() => onClick()}>
+    <S.ExpenseWrapper onClick={onClick}>
       <Typography.SmallText variant="subtitle2">Type</Typography.SmallText>
 
       <S.CategoryDetailsWrapper color={color}>
@@ -36,7 +36,7 @@ const ExpenseMiniCard: IExpenseMiniCardProps = {
     </S.ExpenseWrapper>
   ),
   Map: ({ color, onClick }) => (
-    <S.ExpenseWrapper onClick={() => onClick()}>
+    <S.ExpenseWrapper onClick={onClick}>
       <Typography.SmallText variant="subtitle2">Map</Typography.SmallText>
 
       <S.MapWrapper color={color}>
@@ -45,7 +45,7 @@ const ExpenseMiniCard: IExpenseMiniCardProps = {
     </S.ExpenseWrapper>
   ),
   Amount: ({ amount, onClick }) => (
-    <S.ExpenseWrapper onClick={() => onClick()}>
+    <S.ExpenseWrapper onClick={onClick}>
       <Typography.SmallText variant="subtitle2">Amount</Typography.SmallText>
 
       <S.AmountDetailsWrapper>
