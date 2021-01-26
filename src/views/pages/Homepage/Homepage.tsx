@@ -8,14 +8,6 @@ import type { CurrencyCode } from '../../../../node_modules/currency-code-symbol
 import { UserContext } from '../../../contexts/user/userContext';
 
 import * as S from './style';
-
-interface IHomepageProps {
-  first_name: string;
-  last_name: string;
-  email: string;
-  avatar: string;
-}
-
 const Homepage: React.FC = () => {
   const { userDetails } = React.useContext(UserContext);
 

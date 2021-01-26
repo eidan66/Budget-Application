@@ -104,3 +104,14 @@ export interface ILoaderAction {
   type: string;
   payload: ILoader | any;
 }
+
+//  ******** Favorites Context ********  \\
+export interface IFavorites {
+  favoritePaymentID: string;
+  setPaymentFavorites: (favoritePaymentID: string) => void;
+}
+
+export interface IFavoritesAction {
+  type: string;
+  payload: IFavorites | any;
+}

@@ -106,6 +106,16 @@ const Icon: IIconProps = {
       <MatIcon.SyncAlt htmlColor={color} />
     </S.IconContainer>
   ),
+  FavoriteEmpty: ({ color = '#C5C0E5' }) => (
+    <S.IconContainer>
+      <MatIcon.FavoriteBorder htmlColor={color} fontSize="large" />
+    </S.IconContainer>
+  ),
+  FavoriteSelected: ({ color = 'rgba(192, 3, 3, 0.74)' }) => (
+    <S.IconContainer>
+      <MatIcon.Favorite htmlColor={color} fontSize="large" />
+    </S.IconContainer>
+  ),
 };
 
 export default Icon;

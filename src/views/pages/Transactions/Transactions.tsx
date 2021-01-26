@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC, useContext, useEffect } from 'react';
 import { ExpenseCard } from '../../../components/organisms';
 import * as S from './style';
@@ -8,7 +9,7 @@ import { UserContext } from '../../../contexts/user/userContext';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import { IPaymentDetails, IUserDetails } from '../../../interfaces/context';
+import { IUserDetails } from '../../../interfaces/context';
 
 const transactionRenderByCategory = (transactions: any[], userData: IUserDetails[], category: string) => {
   let countForFade = 0;
@@ -19,7 +20,8 @@ const transactionRenderByCategory = (transactions: any[], userData: IUserDetails
       return transaction.category === category ? (
         <S.TransactionWrapper>
           <ExpenseCard
-            onClick={() => console.log('Clicked from Transactions page')}
+            id={transaction.id}
+            onClick={() => console.log('Hey from expenseCard !')}
             map={false}
             key={transaction.id}
             amount={transaction.amount}
@@ -41,7 +43,8 @@ const transactionRenderByCategory = (transactions: any[], userData: IUserDetails
       return transaction.category === category ? (
         <S.TransactionWrapper data-aos="fade-up">
           <ExpenseCard
-            onClick={() => console.log('Clicked from Transactions page')}
+            id={transaction.id}
+            onClick={() => console.log('Hey from expenseCard !')}
             map={false}
             key={transaction.id}
             amount={transaction.amount}

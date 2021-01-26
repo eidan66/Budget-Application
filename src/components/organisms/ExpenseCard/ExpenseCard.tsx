@@ -1,8 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import { ExpenseMiniCard, ExpensesDetails } from '../../molecules';
+import Icon from './../../atoms/Icon/Icon';
 import * as S from './style';
+import { FavoritesContext } from '../../../contexts/favorites/favoritesContext';
 
 interface IExpenseCardProps {
+  id: string;
   business: string;
   first_name: string;
   last_name: string;
@@ -21,6 +24,7 @@ interface IExpenseCardProps {
 }
 
 const ExpenseCard: FC<IExpenseCardProps> = ({
+  id,
   amount,
   status,
   clickedColor,
@@ -37,6 +41,9 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
   map,
   onClick,
 }) => {
+  const [toggle, setToggle] = useState(false);
+  const { favoritePaymentID, setPaymentFavorites } = useContext(FavoritesContext);
+
   return (
     <S.ExpenseWrapper color={clickedColor}>
       <S.ExpenseDetailsWrapper>
@@ -49,6 +56,27 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
           date={date}
           avatarSrc={avatarSrc}
         />
+        <S.ToggleWrapper>
+          {!toggle ? (
+            <div
+              onClick={() => {
+                setToggle(!toggle);
+                setPaymentFavorites(id);
+              }}
+            >
+              <Icon.FavoriteEmpty />
+            </div>
+          ) : (
+            <div
+              onClick={() => {
+                setToggle(!toggle);
+                setPaymentFavorites(id);
+              }}
+            >
+              <Icon.FavoriteSelected />
+            </div>
+          )}
+        </S.ToggleWrapper>
       </S.ExpenseDetailsWrapper>
 
       <S.ExpenseCardsWrapper>
@@ -59,7 +87,7 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
 
         <S.ExpenseMiniCardsWrapper>
           <ExpenseMiniCard.Amount amount={amount} status={status} color={amountColor} />
-          <ExpenseMiniCard.Map onClick={() => onClick()} />
+          <ExpenseMiniCard.Map onClick={onClick} />
         </S.ExpenseMiniCardsWrapper>
       </S.ExpenseCardsWrapper>
     </S.ExpenseWrapper>
