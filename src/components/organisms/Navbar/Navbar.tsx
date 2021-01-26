@@ -10,7 +10,14 @@ const navbarRender = (
 ) =>
   routes.map(({ label, icon }, index) => {
     return (
-      <NavItem index={index} onClick={setCurrentIndex} current={index === currentIndex} label={label} icon={icon} />
+      <NavItem
+        key={index}
+        index={index}
+        onClick={setCurrentIndex}
+        current={index === currentIndex}
+        label={label}
+        icon={icon}
+      />
     );
   });
 

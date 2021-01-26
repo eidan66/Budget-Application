@@ -6,8 +6,8 @@ interface ICardProps {
   last4Digits: number;
   first_name: string;
   last_name: string;
-  exp_year: string;
-  exp_month: string;
+  exp_year: number;
+  exp_month: number;
 }
 
 const Card: FC<ICardProps> = ({ last4Digits, first_name, last_name, exp_year, exp_month }) => {

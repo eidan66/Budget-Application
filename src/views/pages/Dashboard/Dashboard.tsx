@@ -7,8 +7,8 @@ interface IDashboardProps {
   last4Digits: number;
   first_name: string;
   last_name: string;
-  exp_year: string;
-  exp_month: string;
+  exp_year: number;
+  exp_month: number;
   incomeRevenue: string;
   incomePercent: string;
   expenseRevenue: string;

@@ -35,9 +35,9 @@ export interface IAppAction {
 //  ******** User Context ********  \\
 
 export interface IUserCreditCard {
+  last4Digits: number;
   exp_year: number;
   exp_month: number;
-  last4Digits: number;
 }
 
 export interface IUserDetails {
@@ -47,7 +47,7 @@ export interface IUserDetails {
   avatar: string;
   current_balance: string;
   current_balance_currency: string;
-  credit_card: Array<IUserCreditCard>;
+  credit_card: IUserCreditCard;
 }
 
 export interface IUser {
@@ -72,7 +72,7 @@ export interface IPaymentLocation {
 
 export interface IPaymentDetails {
   id: string;
-  paymentType: string;
+  paymentType: 'Cancelled' | 'Income' | 'Expense';
   paymentMethod: string;
   cancelled: boolean;
   time: string;
@@ -81,7 +81,7 @@ export interface IPaymentDetails {
   category: string;
   company: string;
   amount: string;
-  location: Array<IPaymentLocation>;
+  location: IPaymentLocation;
 }
 
 export interface IPayment {
