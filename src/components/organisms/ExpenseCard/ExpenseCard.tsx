@@ -1,8 +1,8 @@
-import React, { FC, useContext, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { ExpenseMiniCard, ExpensesDetails } from '../../molecules';
 import Icon from './../../atoms/Icon/Icon';
 import * as S from './style';
-import { FavoritesContext } from '../../../contexts/favorites/favoritesContext';
+// import { FavoritesContext } from '../../../contexts/favorites/favoritesContext';
 
 interface IExpenseCardProps {
   id: string;
@@ -21,6 +21,8 @@ interface IExpenseCardProps {
   map: boolean;
   type?: 'Cancelled' | 'Income' | 'Expense';
   onClick: () => void;
+  favsListIds: string[];
+  setPaymentFavorite: (favsListIds: string[]) => void;
 }
 
 const ExpenseCard: FC<IExpenseCardProps> = ({
@@ -39,10 +41,40 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
   avatarSrc,
   type,
   map,
+  favsListIds,
+  setPaymentFavorite,
   onClick,
 }) => {
   const [toggle, setToggle] = useState(false);
-  const { favoritePaymentID, setPaymentFavorites } = useContext(FavoritesContext);
+  // const { favoritePaymentID, setPaymentFavorites } = useContext(FavoritesContext);
+
+  useEffect(() => {
+    if (favsListIds.length) {
+      const cardId = favsListIds.find((cardId: string) => cardId === id);
+      if (cardId) {
+        setToggle(true);
+      }
+    }
+  }, []);
+
+  const handler = () => {
+    let newFavsListIds = [];
+
+    if (toggle) {
+      newFavsListIds = favsListIds.filter((cardId: string) => cardId !== id);
+    } else {
+      newFavsListIds = [...favsListIds, id];
+    }
+
+    setPaymentFavorite(newFavsListIds);
+    setToggle((oldToggler) => !oldToggler);
+  };
+
+  const FavIcon = !toggle ? Icon.FavoriteEmpty : Icon.FavoriteSelected;
+  // TODO: Check about alternative for this. We don't want render xK time's the component.
+  //  ** useMemo
+
+  console.log('rendered');
 
   return (
     <S.ExpenseWrapper color={clickedColor}>
@@ -57,25 +89,9 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
           avatarSrc={avatarSrc}
         />
         <S.ToggleWrapper>
-          {!toggle ? (
-            <div
-              onClick={() => {
-                setToggle(!toggle);
-                setPaymentFavorites(id);
-              }}
-            >
-              <Icon.FavoriteEmpty />
-            </div>
-          ) : (
-            <div
-              onClick={() => {
-                setToggle(!toggle);
-                setPaymentFavorites(id);
-              }}
-            >
-              <Icon.FavoriteSelected />
-            </div>
-          )}
+          <div onClick={handler}>
+            <FavIcon />
+          </div>
         </S.ToggleWrapper>
       </S.ExpenseDetailsWrapper>
 

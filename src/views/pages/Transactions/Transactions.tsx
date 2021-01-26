@@ -2,6 +2,7 @@
 import React, { FC, useContext, useEffect } from 'react';
 import { ExpenseCard } from '../../../components/organisms';
 import * as S from './style';
+import useLocalStorage from './../../../hooks/useLocalStorage';
 
 import { PaymentContext } from '../../../contexts/payment/paymentContext';
 import { UserContext } from '../../../contexts/user/userContext';
@@ -11,7 +12,13 @@ import 'aos/dist/aos.css';
 
 import { IUserDetails } from '../../../interfaces/context';
 
-const transactionRenderByCategory = (transactions: any[], userData: IUserDetails[], category: string) => {
+const transactionRenderByCategory = (
+  transactions: any[],
+  userData: IUserDetails[],
+  category: string,
+  favsListIds: string[],
+  setPaymentFavorite: (favsListIds: string[]) => void
+) => {
   let countForFade = 0;
 
   return transactions[0].map((transaction: any) => {
@@ -34,6 +41,8 @@ const transactionRenderByCategory = (transactions: any[], userData: IUserDetails
             date={transaction.date}
             avatarSrc={userData[0].avatar}
             type={transaction.paymentType}
+            favsListIds={favsListIds}
+            setPaymentFavorite={setPaymentFavorite}
           />
         </S.TransactionWrapper>
       ) : (
@@ -57,6 +66,8 @@ const transactionRenderByCategory = (transactions: any[], userData: IUserDetails
             date={transaction.date}
             avatarSrc={userData[0].avatar}
             type={transaction.paymentType}
+            favsListIds={favsListIds}
+            setPaymentFavorite={setPaymentFavorite}
           />
         </S.TransactionWrapper>
       ) : (
@@ -74,6 +85,7 @@ interface ITransactionProps {
 const Transactions: FC<ITransactionProps> = ({ category }) => {
   const { paymentDetails } = useContext(PaymentContext);
   const { userDetails } = useContext(UserContext);
+  const [favsListIds, setPaymentFavorite] = useLocalStorage('paymentFav', []);
 
   useEffect(() => {
     AOS.init({ duration: 750 });
@@ -82,7 +94,7 @@ const Transactions: FC<ITransactionProps> = ({ category }) => {
   return (
     <S.TransactionContainer>
       <S.AllTransactionsWrapper>
-        {transactionRenderByCategory(paymentDetails, userDetails, category)}
+        {transactionRenderByCategory(paymentDetails, userDetails, category, favsListIds, setPaymentFavorite)}
       </S.AllTransactionsWrapper>
     </S.TransactionContainer>
   );
