@@ -10,17 +10,8 @@ import {
   IPaymentAction,
   ILoader,
   ILoaderAction,
-  IFavorites,
-  IFavoritesAction,
 } from '../interfaces/context';
-import {
-  CATEGORIES_ACTIONS,
-  APP_ACTIONS,
-  USER_ACTIONS,
-  PAYMENT_ACTION,
-  LOADER_ACTION,
-  FAVORITES_ACTION,
-} from './actionContext';
+import { CATEGORIES_ACTIONS, APP_ACTIONS, USER_ACTIONS, PAYMENT_ACTION, LOADER_ACTION } from './actionContext';
 
 export const categoriesReducer = (state: ICategories, action: ICategoriesAction) => {
   switch (action.type) {
@@ -95,19 +86,6 @@ export const loaderReducer = (state: ILoader, action: ILoaderAction) => {
       return {
         ...state,
         loading: action.payload,
-      };
-
-    default:
-      return state;
-  }
-};
-
-export const favoritesReducer = (state: IFavorites, action: IFavoritesAction) => {
-  switch (action.type) {
-    case FAVORITES_ACTION.SET_FAVORITES:
-      return {
-        ...state,
-        favoritePaymentID: action.payload,
       };
 
     default:
