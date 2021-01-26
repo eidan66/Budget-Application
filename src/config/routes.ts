@@ -1,6 +1,6 @@
 import { IRoute } from '../interfaces/routes';
 import { Categories } from './../views/pages';
-import { DashboardContainer } from '../containers';
+import { DashboardContainer, TransactionsContainer } from '../containers';
 
 const routes: IRoute[] = [
   {
@@ -15,12 +15,13 @@ const routes: IRoute[] = [
     component: Categories,
     exact: true,
   },
-  /*   {
+  {
     path: '/Transactions',
     name: 'Transactions',
-    component: Transactions,
+    component: TransactionsContainer,
     exact: true,
   },
+  /*   
   {
     path: '/Charts',
     name: 'Charts',

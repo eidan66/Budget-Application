@@ -72,7 +72,7 @@ export interface IPaymentLocation {
 
 export interface IPaymentDetails {
   id: string;
-  paymentType: string;
+  paymentType: 'Cancelled' | 'Income' | 'Expense';
   paymentMethod: string;
   cancelled: boolean;
   time: string;
