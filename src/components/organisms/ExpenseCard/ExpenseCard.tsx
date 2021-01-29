@@ -2,7 +2,6 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import { ExpenseMiniCard, ExpensesDetails } from '../../molecules';
 import Icon from './../../atoms/Icon/Icon';
 import * as S from './style';
-// import { FavoritesContext } from '../../../contexts/favorites/favoritesContext';
 
 interface IExpenseCardProps {
   id: string;
