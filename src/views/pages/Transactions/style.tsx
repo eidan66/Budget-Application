@@ -13,6 +13,7 @@ export const AllTransactionsWrapper = styled.div`
   flex-flow: row wrap;
   margin: auto;
   width: 100%;
+
   justify-content: center;
 `;
 

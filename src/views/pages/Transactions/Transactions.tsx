@@ -19,61 +19,33 @@ const transactionRenderByCategory = (
   favsListIds: string[],
   setPaymentFavorite: (favsListIds: string[]) => void
 ) => {
-  let countForFade = 0;
+  // let countForFade = 0;
 
   return transactions[0].map((transaction: any) => {
-    if (countForFade < 4) {
-      countForFade += 1;
-      return transaction.category === category ? (
-        <S.TransactionWrapper>
-          <ExpenseCard
-            id={transaction.id}
-            onClick={() => console.log('Hey from expenseCard !')}
-            map={false}
-            key={transaction.id}
-            amount={transaction.amount}
-            status={status}
-            category={transaction.category}
-            business={transaction.company}
-            first_name={userData[0].first_name}
-            last_name={userData[0].last_name}
-            time={transaction.time}
-            date={transaction.date}
-            avatarSrc={userData[0].avatar}
-            type={transaction.paymentType}
-            favsListIds={favsListIds}
-            setPaymentFavorite={setPaymentFavorite}
-          />
-        </S.TransactionWrapper>
-      ) : (
-        ''
-      );
-    } else {
-      return transaction.category === category ? (
-        <S.TransactionWrapper data-aos="fade-up">
-          <ExpenseCard
-            id={transaction.id}
-            onClick={() => console.log('Hey from expenseCard !')}
-            map={false}
-            key={transaction.id}
-            amount={transaction.amount}
-            status={status}
-            category={transaction.category}
-            business={transaction.company}
-            first_name={userData[0].first_name}
-            last_name={userData[0].last_name}
-            time={transaction.time}
-            date={transaction.date}
-            avatarSrc={userData[0].avatar}
-            type={transaction.paymentType}
-            favsListIds={favsListIds}
-            setPaymentFavorite={setPaymentFavorite}
-          />
-        </S.TransactionWrapper>
-      ) : (
-        ''
-      );
-    }
+    return transaction.category === category ? (
+      <S.TransactionWrapper data-aos="zoom-in" key={transaction.id}>
+        <ExpenseCard
+          id={transaction.id}
+          onClick={() => console.log('Hey from expenseCard !')}
+          map={false}
+          key={transaction.id}
+          amount={transaction.amount}
+          status={status}
+          category={transaction.category}
+          business={transaction.company}
+          first_name={userData[0].first_name}
+          last_name={userData[0].last_name}
+          time={transaction.time}
+          date={transaction.date}
+          avatarSrc={userData[0].avatar}
+          type={transaction.paymentType}
+          favsListIds={favsListIds}
+          setPaymentFavorite={setPaymentFavorite}
+        />
+      </S.TransactionWrapper>
+    ) : (
+      ''
+    );
   });
 };
 
@@ -88,7 +60,22 @@ const Transactions: FC<ITransactionProps> = ({ category }) => {
   const [favsListIds, setPaymentFavorite] = useLocalStorage('paymentFav', []);
 
   useEffect(() => {
-    AOS.init({ duration: 750 });
+    AOS.init({
+      // Global settings:
+      disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+      initClassName: 'aos-init', // class applied after initialization
+      animatedClassName: 'aos-animate', // class applied on animation
+      useClassNames: true, // if true, will add content of `data-aos` as classes on scroll
+      disableMutationObserver: true, // disables automatic mutations' detections (advanced)
+      debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+      throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+      // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+      offset: 120, // offset (in px) from the original trigger point
+      delay: 10, // values from 0 to 3000, with step 50ms
+      duration: 400, // values from 0 to 3000, with step 50ms
+    });
+    // AOS.init({ duration: 750 });
   }, []);
 
   return (
