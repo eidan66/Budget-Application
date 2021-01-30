@@ -28,6 +28,19 @@ const expenseDataChart = (dataBase: any[]) => {
 
   return newData;
 };
+const canceledDataChart = (dataBase: any[]) => {
+  let month = 0;
+  const newData = [...Array(12).fill(0)];
+
+  dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
+    if (data.cancelled) {
+      month = getTime(data.date);
+      newData[month] += parseInt(data.amount);
+    }
+  });
+
+  return newData;
+};
 
 // *********** Income Chart ***********
 
@@ -87,6 +100,10 @@ export const barChartSeries = [
     name: 'Outgoing',
     data: expenseDataChart(dataBase),
   },
+  {
+    name: 'Canceled',
+    data: canceledDataChart(dataBase),
+  },
 ];
 
 export const barChartOptions = {
@@ -98,7 +115,7 @@ export const barChartOptions = {
   plotOptions: {
     bar: {
       horizontal: false,
-      columnWidth: '55%',
+      columnWidth: '73%',
       endingShape: 'rounded',
     },
   },
@@ -111,19 +128,20 @@ export const barChartOptions = {
   },
   stroke: {
     show: true,
-    width: 2,
+    width: 2.5,
     colors: ['transparent'],
   },
-  colors: ['#4333a0', '#ff0000'],
+  colors: ['#2c9c49', '#2c6b9c', '#8c2432'],
   xaxis: {
     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   },
   fill: {
     opacity: 1,
-    colors: ['#4333a0', '#ff0000'],
+    colors: ['#2c9c49', '#2c6b9c', '#8c2432'],
   },
   tooltip: {
     y: {
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
       formatter: (val: string) => {
         return '$ ' + numberWithCommas(val);
       },
