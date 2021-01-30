@@ -6,20 +6,24 @@ import useLocalStorage from './../../../hooks/useLocalStorage';
 
 import { PaymentContext } from '../../../contexts/payment/paymentContext';
 import { UserContext } from '../../../contexts/user/userContext';
+import { CategoriesContext } from '../../../contexts/categories/categoriesContext';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import { IUserDetails } from '../../../interfaces/context';
+import { IUserDetails, ICategory } from '../../../interfaces/context';
 
 const transactionRenderByCategory = (
   transactions: any[],
   userData: IUserDetails[],
   category: string,
   favsListIds: string[],
-  setPaymentFavorite: (favsListIds: string[]) => void
+  setPaymentFavorite: (favsListIds: string[]) => void,
+  categories: ICategory[]
 ) => {
-  // let countForFade = 0;
+  const categoryName = categories.map(({ name, color }) => {
+    if (name === category) return color;
+  });
 
   return transactions[0].map((transaction: any) => {
     return transaction.category === category ? (
@@ -32,6 +36,7 @@ const transactionRenderByCategory = (
           amount={transaction.amount}
           status={status}
           category={transaction.category}
+          categoryColor={categoryName[0]}
           business={transaction.company}
           first_name={userData[0].first_name}
           last_name={userData[0].last_name}
@@ -57,6 +62,7 @@ interface ITransactionProps {
 const Transactions: FC<ITransactionProps> = ({ category }) => {
   const { paymentDetails } = useContext(PaymentContext);
   const { userDetails } = useContext(UserContext);
+  const { categories } = useContext(CategoriesContext);
   const [favsListIds, setPaymentFavorite] = useLocalStorage('paymentFav', []);
 
   useEffect(() => {
@@ -81,7 +87,14 @@ const Transactions: FC<ITransactionProps> = ({ category }) => {
   return (
     <S.TransactionContainer>
       <S.AllTransactionsWrapper>
-        {transactionRenderByCategory(paymentDetails, userDetails, category, favsListIds, setPaymentFavorite)}
+        {transactionRenderByCategory(
+          paymentDetails,
+          userDetails,
+          category,
+          favsListIds,
+          setPaymentFavorite,
+          categories
+        )}
       </S.AllTransactionsWrapper>
     </S.TransactionContainer>
   );
