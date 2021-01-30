@@ -32,7 +32,7 @@ const Typography: ITextProps = {
     </MatTypography>
   ),
   UppercaseText: ({ children, color }) => (
-    <MatTypography variant="button" color={color}>
+    <MatTypography variant="subtitle2" color={color}>
       {children}
     </MatTypography>
   ),

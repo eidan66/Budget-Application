@@ -4,7 +4,7 @@ import * as S from './style';
 import * as MatIcon from '@material-ui/icons';
 
 interface IIcon {
-  color?: string | '#C5C0E5';
+  color?: string | '#959095';
 }
 interface IIconProps {
   [property: string]: FC<IIcon>;
@@ -26,37 +26,37 @@ const Icon: IIconProps = {
       <MatIcon.TrendingUp htmlColor="#3c8c30" fontSize="large" />
     </S.IconContainer>
   ),
-  Dashboard: ({ color = '#C5C0E5' }) => (
+  Dashboard: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.Dashboard htmlColor={color} />
     </S.IconContainer>
   ),
-  Charts: ({ color = '#C5C0E5' }) => (
+  Charts: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.PieChart htmlColor={color} />
     </S.IconContainer>
   ),
-  Cards: ({ color = '#C5C0E5' }) => (
+  Cards: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.Payment htmlColor={color} />
     </S.IconContainer>
   ),
-  Calendar: ({ color = '#C5C0E5' }) => (
+  Calendar: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.CalendarToday htmlColor={color} />
     </S.IconContainer>
   ),
-  Messages: ({ color = '#C5C0E5' }) => (
+  Messages: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.MailOutline htmlColor={color} />
     </S.IconContainer>
   ),
-  User: ({ color = '#C5C0E5' }) => (
+  User: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.Person htmlColor={color} />
     </S.IconContainer>
   ),
-  Settings: ({ color = '#C5C0E5' }) => (
+  Settings: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.Settings htmlColor={color} />
     </S.IconContainer>
@@ -66,27 +66,27 @@ const Icon: IIconProps = {
       <MatIcon.TrendingDown htmlColor="#ff0000" fontSize="large" />
     </S.IconContainer>
   ),
-  Person: ({ color = '#C5C0E5' }) => (
+  Person: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.EmojiPeople htmlColor={color} />
     </S.IconContainer>
   ),
-  Clock: ({ color = '#C5C0E5' }) => (
+  Clock: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.QueryBuilderSharp htmlColor={color} />
     </S.IconContainer>
   ),
-  TimeDate: ({ color = '#C5C0E5' }) => (
+  TimeDate: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.DateRangeOutlined htmlColor={color} />
     </S.IconContainer>
   ),
-  Circle: ({ color = '#C5C0E5' }) => (
+  Circle: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.FiberManualRecordOutlined htmlColor={color} />
     </S.IconContainer>
   ),
-  Location: ({ color = '#C5C0E5' }) => (
+  Location: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.MyLocationTwoTone htmlColor={color} />
     </S.IconContainer>
@@ -96,17 +96,17 @@ const Icon: IIconProps = {
       <MatIcon.MapOutlined htmlColor={color} fontSize="large" />
     </S.IconContainer>
   ),
-  Categories: ({ color = '#C5C0E5' }) => (
+  Categories: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.CategoryTwoTone htmlColor={color} />
     </S.IconContainer>
   ),
-  Transactions: ({ color = '#C5C0E5' }) => (
+  Transactions: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.SyncAlt htmlColor={color} />
     </S.IconContainer>
   ),
-  FavoriteEmpty: ({ color = '#C5C0E5' }) => (
+  FavoriteEmpty: ({ color = '#959095' }) => (
     <S.IconContainer>
       <MatIcon.FavoriteBorder htmlColor={color} fontSize="large" />
     </S.IconContainer>

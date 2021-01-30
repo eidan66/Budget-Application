@@ -18,7 +18,7 @@ const NavItem: FC<INavItem> = ({ label, icon, current, onClick, index }) => {
   const IconComp = Icon[icon];
   return (
     <Link to={label === 'Dashboard' ? '/' : '/' + label}>
-      <S.NavItemWrapper onClick={() => onClick(index)}>
+      <S.NavItemWrapper color={color} onClick={() => onClick(index)}>
         <IconComp color={color} />
         <Typography.SmallText variant={variant}>{label}</Typography.SmallText>
       </S.NavItemWrapper>
