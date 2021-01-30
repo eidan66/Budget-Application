@@ -22,7 +22,7 @@ const defaultTheme = createMuiTheme({
       color: 'white',
     },
     subtitle2: {
-      color: '#C5C0E5',
+      color: '#959095',
     },
     body2: {
       fontWeight: 500,
@@ -40,9 +40,6 @@ const defaultTheme = createMuiTheme({
     },
     h5: {
       color: 'white',
-    },
-    button: {
-      color: '#c4c0e5',
     },
   },
 });

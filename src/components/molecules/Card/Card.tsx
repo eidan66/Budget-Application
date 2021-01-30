@@ -19,7 +19,7 @@ const Card: FC<ICardProps> = ({ last4Digits, first_name, last_name, exp_year, ex
           <Typography.LargeText>{'**** **** **** ' + last4Digits}</Typography.LargeText>
         </S.CardNumberWrapper>
 
-        <S.CardDetailsWrapper>
+        <S.CardDetailsWrapper color=" #FFDF32">
           <S.CardHolderWrapper>
             <Typography.UppercaseText>card holder</Typography.UppercaseText>
             <Typography.SmallText variant="subtitle1">{first_name + ' ' + last_name}</Typography.SmallText>

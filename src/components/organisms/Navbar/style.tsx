@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const NavbarWrapper = styled.div`
+  position: sticky;
+  left: 0;
+  top: 0;
   display: flex;
   flex-direction: column;
   padding: 1rem;

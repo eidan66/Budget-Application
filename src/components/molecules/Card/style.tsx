@@ -21,6 +21,9 @@ export const CardDetailsWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-content: flex-end;
+  & > div > span {
+    color: ${({ color }) => color};
+  }
 `;
 
 export const CardNumberWrapper = styled.div`
