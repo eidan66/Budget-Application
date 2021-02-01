@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Charts } from '../../../components/organisms';
+import { ChartContainer } from '../../../containers';
 import { Card, Summary } from '../../../components/molecules';
 import * as S from './style';
 
@@ -38,14 +38,14 @@ const Dashboard: FC<IDashboardProps> = ({
             exp_year={exp_year}
             exp_month={exp_month}
           />
-          <Charts.Income />
+          <ChartContainer chart={'Income'} />
         </S.HeaderWrapper>
         <S.SummaryWrapper>
           <Summary summary="Income" revenue={incomeRevenue} percent={incomePercent} />
           <Summary summary="Expense" revenue={expenseRevenue} percent={expensePercent} />
         </S.SummaryWrapper>
         <S.ActivityWrapper>
-          <Charts.Activity />
+          <ChartContainer chart={'Activity'} />
         </S.ActivityWrapper>
       </S.DashboardWrapper>
     </S.PageWrapper>
