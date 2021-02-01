@@ -66,6 +66,7 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
         enabled: false,
       },
     },
+    colors: ['#5acaf7'],
     dataLabels: {
       enabled: false,
     },
@@ -78,6 +79,9 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
     title: {
       text: 'Income',
       align: 'left',
+      style: {
+        fontSize: '25px',
+      },
     },
     grid: {
       row: {
@@ -120,6 +124,9 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
       type: 'bar',
       redrawOnParentResize: true,
       redrawOnWindowResize: true,
+      zoom: {
+        enabled: false,
+      },
     },
     plotOptions: {
       bar: {
@@ -131,6 +138,9 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
     title: {
       text: 'Activity',
       align: 'left',
+      style: {
+        fontSize: '25px',
+      },
     },
     dataLabels: {
       enabled: false,
@@ -140,13 +150,23 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
       width: 2.5,
       colors: ['transparent'],
     },
-    colors: ['#2c9c49', '#2c6b9c', '#8c2432'],
+    colors: ['#5acaf7', '#4333a0', '#ff8789'],
     xaxis: {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     },
     fill: {
       opacity: 1,
-      colors: ['#2c9c49', '#2c6b9c', '#8c2432'],
+      colors: ['#5acaf7', '#4333a0', '#ff8789'],
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right',
+      floating: true,
+      offsetY: -25,
+      offsetX: -5,
+      markers: {
+        radius: 12,
+      },
     },
     tooltip: {
       y: {

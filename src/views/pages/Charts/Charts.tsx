@@ -101,8 +101,11 @@ const Charts = () => {
       toolbar: {
         show: false,
       },
+      zoom: {
+        enabled: false,
+      },
     },
-    colors: ['#2c9c49', '#2c6b9c', '#8c2432'],
+    colors: ['#5acaf7', '#4333a0', '#ff8789'],
 
     dataLabels: {
       enabled: true,
@@ -179,6 +182,9 @@ const Charts = () => {
       type: 'bar',
       redrawOnParentResize: true,
       redrawOnWindowResize: true,
+      zoom: {
+        enabled: false,
+      },
     },
     plotOptions: {
       bar: {
@@ -202,13 +208,23 @@ const Charts = () => {
       width: 2.5,
       colors: ['transparent'],
     },
-    colors: ['#2c9c49', '#2c6b9c', '#8c2432'],
+    colors: ['#5acaf7', '#4333a0', '#ff8789'],
     xaxis: {
       categories: categoriesDateArray,
     },
     fill: {
       opacity: 1,
-      colors: ['#2c9c49', '#2c6b9c', '#8c2432'],
+      colors: ['#5acaf7', '#4333a0', '#ff8789'],
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right',
+      floating: true,
+      offsetY: -25,
+      offsetX: -5,
+      markers: {
+        radius: 12,
+      },
     },
     tooltip: {
       y: {
