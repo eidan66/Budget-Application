@@ -9,9 +9,9 @@ interface IDashboardProps {
   last_name: string;
   exp_year: number;
   exp_month: number;
-  incomeRevenue: string;
+  incomeRevenue: number;
   incomePercent: string;
-  expenseRevenue: string;
+  expenseRevenue: number;
   expensePercent: string;
 }
 
