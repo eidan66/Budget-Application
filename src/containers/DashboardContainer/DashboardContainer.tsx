@@ -14,7 +14,7 @@ const DashboardContainer = () => {
     calcBeforeLast3 ? (lastMonths = getLastNMonths(6).slice(0, 3)) : (lastMonths = getLastNMonths(3));
 
     let totalRevenue = 0;
-    paymentDetails[0].map((payment: { paymentType: string; date: string; amount: string }) => {
+    paymentDetails.map((payment: { paymentType: string; date: string; amount: string }) => {
       if (payment.paymentType === revenueType) {
         lastMonths.map((month) => {
           const afterSlice: string[] = payment.date.slice(0, 2).split('/');

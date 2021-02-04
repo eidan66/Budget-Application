@@ -14,7 +14,7 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
     let month = 0;
     const newData = [...Array(12).fill(0)];
 
-    dataBase[0].map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
+    dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Income' && !data.cancelled) {
         month = getTime(data.date);
         newData[month] += parseInt(data.amount);
@@ -28,7 +28,7 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
     let month = 0;
     const newData = [...Array(12).fill(0)];
 
-    dataBase[0].map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
+    dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Expenses' && !data.cancelled) {
         month = getTime(data.date);
         newData[month] += parseInt(data.amount);
@@ -41,7 +41,7 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
     let month = 0;
     const newData = [...Array(12).fill(0)];
 
-    dataBase[0].map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
+    dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.cancelled) {
         month = getTime(data.date);
         newData[month] += parseInt(data.amount);
