@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { Typography, Icon } from '../../atoms';
-import { summaryColor, titleChecker } from '../../../helpers';
+import { summaryColor, titleChecker, numberWithCommas } from '../../../helpers';
 import * as S from './style';
 
 interface ISummaryProps {
   summary: 'Income' | 'Expense';
-  revenue: string;
+  revenue: number;
   percent: string;
 }
 
@@ -19,14 +19,17 @@ const Summary: FC<ISummaryProps> = ({ summary, revenue, percent }) => {
 
       <S.RevenueWrapper color={summaryColor(summary)}>
         <Typography.SmallText variant="subtitle2">{titleChecker(summary)}</Typography.SmallText>
-        <Typography.MediumText>{revenue}</Typography.MediumText>
+        <Typography.MediumText>{numberWithCommas(revenue)}</Typography.MediumText>
         <S.IconWrapper>
           <IconComp />
         </S.IconWrapper>
       </S.RevenueWrapper>
 
       <S.SubtitleWrapper>
-        <Typography.ExtraSmallText color="primary">{percent}</Typography.ExtraSmallText>
+        <Typography.ExtraSmallText color="primary">
+          {summary === 'Income' ? '+ ' : '- '}
+          {percent}%
+        </Typography.ExtraSmallText>
         <Typography.SmallText variant="subtitle2">Since last 3 months</Typography.SmallText>
       </S.SubtitleWrapper>
     </S.SummaryWrapper>
