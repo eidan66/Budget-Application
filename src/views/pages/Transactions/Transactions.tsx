@@ -25,7 +25,7 @@ const transactionRenderByCategory = (
     if (name === category) return color;
   });
 
-  return transactions[0].map((transaction: any) => {
+  return transactions.map((transaction: any) => {
     return transaction.category === category ? (
       <S.TransactionWrapper data-aos="zoom-in" key={transaction.id}>
         <ExpenseCard

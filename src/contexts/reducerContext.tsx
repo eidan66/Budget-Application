@@ -72,7 +72,7 @@ export const paymentReducer = (state: IPayment, action: IPaymentAction) => {
     case PAYMENT_ACTION.SET_PAYMENT_DETAILS:
       return {
         ...state,
-        paymentDetails: [...state.paymentDetails, action.payload],
+        paymentDetails: [...state.paymentDetails, ...action.payload],
       };
 
     default:

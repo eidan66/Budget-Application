@@ -7,7 +7,7 @@ import * as S from './style';
 import { PaymentContext } from '../../../contexts/payment/paymentContext';
 
 const userPaymentRender = (payments: any[]) => {
-  return payments[0]
+  return payments
     .slice(0, 10)
     .map(
       (payment: {
