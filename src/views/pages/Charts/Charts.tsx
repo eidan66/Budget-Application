@@ -4,6 +4,7 @@ import { getTime, numberWithCommas } from '../../../helpers';
 import { PaymentContext } from '../../../contexts/payment/paymentContext';
 import { CategoriesContext } from '../../../contexts/categories/categoriesContext';
 
+import * as S from './style';
 interface IObject {
   [key: string]: number;
 }
@@ -237,19 +238,15 @@ const Charts = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', width: '86rem' }}>
-      <div
-        style={{ boxShadow: '0 0 5px #333', borderRadius: '1rem', padding: '1rem', width: '70rem', margin: '0 auto' }}
-      >
+    <S.ChartsWrapper>
+      <S.PaymentChartWrapper>
         <Chart options={lineChartOptions} series={lineChartSeries} type="line" height={370} />
-      </div>
+      </S.PaymentChartWrapper>
 
-      <div
-        style={{ boxShadow: '0 0 5px #333', borderRadius: '1rem', padding: '1rem', width: '70rem', margin: '0 auto' }}
-      >
+      <S.PaymentChartWrapper>
         <Chart options={barChartOptions} series={barChartSeries} type="bar" height={370} />
-      </div>
-    </div>
+      </S.PaymentChartWrapper>
+    </S.ChartsWrapper>
   );
 };
 export default Charts;
