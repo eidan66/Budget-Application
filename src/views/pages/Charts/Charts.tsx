@@ -163,6 +163,11 @@ const Charts = () => {
       title: {
         text: 'Money',
       },
+      labels: {
+        formatter: (val: string) => {
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
+        },
+      },
     },
     legend: {
       position: 'top',
@@ -203,6 +208,13 @@ const Charts = () => {
       redrawOnWindowResize: true,
       zoom: {
         enabled: false,
+      },
+    },
+    yaxis: {
+      labels: {
+        formatter: (val: string) => {
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
+        },
       },
     },
     plotOptions: {
@@ -249,7 +261,7 @@ const Charts = () => {
       y: {
         // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
         formatter: (val: string) => {
-          return '$ ' + numberWithCommas(val);
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
         },
       },
     },

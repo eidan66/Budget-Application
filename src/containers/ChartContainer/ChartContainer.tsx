@@ -83,6 +83,13 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
         enabled: false,
       },
     },
+    yaxis: {
+      labels: {
+        formatter: (val: string) => {
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
+        },
+      },
+    },
     colors: ['#5acaf7'],
     dataLabels: {
       enabled: false,
@@ -143,6 +150,13 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
       redrawOnWindowResize: true,
       zoom: {
         enabled: false,
+      },
+    },
+    yaxis: {
+      labels: {
+        formatter: (val: string) => {
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
+        },
       },
     },
     plotOptions: {
