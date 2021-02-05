@@ -44,9 +44,11 @@ const Charts = () => {
     categoriesData.map((category: string, index: number) => {
       dataBase.map((data: { paymentType: string; category: string; amount: string; cancelled: boolean }) => {
         if (paymentType === data.paymentType && !data.cancelled) {
-          if (category === data.category) return (categoriesArray[index] = parseInt(data.amount));
+          if (category === data.category)
+            return (categoriesArray[index] = parseInt(currencyChecker(currency, data.amount)));
         } else if (data.cancelled && paymentType === 'Cancelled') {
-          if (category === data.category) return (categoriesArray[index] = parseInt(data.amount));
+          if (category === data.category)
+            return (categoriesArray[index] = parseInt(currencyChecker(currency, data.amount)));
         }
       });
     });
@@ -60,7 +62,7 @@ const Charts = () => {
     dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Income' && !data.cancelled) {
         month = getTime(data.date);
-        newData[month] += parseInt(data.amount);
+        newData[month] += parseInt(currencyChecker(currency, data.amount));
       }
     });
 
@@ -74,7 +76,7 @@ const Charts = () => {
     dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Expenses' && !data.cancelled) {
         month = getTime(data.date);
-        newData[month] += parseInt(data.amount);
+        newData[month] += parseInt(currencyChecker(currency, data.amount));
       }
     });
 
@@ -88,7 +90,7 @@ const Charts = () => {
     dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.cancelled) {
         month = getTime(data.date);
-        newData[month] += parseInt(data.amount);
+        newData[month] += parseInt(currencyChecker(currency, data.amount));
       }
     });
 

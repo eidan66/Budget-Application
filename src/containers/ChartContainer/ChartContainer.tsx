@@ -34,7 +34,7 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
     dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Income' && !data.cancelled) {
         month = getTime(data.date);
-        newData[month] += parseInt(data.amount);
+        newData[month] += parseInt(currencyChecker(currency, data.amount));
       }
     });
 
@@ -48,7 +48,7 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
     dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Expenses' && !data.cancelled) {
         month = getTime(data.date);
-        newData[month] += parseInt(data.amount);
+        newData[month] += parseInt(currencyChecker(currency, data.amount));
       }
     });
 
@@ -61,7 +61,7 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
     dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.cancelled) {
         month = getTime(data.date);
-        newData[month] += parseInt(data.amount);
+        newData[month] += parseInt(currencyChecker(currency, data.amount));
       }
     });
 
