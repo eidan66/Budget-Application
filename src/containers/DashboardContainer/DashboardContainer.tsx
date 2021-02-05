@@ -4,11 +4,26 @@ import { getLastNMonths, percentDiff } from '../../helpers';
 
 import { PaymentContext } from '../../contexts/payment/paymentContext';
 import { UserContext } from '../../contexts/user/userContext';
+import { AppContext } from '../../contexts/app/appContext';
 
+import useLocalStorage from '../../hooks/useLocalStorage';
 const DashboardContainer = () => {
+  const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
+
   const { paymentDetails } = React.useContext(PaymentContext);
   const { userDetails } = React.useContext(UserContext);
+  const { currency } = React.useContext(AppContext);
 
+  const currencyChecker = (paymentCurrency: string, paymentAmount: string) => {
+    let rate = 1;
+    Object.keys(currencyList).map((item) => {
+      if (item === paymentCurrency) {
+        rate = currencyList[item] * parseInt(paymentAmount);
+      }
+    });
+
+    return rate.toFixed(0);
+  };
   const revenue = (paymentDetails: any, revenueType: string, calcBeforeLast3?: boolean) => {
     let lastMonths: any[];
     calcBeforeLast3 ? (lastMonths = getLastNMonths(6).slice(0, 3)) : (lastMonths = getLastNMonths(3));
@@ -19,7 +34,7 @@ const DashboardContainer = () => {
         lastMonths.map((month) => {
           const afterSlice: string[] = payment.date.slice(0, 2).split('/');
           const afterParse: number = parseInt(afterSlice[0]);
-          month === afterParse ? (totalRevenue += parseInt(payment.amount)) : '';
+          month === afterParse ? (totalRevenue += parseInt(currencyChecker(currency, payment.amount))) : '';
         });
       }
     });
