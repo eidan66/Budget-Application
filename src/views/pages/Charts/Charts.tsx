@@ -3,6 +3,10 @@ import Chart from 'react-apexcharts';
 import { getTime, numberWithCommas } from '../../../helpers';
 import { PaymentContext } from '../../../contexts/payment/paymentContext';
 import { CategoriesContext } from '../../../contexts/categories/categoriesContext';
+import { AppContext } from '../../../contexts/app/appContext';
+import useLocalStorage from './../../../hooks/useLocalStorage';
+import { getSymbolFromCode } from 'currency-code-symbol-map';
+import type { CurrencyCode } from '../../../../node_modules/currency-code-symbol-map/lib/currencyCodeSymbolMapping';
 
 import * as S from './style';
 interface IObject {
@@ -12,6 +16,19 @@ interface IObject {
 const Charts = () => {
   const { paymentDetails } = React.useContext(PaymentContext);
   const { categories } = React.useContext(CategoriesContext);
+  const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
+  const { currency } = React.useContext(AppContext);
+
+  const currencyChecker = (paymentCurrency: string, paymentAmount: string) => {
+    let rate = 1;
+    Object.keys(currencyList).map((item) => {
+      if (item === paymentCurrency) {
+        rate = currencyList[item] * parseInt(paymentAmount);
+      }
+    });
+
+    return rate.toFixed(0);
+  };
 
   const arrayCategoriesChart = () => {
     const categoriesMapped: string[] = [];
@@ -23,14 +40,15 @@ const Charts = () => {
 
   const categoriesDateArray = arrayCategoriesChart();
   const categoriesDataChart = (dataBase: any[], categoriesData: any, paymentType: any) => {
-    // const categoriesObj: IObject = {};
     const categoriesArray = [...Array(categoriesData.length).fill(0)];
     categoriesData.map((category: string, index: number) => {
       dataBase.map((data: { paymentType: string; category: string; amount: string; cancelled: boolean }) => {
         if (paymentType === data.paymentType && !data.cancelled) {
-          if (category === data.category) return (categoriesArray[index] = parseInt(data.amount));
+          if (category === data.category)
+            return (categoriesArray[index] = parseInt(currencyChecker(currency, data.amount)));
         } else if (data.cancelled && paymentType === 'Cancelled') {
-          if (category === data.category) return (categoriesArray[index] = parseInt(data.amount));
+          if (category === data.category)
+            return (categoriesArray[index] = parseInt(currencyChecker(currency, data.amount)));
         }
       });
     });
@@ -44,7 +62,7 @@ const Charts = () => {
     dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Income' && !data.cancelled) {
         month = getTime(data.date);
-        newData[month] += parseInt(data.amount);
+        newData[month] += parseInt(currencyChecker(currency, data.amount));
       }
     });
 
@@ -58,7 +76,7 @@ const Charts = () => {
     dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Expenses' && !data.cancelled) {
         month = getTime(data.date);
-        newData[month] += parseInt(data.amount);
+        newData[month] += parseInt(currencyChecker(currency, data.amount));
       }
     });
 
@@ -72,7 +90,7 @@ const Charts = () => {
     dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
       if (data.cancelled) {
         month = getTime(data.date);
-        newData[month] += parseInt(data.amount);
+        newData[month] += parseInt(currencyChecker(currency, data.amount));
       }
     });
 
@@ -111,7 +129,7 @@ const Charts = () => {
     dataLabels: {
       enabled: true,
       formatter: (val: string) => {
-        return '$ ' + numberWithCommas(val);
+        return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
       },
     },
     stroke: {
@@ -145,6 +163,11 @@ const Charts = () => {
       title: {
         text: 'Money',
       },
+      labels: {
+        formatter: (val: string) => {
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
+        },
+      },
     },
     legend: {
       position: 'top',
@@ -157,7 +180,7 @@ const Charts = () => {
       y: {
         // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
         formatter: (val: string) => {
-          return '$ ' + numberWithCommas(val);
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
         },
       },
     },
@@ -185,6 +208,13 @@ const Charts = () => {
       redrawOnWindowResize: true,
       zoom: {
         enabled: false,
+      },
+    },
+    yaxis: {
+      labels: {
+        formatter: (val: string) => {
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
+        },
       },
     },
     plotOptions: {
@@ -231,7 +261,7 @@ const Charts = () => {
       y: {
         // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
         formatter: (val: string) => {
-          return '$ ' + numberWithCommas(val);
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
         },
       },
     },

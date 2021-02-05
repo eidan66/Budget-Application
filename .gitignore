@@ -12,7 +12,7 @@
 /src/mockup-tests
 /desktop.ini
 /.eslintcache
-
+/.env
 /src/assets/images/avatar.jpg
 # production
 /build

@@ -6,18 +6,35 @@ import { Navbar, UserPayment } from '../../../components/organisms';
 import type { CurrencyCode } from '../../../../node_modules/currency-code-symbol-map/lib/currencyCodeSymbolMapping';
 
 import { UserContext } from '../../../contexts/user/userContext';
+import { AppContext } from '../../../contexts/app/appContext';
 
+import useLocalStorage from './../../../hooks/useLocalStorage';
 import * as S from './style';
+
 const Homepage: React.FC = () => {
+  const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
+
   const { userDetails } = React.useContext(UserContext);
+  const { currency } = React.useContext(AppContext);
+
+  const currencyChecker = (paymentCurrency: string, paymentAmount: string) => {
+    let rate = 1;
+    Object.keys(currencyList).map((item) => {
+      if (item === paymentCurrency) {
+        rate = currencyList[item] * parseInt(paymentAmount);
+      }
+    });
+
+    return rate.toFixed(0);
+  };
 
   return (
     <S.HomepageWrapper>
       <BrowserRouter>
         <S.NavbarWrapper>
           <Navbar
-            currentBalance={userDetails[0].current_balance}
-            userCurrency={userDetails[0].current_balance_currency as CurrencyCode}
+            currentBalance={currencyChecker(currency, userDetails[0].current_balance).toString()}
+            userCurrency={currency as CurrencyCode}
           />
         </S.NavbarWrapper>
         <Switch>

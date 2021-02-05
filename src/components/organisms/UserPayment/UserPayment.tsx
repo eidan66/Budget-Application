@@ -3,60 +3,10 @@ import { Typography } from '../../atoms';
 import { UserDetailsBox, PaymentHistory } from '../../molecules';
 import { numberWithCommas, amountColorPicker } from '../../../helpers';
 import * as S from './style';
+import useLocalStorage from './../../../hooks/useLocalStorage';
 
 import { PaymentContext } from '../../../contexts/payment/paymentContext';
-
-const userPaymentRender = (payments: any[]) => {
-  return payments
-    .slice(0, 10)
-    .map(
-      (payment: {
-        cancelled: boolean;
-        date: string;
-        time: string;
-        amount: string;
-        currency: string;
-        id: string;
-        paymentMethod: string;
-        paymentType: string;
-      }) => {
-        return payment.cancelled ? (
-          <PaymentHistory.Cancelled
-            paymentDate={payment.date + ' ' + payment.time}
-            paymentNumber={numberWithCommas(payment.amount)}
-            paymentCurrency={payment.currency}
-            key={payment.id}
-          />
-        ) : payment.paymentMethod === 'paypal' ? (
-          <PaymentHistory.Paypal
-            paymentDate={payment.date + ' ' + payment.time}
-            paymentNumber={numberWithCommas(payment.amount)}
-            paymentCurrency={payment.currency}
-            color={amountColorPicker(payment)}
-            key={payment.id}
-          />
-        ) : payment.paymentType === 'Income' && payment.paymentMethod === 'credit card' ? (
-          <PaymentHistory.Income
-            paymentDate={payment.date + ' ' + payment.time}
-            paymentNumber={numberWithCommas(payment.amount)}
-            paymentCurrency={payment.currency}
-            color={amountColorPicker(payment)}
-            key={payment.id}
-          />
-        ) : payment.paymentType === 'Expenses' && payment.paymentMethod === 'credit card' ? (
-          <PaymentHistory.Expense
-            paymentDate={payment.date + ' ' + payment.time}
-            paymentNumber={numberWithCommas(payment.amount)}
-            paymentCurrency={payment.currency}
-            color={amountColorPicker(payment)}
-            key={payment.id}
-          />
-        ) : (
-          ''
-        );
-      }
-    );
-};
+import { AppContext } from '../../../contexts/app/appContext';
 
 interface IUserPaymentProps {
   first_name: string;
@@ -67,7 +17,72 @@ interface IUserPaymentProps {
 }
 
 const UserPayment: FC<IUserPaymentProps> = ({ first_name, last_name, email, avatar }) => {
+  const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
   const { paymentDetails } = useContext(PaymentContext);
+  const { currency } = useContext(AppContext);
+
+  const currencyChecker = (paymentCurrency: string, paymentAmount: string) => {
+    let rate = 1;
+    Object.keys(currencyList).map((item) => {
+      if (item === paymentCurrency) {
+        rate = currencyList[item] * parseInt(paymentAmount);
+      }
+    });
+
+    return rate.toFixed(0);
+  };
+
+  const userPaymentRender = (payments: any[]) => {
+    return payments
+      .slice(0, 10)
+      .map(
+        (payment: {
+          cancelled: boolean;
+          date: string;
+          time: string;
+          amount: string;
+          currency: string;
+          id: string;
+          paymentMethod: string;
+          paymentType: string;
+        }) => {
+          return payment.cancelled ? (
+            <PaymentHistory.Cancelled
+              paymentDate={payment.date + ' ' + payment.time}
+              paymentNumber={numberWithCommas(currencyChecker(payment.currency, payment.amount))}
+              paymentCurrency={currency}
+              key={payment.id}
+            />
+          ) : payment.paymentMethod === 'paypal' ? (
+            <PaymentHistory.Paypal
+              paymentDate={payment.date + ' ' + payment.time}
+              paymentNumber={numberWithCommas(currencyChecker(payment.currency, payment.amount))}
+              paymentCurrency={currency}
+              color={amountColorPicker(payment)}
+              key={payment.id}
+            />
+          ) : payment.paymentType === 'Income' && payment.paymentMethod === 'credit card' ? (
+            <PaymentHistory.Income
+              paymentDate={payment.date + ' ' + payment.time}
+              paymentNumber={numberWithCommas(currencyChecker(payment.currency, payment.amount))}
+              paymentCurrency={currency}
+              color={amountColorPicker(payment)}
+              key={payment.id}
+            />
+          ) : payment.paymentType === 'Expenses' && payment.paymentMethod === 'credit card' ? (
+            <PaymentHistory.Expense
+              paymentDate={payment.date + ' ' + payment.time}
+              paymentNumber={numberWithCommas(currencyChecker(payment.currency, payment.amount))}
+              paymentCurrency={currency}
+              color={amountColorPicker(payment)}
+              key={payment.id}
+            />
+          ) : (
+            ''
+          );
+        }
+      );
+  };
 
   return (
     <S.UserPaymentWrapper>
