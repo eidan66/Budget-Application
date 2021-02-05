@@ -1,8 +1,9 @@
-import React, { Suspense, useContext } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useContext } from 'react';
 import { Transactions } from '../../views/pages';
 import { CategoriesContext } from '../../contexts/categories/categoriesContext';
 import { Loader, Typography } from '../../components/atoms';
-
+import { useLocation } from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -23,19 +24,19 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface ITransaction {
-  category?: string;
-}
-
-const TransactionsContainer: React.FC<ITransaction> = ({ category }) => {
+const TransactionsContainer: React.FC = () => {
+  const location = useLocation();
   const { categories } = useContext(CategoriesContext);
-  const [selectedCategory, setSelectedCategory] = useLocalStorage(
-    'selectedCategory',
-    category ? category : categories[0].name
-  );
+  let categoryName;
+  if (location.state) {
+    categoryName = location.state.category;
+  } else {
+    categoryName = categories[0].name;
+  }
+  const [selectedCategory, setSelectedCategory] = useLocalStorage('selectedCategory', categoryName);
 
   const [state, setState] = React.useState<{ category: string | number; name: string }>({
-    category: selectedCategory,
+    category: categoryName,
     name: 'hai',
   });
 
@@ -100,7 +101,7 @@ const TransactionsContainer: React.FC<ITransaction> = ({ category }) => {
         </S.LoaderWrapper>
       ) : (
         <S.TransactionWrapper>
-          <Transactions category={selectedCategory} />
+          <Transactions category={state.category.toString()} />
         </S.TransactionWrapper>
       )}
     </S.TransactionContainerWrapper>
