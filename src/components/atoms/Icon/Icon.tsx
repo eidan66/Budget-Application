@@ -13,7 +13,7 @@ interface IIconProps {
 const Icon: IIconProps = {
   Cancelled: () => (
     <S.IconContainer>
-      <MatIcon.Cancel htmlColor="red" fontSize="large" />
+      <MatIcon.Cancel htmlColor="#ff8789" fontSize="large" />
     </S.IconContainer>
   ),
   Paypal: () => (
