@@ -3,6 +3,10 @@ import Chart from 'react-apexcharts';
 import { getTime, numberWithCommas } from '../../../helpers';
 import { PaymentContext } from '../../../contexts/payment/paymentContext';
 import { CategoriesContext } from '../../../contexts/categories/categoriesContext';
+import { AppContext } from '../../../contexts/app/appContext';
+import useLocalStorage from './../../../hooks/useLocalStorage';
+import { getSymbolFromCode } from 'currency-code-symbol-map';
+import type { CurrencyCode } from '../../../../node_modules/currency-code-symbol-map/lib/currencyCodeSymbolMapping';
 
 import * as S from './style';
 interface IObject {
@@ -12,6 +16,19 @@ interface IObject {
 const Charts = () => {
   const { paymentDetails } = React.useContext(PaymentContext);
   const { categories } = React.useContext(CategoriesContext);
+  const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
+  const { currency } = React.useContext(AppContext);
+
+  const currencyChecker = (paymentCurrency: string, paymentAmount: string) => {
+    let rate = 1;
+    Object.keys(currencyList).map((item) => {
+      if (item === paymentCurrency) {
+        rate = currencyList[item] * parseInt(paymentAmount);
+      }
+    });
+
+    return rate.toFixed(0);
+  };
 
   const arrayCategoriesChart = () => {
     const categoriesMapped: string[] = [];
@@ -23,7 +40,6 @@ const Charts = () => {
 
   const categoriesDateArray = arrayCategoriesChart();
   const categoriesDataChart = (dataBase: any[], categoriesData: any, paymentType: any) => {
-    // const categoriesObj: IObject = {};
     const categoriesArray = [...Array(categoriesData.length).fill(0)];
     categoriesData.map((category: string, index: number) => {
       dataBase.map((data: { paymentType: string; category: string; amount: string; cancelled: boolean }) => {
@@ -111,7 +127,7 @@ const Charts = () => {
     dataLabels: {
       enabled: true,
       formatter: (val: string) => {
-        return '$ ' + numberWithCommas(val);
+        return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
       },
     },
     stroke: {
@@ -157,7 +173,7 @@ const Charts = () => {
       y: {
         // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
         formatter: (val: string) => {
-          return '$ ' + numberWithCommas(val);
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
         },
       },
     },

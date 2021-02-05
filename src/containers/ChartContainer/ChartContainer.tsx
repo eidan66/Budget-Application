@@ -2,6 +2,10 @@ import React, { FC, useContext } from 'react';
 import { getTime, numberWithCommas } from '../../helpers';
 import { PaymentContext } from '../../contexts/payment/paymentContext';
 import { Charts } from '../../components/organisms';
+import { AppContext } from '../../contexts/app/appContext';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import { getSymbolFromCode } from 'currency-code-symbol-map';
+import type { CurrencyCode } from '../../../node_modules/currency-code-symbol-map/lib/currencyCodeSymbolMapping';
 
 interface IChartContainer {
   chart?: string;
@@ -9,6 +13,19 @@ interface IChartContainer {
 
 const ChartContainer: FC<IChartContainer> = ({ chart }) => {
   const { paymentDetails } = useContext(PaymentContext);
+  const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
+  const { currency } = React.useContext(AppContext);
+
+  const currencyChecker = (paymentCurrency: string, paymentAmount: string) => {
+    let rate = 1;
+    Object.keys(currencyList).map((item) => {
+      if (item === paymentCurrency) {
+        rate = currencyList[item] * parseInt(paymentAmount);
+      }
+    });
+
+    return rate.toFixed(0);
+  };
 
   const incomeDataChart = (dataBase: any[]) => {
     let month = 0;
@@ -96,7 +113,7 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
     tooltip: {
       y: {
         formatter: (val: string) => {
-          return '$ ' + numberWithCommas(val);
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
         },
       },
     },
@@ -172,7 +189,7 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
       y: {
         // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
         formatter: (val: string) => {
-          return '$ ' + numberWithCommas(val);
+          return getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(currencyChecker(currency, val));
         },
       },
     },
