@@ -12,7 +12,7 @@ export const UserPaymentWrapper = styled.div`
   border-radius: 1rem;
   justify-content: center;
   align-items: center;
-  background-color: #fcedd8;
+  background-color: #ffe7c5;
 `;
 
 export const UserDetailsWrapper = styled.div`

@@ -13,7 +13,7 @@ interface IIconProps {
 const Icon: IIconProps = {
   Cancelled: () => (
     <S.IconContainer>
-      <MatIcon.Cancel htmlColor="red" fontSize="large" />
+      <MatIcon.Cancel htmlColor="#ff8789" fontSize="large" />
     </S.IconContainer>
   ),
   Paypal: () => (
@@ -23,7 +23,7 @@ const Icon: IIconProps = {
   ),
   Income: () => (
     <S.IconContainer>
-      <MatIcon.TrendingUp htmlColor="#3c8c30" fontSize="large" />
+      <MatIcon.TrendingUp htmlColor="#4333a0" fontSize="large" />
     </S.IconContainer>
   ),
   Dashboard: ({ color = '#959095' }) => (
@@ -63,7 +63,7 @@ const Icon: IIconProps = {
   ),
   Expense: () => (
     <S.IconContainer>
-      <MatIcon.TrendingDown htmlColor="#ff0000" fontSize="large" />
+      <MatIcon.TrendingDown htmlColor="#ff8789" fontSize="large" />
     </S.IconContainer>
   ),
   Person: ({ color = '#959095' }) => (

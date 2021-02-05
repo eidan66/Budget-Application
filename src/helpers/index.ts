@@ -60,7 +60,7 @@ export const numberWithCommas = (number: string | number): string =>
 export const amountColorPicker = (type: { paymentType: string }) =>
   type.paymentType === 'Expenses' ? 'error' : 'primary';
 
-export const summaryColor = (summary: string) => (summary === 'Income' ? '#3c8c30' : '#ff0000');
+export const summaryColor = (summary: string) => (summary === 'Income' ? '#4333a0' : '#ff8789');
 
 export const titleChecker = (summary: string) => (summary === 'Income' ? 'Revenue' : 'Outgoings');
 
