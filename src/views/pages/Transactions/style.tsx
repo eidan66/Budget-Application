@@ -15,9 +15,13 @@ export const AllTransactionsWrapper = styled.div`
   width: 100%;
 
   justify-content: center;
+  height: 56rem;
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
 `;
 
 export const TransactionWrapper = styled.div`
+  scroll-snap-align: start;
   flex: 1 0 21%;
   margin-bottom: 2rem;
 `;
