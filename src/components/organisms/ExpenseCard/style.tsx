@@ -24,6 +24,7 @@ export const ExpenseMiniCardsWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding-bottom: 2rem;
+  cursor: pointer;
 `;
 
 export const ToggleWrapper = styled.div`

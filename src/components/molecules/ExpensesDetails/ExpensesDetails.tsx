@@ -20,7 +20,7 @@ interface IExpensesDetailsProps {
   time: string;
   date: string;
   avatarSrc: string;
-  map: boolean;
+  map?: boolean;
   country?: string;
   city?: string;
   street?: string;
@@ -67,7 +67,7 @@ const ExpensesDetails: FC<IExpensesDetailsProps> = ({
           </S.DateWrapper>
         </S.TimeInfoWrapper>
 
-        {forMapInformation(map, location)}
+        {map && forMapInformation(map, location)}
       </S.InformationWrapper>
     </S.ExpensesDetailsWrapper>
   );

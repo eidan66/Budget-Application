@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import * as S from './style';
 import { iconMarker } from '../../../assets/images';
 import { ExpensesDetails } from './../../molecules';
+import { useHistory } from 'react-router';
 
 interface IMaoProps {
   position: [number, number];
@@ -33,36 +34,42 @@ const Map: React.FC<IMaoProps> = ({
   city,
   street,
 }) => {
+  const history = useHistory();
+
   const money_marker = L.icon({
     iconUrl: iconMarker,
     iconSize: [60, 60], // size of the icon
     iconAnchor: [27, 57], // point of the icon which will correspond to marker's location
   });
   return (
-    <MapContainer style={{ height: '100vh' }} center={position} zoom={13} scrollWheelZoom={true}>
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position} icon={money_marker}>
-        <Popup>
-          <S.PopupWrapper>
-            <ExpensesDetails
-              map={map}
-              country={country}
-              city={city}
-              street={street}
-              business={business}
-              first_name={first_name}
-              last_name={last_name}
-              time={time}
-              date={date}
-              avatarSrc={avatarSrc}
-            />
-          </S.PopupWrapper>
-        </Popup>
-      </Marker>
-    </MapContainer>
+    <div>
+      <S.ExitWrapper onClick={() => history.goBack()}>Go Back...</S.ExitWrapper>
+      <MapContainer style={{ height: '100vh' }} center={position} zoom={13} scrollWheelZoom={true}>
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+
+        <Marker position={position} icon={money_marker}>
+          <Popup>
+            <S.PopupWrapper>
+              <ExpensesDetails
+                map={map}
+                country={country}
+                city={city}
+                street={street}
+                business={business}
+                first_name={first_name}
+                last_name={last_name}
+                time={time}
+                date={date}
+                avatarSrc={avatarSrc}
+              />
+            </S.PopupWrapper>
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
   );
 };
 
