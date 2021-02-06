@@ -21,6 +21,7 @@ export const RouterWrapper = styled.div`
   background-color: #f8f8f8;
   border-radius: 1rem;
   overflow-y: auto;
+
   width: 80%;
   display: flex;
   justify-content: center;

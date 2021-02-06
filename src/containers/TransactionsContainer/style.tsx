@@ -3,13 +3,12 @@ import styled from 'styled-components';
 export const TransactionContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #f8f8f8;
+  width: 100%;
 `;
 
 export const FilterWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  /* justify-content: space-evenly; */
   justify-content: center;
   align-items: center;
 `;
