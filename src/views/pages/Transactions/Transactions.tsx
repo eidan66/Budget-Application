@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { FC, useContext, useEffect } from 'react';
+import { FC, useContext } from 'react';
 import { ExpenseCard } from '../../../components/organisms';
 import * as S from './style';
 import useLocalStorage from './../../../hooks/useLocalStorage';
@@ -9,9 +9,7 @@ import { UserContext } from '../../../contexts/user/userContext';
 import { CategoriesContext } from '../../../contexts/categories/categoriesContext';
 
 import { Slide } from 'react-awesome-reveal';
-
-// import AOS from 'aos';
-// import 'aos/dist/aos.css';
+import { useHistory } from 'react-router';
 
 import { IUserDetails, ICategory } from '../../../interfaces/context';
 
@@ -21,7 +19,8 @@ const transactionRenderByCategory = (
   category: string,
   favsListIds: string[],
   setPaymentFavorite: (favsListIds: string[]) => void,
-  categories: ICategory[]
+  categories: ICategory[],
+  history: any
 ) => {
   const categoryName = categories.map(({ name, color }) => {
     if (name === category) return color;
@@ -33,7 +32,32 @@ const transactionRenderByCategory = (
         <Slide direction="left">
           <ExpenseCard
             id={transaction.id}
-            onClick={() => console.log('Hey from expenseCard !')}
+            onClick={() =>
+              history.push({
+                pathname: '/Map',
+                search: `?position=${[transaction.location.lat, transaction.location.lng]}&avatarSrc=${
+                  userData[0].avatar
+                }&first_name=${userData[0].first_name}
+                  &last_name=${userData[0].last_name}&business=${transaction.business}&time=${transaction.time}&date=${
+                  transaction.date
+                }&country=${transaction.location.country}&city=${transaction.location.city}&street=${
+                  transaction.location.street
+                }&map=${true}`,
+                state: {
+                  position: [transaction.location.lat, transaction.location.lng],
+                  avatarSrc: userData[0].avatar,
+                  first_name: userData[0].first_name,
+                  last_name: userData[0].last_name,
+                  business: transaction.business,
+                  time: transaction.time,
+                  date: transaction.date,
+                  country: transaction.location.country,
+                  city: transaction.location.city,
+                  street: transaction.location.street,
+                  map: true,
+                },
+              })
+            }
             map={false}
             key={transaction.id}
             amount={transaction.amount}
@@ -68,25 +92,7 @@ const Transactions: FC<ITransactionProps> = ({ category }) => {
   const { userDetails } = useContext(UserContext);
   const { categories } = useContext(CategoriesContext);
   const [favsListIds, setPaymentFavorite] = useLocalStorage('paymentFav', []);
-
-  // useEffect(() => {
-  //   AOS.init({
-  //     // Global settings:
-  //     disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-  //     initClassName: 'aos-init', // class applied after initialization
-  //     animatedClassName: 'aos-animate', // class applied on animation
-  //     useClassNames: true, // if true, will add content of `data-aos` as classes on scroll
-  //     disableMutationObserver: true, // disables automatic mutations' detections (advanced)
-  //     debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-  //     throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
-
-  //     // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-  //     offset: 120, // offset (in px) from the original trigger point
-  //     delay: 10, // values from 0 to 3000, with step 50ms
-  //     duration: 400, // values from 0 to 3000, with step 50ms
-  //   });
-  //   // AOS.init({ duration: 750 });
-  // }, []);
+  const history = useHistory();
 
   return (
     <S.TransactionContainer>
@@ -97,7 +103,8 @@ const Transactions: FC<ITransactionProps> = ({ category }) => {
           category,
           favsListIds,
           setPaymentFavorite,
-          categories
+          categories,
+          history
         )}
       </S.AllTransactionsWrapper>
     </S.TransactionContainer>
