@@ -2,17 +2,16 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useEffect, useContext, useState } from 'react';
 import * as S from './style';
-import DATABASE from './mockup-tests/Payment_History.json';
 
 import urls from './config/urls';
-import { currencyAPI } from './services/axiosService';
+import { currencyAPI, transactionsAPI } from './services/axiosService';
 
 //  ************* Backdrop *************   \\
 import { Backdrop } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 //  ************* Backdrop *************   \\
 
-import USER_DETAILS from './mockup-tests/userDetails.json';
+import USER_DETAILS from './services/userDetails.json';
 import { compareFunction, categoriesCollector } from './helpers';
 
 //  ************* CONTEXT *************   \\
@@ -56,15 +55,21 @@ const App: React.FC = () => {
     }
   };
 
-  /* Object.keys(myObject).map((item,index)=>{
-console.log(myObject[item]);
-}) */
+  const getTransactionList = async () => {
+    const url = urls.transaction.transactionsList();
+    try {
+      const { data } = await transactionsAPI.get(url);
+      const sortedDB = data.sort(compareFunction);
+      setPaymentDetails(sortedDB);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
 
   useEffect(() => {
     setTimeout(() => {
       userFlag === false ? (setUserDetails(USER_DETAILS), setUserFlag(true)) : console.info('Waiting for user...');
-      const sortedDB = DATABASE.sort(compareFunction);
-      setPaymentDetails(sortedDB);
+      getTransactionList();
     }, 5000);
   }, []);
 
@@ -73,7 +78,7 @@ console.log(myObject[item]);
   }, [paymentDetails]);
 
   useEffect(() => {
-    sorted ? categoriesCollector(DATABASE, addCategory, setCategoriesFlag) : '';
+    sorted ? categoriesCollector(paymentDetails, addCategory, setCategoriesFlag) : '';
   }, [sorted]);
 
   useEffect(() => {
@@ -84,7 +89,6 @@ console.log(myObject[item]);
 
   useEffect(() => {
     getCurrencyList();
-    console.log('here');
   }, [currency]);
 
   return (
