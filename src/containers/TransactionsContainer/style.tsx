@@ -16,11 +16,13 @@ export const FilterWrapper = styled.div`
 export const TransactionWrapper = styled.div``;
 
 export const LoaderWrapper = styled.div`
-  width: 80rem;
+  width: 100%;
+  height: 100%;
   height: auto;
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 export const TitleWrapper = styled.div`
