@@ -19,18 +19,20 @@ const Summary: FC<ISummaryProps> = ({ summary, revenue, percent }) => {
 
   return (
     <S.SummaryWrapper>
-      <S.TitleWrapper>
-        <Typography.MediumText color="primary">{summary}</Typography.MediumText>
-      </S.TitleWrapper>
+      <S.SummaryHeaderWrapper>
+        <S.TitleWrapper>
+          <Typography.MediumText color="primary">{summary}</Typography.MediumText>
+        </S.TitleWrapper>
+        <S.IconWrapper>
+          <IconComp />
+        </S.IconWrapper>
+      </S.SummaryHeaderWrapper>
 
       <S.RevenueWrapper color={summaryColor(summary)}>
         <Typography.SmallText variant="subtitle2">{titleChecker(summary)}</Typography.SmallText>
         <Typography.MediumText>
           {getSymbolFromCode(currency as CurrencyCode) + ' ' + numberWithCommas(revenue)}
         </Typography.MediumText>
-        <S.IconWrapper>
-          <IconComp />
-        </S.IconWrapper>
       </S.RevenueWrapper>
 
       <S.SubtitleWrapper>

@@ -270,11 +270,11 @@ const Charts = () => {
   return (
     <S.ChartsWrapper>
       <S.PaymentChartWrapper>
-        <Chart options={lineChartOptions} series={lineChartSeries} type="line" height={370} />
+        <Chart options={lineChartOptions} series={lineChartSeries} type="line" height={300} />
       </S.PaymentChartWrapper>
 
       <S.PaymentChartWrapper>
-        <Chart options={barChartOptions} series={barChartSeries} type="bar" height={370} />
+        <Chart options={barChartOptions} series={barChartSeries} type="bar" height={300} />
       </S.PaymentChartWrapper>
     </S.ChartsWrapper>
   );

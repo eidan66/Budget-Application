@@ -8,16 +8,14 @@ flex-direction: row;
 
 export const PageWrapper = styled.div`
   ${flex_row}
+  width: 100%;
 `;
 export const DashboardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: #f8f8f8;
-  border-radius: 1rem;
   padding: 1rem;
-  width: 60rem;
-  height: 64rem;
+  width: 100%;
 `;
 
 export const HeaderWrapper = styled.div`

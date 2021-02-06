@@ -40,6 +40,8 @@ const defaultTheme = createMuiTheme({
     },
     h5: {
       color: 'white',
+      fontSize: '1.3rem',
+      fontWeight: 600,
     },
   },
 });

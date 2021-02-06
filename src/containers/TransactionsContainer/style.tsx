@@ -3,13 +3,12 @@ import styled from 'styled-components';
 export const TransactionContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #f8f8f8;
+  width: 100%;
 `;
 
 export const FilterWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  /* justify-content: space-evenly; */
   justify-content: center;
   align-items: center;
 `;
@@ -17,11 +16,13 @@ export const FilterWrapper = styled.div`
 export const TransactionWrapper = styled.div``;
 
 export const LoaderWrapper = styled.div`
-  width: 80rem;
+  width: 100%;
+  height: 100%;
   height: auto;
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 export const TitleWrapper = styled.div`

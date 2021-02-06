@@ -5,7 +5,6 @@ export const TransactionContainer = styled.div`
   background-color: #f8f8f8;
   border-radius: 1rem;
   padding: 1rem;
-  width: 74.5rem;
 `;
 
 export const AllTransactionsWrapper = styled.div`
