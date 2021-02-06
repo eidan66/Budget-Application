@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { ChartContainer } from '../../../containers';
 import { Card, Summary } from '../../../components/molecules';
 import * as S from './style';

@@ -20,4 +20,5 @@ export const Box = styled.div<PaletteProps & SpacingProps>`
   border-radius: 1rem;
   background-color: #9c8fe730;
   width: 9rem;
+  height: 6rem;
 `;
