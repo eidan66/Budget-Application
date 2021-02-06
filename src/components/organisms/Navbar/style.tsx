@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const NavbarWrapper = styled.div`
-  position: sticky;
+  /* position: sticky; */
   left: 0;
   top: 0;
   display: flex;
