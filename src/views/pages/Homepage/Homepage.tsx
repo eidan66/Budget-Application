@@ -37,20 +37,22 @@ const Homepage: React.FC = () => {
             userCurrency={currency as CurrencyCode}
           />
         </S.NavbarWrapper>
-        <Switch>
-          {routes.map((route, index) => {
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                render={(props: RouteComponentProps<any>) => (
-                  <route.component name={route.name} {...props} {...route.props} />
-                )}
-              />
-            );
-          })}
-        </Switch>
+        <S.RouterWrapper>
+          <Switch>
+            {routes.map((route, index) => {
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  render={(props: RouteComponentProps<any>) => (
+                    <route.component name={route.name} {...props} {...route.props} />
+                  )}
+                />
+              );
+            })}
+          </Switch>
+        </S.RouterWrapper>
         <S.PaymentWrapper>
           <UserPayment
             email={userDetails[0].email}

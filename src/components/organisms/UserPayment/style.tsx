@@ -1,16 +1,11 @@
 import styled from 'styled-components';
 
 export const UserPaymentWrapper = styled.div`
-  /* position: sticky; */
-  left: 0;
-  top: 0;
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  width: 16.5rem;
-  height: 64rem;
+  width: inherit;
   border-radius: 1rem;
-  justify-content: center;
   align-items: center;
   background-color: #ffe7c5;
 `;
