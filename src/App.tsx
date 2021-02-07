@@ -6,6 +6,7 @@ import * as S from './style';
 import urls from './config/urls';
 import { currencyAPI, transactionAPI } from './services/axiosService';
 
+
 //  ************* Backdrop *************   \\
 import { Backdrop } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
@@ -72,6 +73,7 @@ const App: React.FC = () => {
   useEffect(() => {
     getTransactionList();
   }, []);
+
 
   useEffect(() => {
     userFlag && setCurrency(userDetails[0].current_balance_currency);
