@@ -1,0 +1,13 @@
+{
+  "first_name": "Timmie",
+  "last_name": "Dunlap",
+  "email": "tdunlap0@ifeng.com",
+  "avatar": "http://www.avatarpro.biz/avatar?s=200",
+  "current_balance": "10241.91",
+  "current_balance_currency": "ILS",
+  "credit_card": {
+    "exp_year": 29,
+    "exp_month": 10,
+    "last4Digits": 9712
+  }
+}
