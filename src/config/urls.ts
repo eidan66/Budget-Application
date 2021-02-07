@@ -4,8 +4,8 @@ export default {
     base: 'https://api.exchangeratesapi.io',
     currencyList: (query: string) => `/latest?base=${query}`,
   },
-  budget: {
-    base: 'tempURL',
-    userDetails: () => ``,
+  transaction: {
+    base: 'https://my.api.mockaroo.com',
+    transactionsList: () => `/transactions.json?key=${process.env.REACT_APP_TRANSACTION_KEY}`,
   },
 };
