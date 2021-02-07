@@ -5,6 +5,6 @@ export const currencyAPI = axios.create({
   baseURL: urls.currency.base,
 });
 
-export const transactionsAPI = axios.create({
+export const transactionAPI = axios.create({
   baseURL: urls.transaction.base,
 });

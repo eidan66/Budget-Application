@@ -4,7 +4,8 @@ import React, { useEffect, useContext, useState } from 'react';
 import * as S from './style';
 
 import urls from './config/urls';
-import { currencyAPI, transactionsAPI } from './services/axiosService';
+import { currencyAPI, transactionAPI } from './services/axiosService';
+
 
 //  ************* Backdrop *************   \\
 import { Backdrop } from '@material-ui/core';
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const App: React.FC = () => {
   const classes = useStyles();
   const [userFlag, setUserFlag] = useState(false);
-  const { sorted, categoriesFlag, currency, setSorted, setCategoriesFlag, setCurrency } = useContext(AppContext);
+  const { currency, setCategoriesFlag, setCurrency } = useContext(AppContext);
   const { paymentDetails, setPaymentDetails } = useContext(PaymentContext);
   const { addCategory } = useContext(CategoriesContext);
   const { userDetails, setUserDetails } = useContext(UserContext);
@@ -58,34 +59,25 @@ const App: React.FC = () => {
   const getTransactionList = async () => {
     const url = urls.transaction.transactionsList();
     try {
-      const { data } = await transactionsAPI.get(url);
+      const { data } = await transactionAPI.get(url);
       const sortedDB = data.sort(compareFunction);
+      setUserDetails(USER_DETAILS);
+      setUserFlag(true);
       setPaymentDetails(sortedDB);
+      categoriesCollector(sortedDB, addCategory, setCategoriesFlag);
     } catch (error) {
       throw new Error(error.message);
     }
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      userFlag === false ? (setUserDetails(USER_DETAILS), setUserFlag(true)) : console.info('Waiting for user...');
-      getTransactionList();
-    }, 5000);
+    getTransactionList();
   }, []);
 
-  useEffect(() => {
-    paymentDetails.length >= 1 ? setSorted(true) : '';
-  }, [paymentDetails]);
 
   useEffect(() => {
-    sorted ? categoriesCollector(paymentDetails, addCategory, setCategoriesFlag) : '';
-  }, [sorted]);
-
-  useEffect(() => {
-    sorted && userFlag && categoriesFlag
-      ? (console.info('Successfully received the data !'), setCurrency(userDetails[0].current_balance_currency))
-      : console.info('Waiting for the required data ...');
-  }, [categoriesFlag, userFlag, sorted]);
+    userFlag && setCurrency(userDetails[0].current_balance_currency);
+  }, [userFlag]);
 
   useEffect(() => {
     getCurrencyList();
@@ -93,12 +85,12 @@ const App: React.FC = () => {
 
   return (
     <S.AppWrapper>
-      {sorted && categoriesFlag ? (
-        <Homepage />
-      ) : (
+      {paymentDetails.length === 0 ? (
         <Backdrop className={classes.backdrop} open={true}>
           <Loader.Spinner />
         </Backdrop>
+      ) : (
+        <Homepage />
       )}
     </S.AppWrapper>
   );
