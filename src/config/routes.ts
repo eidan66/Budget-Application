@@ -10,6 +10,12 @@ const routes: IRoute[] = [
     exact: true,
   },
   {
+    path: '/Dashboard',
+    name: 'Dashboard',
+    component: DashboardContainer,
+    exact: true,
+  },
+  {
     path: '/Categories',
     name: 'Categories',
     component: Categories,
