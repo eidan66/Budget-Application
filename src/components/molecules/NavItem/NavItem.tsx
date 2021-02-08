@@ -13,17 +13,18 @@ interface INavItem {
 }
 
 const NavItem: FC<INavItem> = ({ label, icon, current, onClick, index }) => {
-  console.log('~ label', label);
   const variant = current ? 'subtitle1' : 'subtitle2';
   const color = current ? 'white' : '#C5C0E5';
   const IconComp = Icon[icon];
   return (
-    <Link to={'/' + label}>
-      <S.NavItemWrapper color={color} onClick={() => onClick(index)}>
-        <IconComp color={color} />
-        <Typography.SmallText variant={variant}>{label}</Typography.SmallText>
-      </S.NavItemWrapper>
-    </Link>
+    <S.NavItemContainer>
+      <Link to={'/' + label}>
+        <S.NavItemWrapper color={color} onClick={() => onClick(index)}>
+          <IconComp color={color} />
+          <Typography.SmallText variant={variant}>{label}</Typography.SmallText>
+        </S.NavItemWrapper>
+      </Link>
+    </S.NavItemContainer>
   );
 };
 

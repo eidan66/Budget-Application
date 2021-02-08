@@ -37,7 +37,7 @@ const ExpenseMiniCard: IExpenseMiniCardProps = {
   ),
   Map: ({ color, onClick }) => (
     <S.ExpenseWrapper onClick={onClick}>
-      <Typography.SmallText variant="subtitle2">Map</Typography.SmallText>
+      <Typography.SmallText variant="subtitle2">Map - Click on Icon !</Typography.SmallText>
 
       <S.MapWrapper color={color}>
         <Icon.Map />
