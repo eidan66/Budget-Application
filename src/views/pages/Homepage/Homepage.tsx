@@ -30,7 +30,7 @@ const Homepage: React.FC = () => {
 
   return (
     <S.HomepageWrapper>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <S.NavbarWrapper>
           <Navbar
             currentBalance={currencyChecker(currency, userDetails[0].current_balance).toString()}
