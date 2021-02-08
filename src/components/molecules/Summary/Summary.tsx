@@ -36,10 +36,7 @@ const Summary: FC<ISummaryProps> = ({ summary, revenue, percent }) => {
       </S.RevenueWrapper>
 
       <S.SubtitleWrapper>
-        <Typography.ExtraSmallText color="primary">
-          {summary === 'Income' ? '+ ' : '- '}
-          {percent}%
-        </Typography.ExtraSmallText>
+        <Typography.ExtraSmallText color="primary">{percent}%</Typography.ExtraSmallText>
         <Typography.SmallText variant="subtitle2">Since last 3 months</Typography.SmallText>
       </S.SubtitleWrapper>
     </S.SummaryWrapper>
