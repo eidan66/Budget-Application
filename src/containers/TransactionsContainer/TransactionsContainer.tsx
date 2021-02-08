@@ -12,6 +12,10 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 
 import * as S from './style';
 
+interface ILocationState {
+  category: string;
+}
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
@@ -25,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const TransactionsContainer: React.FC = () => {
-  const location = useLocation();
+  const location = useLocation<ILocationState>();
   const { categories } = useContext(CategoriesContext);
   let categoryName;
   if (location.state) {
