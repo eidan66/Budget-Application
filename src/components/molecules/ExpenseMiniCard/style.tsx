@@ -33,6 +33,10 @@ export const MapWrapper = styled.div`
     font-size: 3.188rem;
   }
   margin-top: 0.5rem;
+
+  & > div > svg {
+    cursor: pointer;
+  }
 `;
 
 // Amount
