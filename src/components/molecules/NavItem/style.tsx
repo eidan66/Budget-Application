@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 export const NavItemWrapper = styled.div`
@@ -8,5 +7,11 @@ export const NavItemWrapper = styled.div`
 
   & > h6 {
     color: ${({ color }) => color};
+  }
+`;
+
+export const NavItemContainer = styled.div`
+  & > a {
+    text-decoration: none;
   }
 `;
