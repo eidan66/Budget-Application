@@ -10,6 +10,7 @@ import { AppContext } from '../../../contexts/app/appContext';
 
 import useLocalStorage from './../../../hooks/useLocalStorage';
 import * as S from './style';
+import { NotFound } from '..';
 
 const Homepage: React.FC = () => {
   const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
@@ -51,6 +52,7 @@ const Homepage: React.FC = () => {
                 />
               );
             })}
+            <Route component={NotFound} />
           </Switch>
         </S.RouterWrapper>
         <S.PaymentWrapper>
