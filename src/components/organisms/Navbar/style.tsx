@@ -3,7 +3,7 @@ interface IBurger {
   open: boolean;
 }
 export const NavbarWrapper = styled.div<IBurger>`
-  display: flex;
+  display: ${({ open }) => (open ? 'flex' : 'none')};
   flex-direction: column;
   padding: 1rem;
   width: inherit;
@@ -11,9 +11,10 @@ export const NavbarWrapper = styled.div<IBurger>`
   border-radius: 1rem;
   background-color: #4333a0;
 
-  transition: transform 0.3s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
-  @media (max-width: 576px) {
+  transition: transform 0.3s ease-in-out;
+
+  @media screen and (max-width: 576px) {
     width: 100%;
   }
 `;

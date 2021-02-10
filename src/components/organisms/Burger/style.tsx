@@ -6,8 +6,8 @@ interface IBurger {
 
 export const StyledBurger = styled.button<IBurger>`
   position: absolute;
-  top: 5%;
-  left: 2rem;
+  top: 1rem;
+  left: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
