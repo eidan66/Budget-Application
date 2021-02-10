@@ -42,7 +42,7 @@ const Map: React.FC<IMaoProps> = ({
     iconAnchor: [27, 57], // point of the icon which will correspond to marker's location
   });
   return (
-    <div>
+    <S.MapWrapper>
       <S.ExitWrapper onClick={() => history.goBack()}>Go Back...</S.ExitWrapper>
       <MapContainer style={{ height: '100vh' }} center={position} zoom={13} scrollWheelZoom={true}>
         <TileLayer
@@ -69,7 +69,7 @@ const Map: React.FC<IMaoProps> = ({
           </Popup>
         </Marker>
       </MapContainer>
-    </div>
+    </S.MapWrapper>
   );
 };
 
