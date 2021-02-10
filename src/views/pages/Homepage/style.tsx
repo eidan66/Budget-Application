@@ -26,6 +26,7 @@ export const RouterWrapper = styled.div`
 
   @media screen and (max-width: 470px) {
     margin-top: 3rem;
+    margin-left: -15px;
   }
 `;
 
