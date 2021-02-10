@@ -1,19 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, RouteComponentProps } from 'react-router-dom';
 import routes from '../../../config/routes';
-import { Navbar, UserPayment } from '../../../components/organisms';
-
+import { Navbar, UserPayment, Burger } from '../../../components/organisms';
 import type { CurrencyCode } from '../../../../node_modules/currency-code-symbol-map/lib/currencyCodeSymbolMapping';
 
 import { UserContext } from '../../../contexts/user/userContext';
 import { AppContext } from '../../../contexts/app/appContext';
 
 import useLocalStorage from './../../../hooks/useLocalStorage';
+import useOnClickOutside from './../../../hooks/useLocalStorage';
 import * as S from './style';
 import { NotFound } from '..';
 
 const Homepage: React.FC = () => {
   const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
+  const [open, setOpen] = React.useState(false);
 
   const { userDetails } = React.useContext(UserContext);
   const { currency } = React.useContext(AppContext);
@@ -33,7 +34,10 @@ const Homepage: React.FC = () => {
     <S.HomepageWrapper>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <S.NavbarWrapper>
+          <Burger open={open} setOpen={setOpen} />
           <Navbar
+            open={open}
+            setOpen={setOpen}
             currentBalance={currencyChecker(currency, userDetails[0].current_balance).toString()}
             userCurrency={currency as CurrencyCode}
           />
