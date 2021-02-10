@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { BrowserRouter, Route, Switch, RouteComponentProps } from 'react-router-dom';
 import routes from '../../../config/routes';
 import { Navbar, UserPayment, Burger } from '../../../components/organisms';
@@ -8,7 +8,8 @@ import { UserContext } from '../../../contexts/user/userContext';
 import { AppContext } from '../../../contexts/app/appContext';
 
 import useLocalStorage from './../../../hooks/useLocalStorage';
-import useOnClickOutside from './../../../hooks/useLocalStorage';
+import { useOnClickOutside } from '../../../hooks/useOnClickOutside ';
+
 import * as S from './style';
 import { NotFound } from '..';
 
@@ -18,7 +19,8 @@ const Homepage: React.FC = () => {
 
   const { userDetails } = React.useContext(UserContext);
   const { currency } = React.useContext(AppContext);
-
+  const node = useRef(null);
+  useOnClickOutside(node, () => setOpen(false));
   const currencyChecker = (paymentCurrency: string, paymentAmount: string) => {
     let rate = 1;
     Object.keys(currencyList).map((item) => {
@@ -33,7 +35,7 @@ const Homepage: React.FC = () => {
   return (
     <S.HomepageWrapper>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <S.NavbarWrapper>
+        <S.NavbarWrapper ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Navbar
             open={open}
