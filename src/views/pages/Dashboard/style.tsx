@@ -23,10 +23,12 @@ export const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin-bottom: 2rem;
 
   @media screen and (max-width: 890px) {
     flex-direction: column;
     align-items: center;
+    margin-bottom: 0;
 
     & > div {
       margin-bottom: 2rem;
@@ -38,10 +40,12 @@ export const SummaryWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin-bottom: 2rem;
 
   @media screen and (max-width: 890px) {
     flex-direction: column;
     align-items: center;
+    margin-bottom: 0;
 
     & > div {
       margin-bottom: 2rem;
