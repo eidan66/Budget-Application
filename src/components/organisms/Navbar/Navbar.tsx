@@ -25,11 +25,14 @@ interface INavbarProps {
   variant?: 'subtitle1' | 'subtitle2';
   currentBalance: string;
   userCurrency: CurrencyCode;
+  open: boolean;
+  setOpen?: (open: boolean) => void;
 }
-const Navbar: FC<INavbarProps> = ({ currentBalance, userCurrency }) => {
+const Navbar: FC<INavbarProps> = ({ currentBalance, userCurrency, open }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
   return (
-    <S.NavbarWrapper>
+    <S.NavbarWrapper open={open}>
       <S.CurrentBalanceWrapper>
         <CurrentBalance userCurrency={userCurrency} currentBalance={currentBalance} />
       </S.CurrentBalanceWrapper>

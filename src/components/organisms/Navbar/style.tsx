@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-
-export const NavbarWrapper = styled.div`
+interface IBurger {
+  open: boolean;
+}
+export const NavbarWrapper = styled.div<IBurger>`
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -8,6 +10,17 @@ export const NavbarWrapper = styled.div`
   height: inherit;
   border-radius: 1rem;
   background-color: #4333a0;
+
+  @media screen and (max-width: 1200px) {
+    display: ${({ open }) => (open ? 'flex' : 'none')};
+
+    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
+    transition: transform 0.3s ease-in-out;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
 `;
 
 export const CurrentBalanceWrapper = styled.div`
@@ -21,4 +34,20 @@ export const CurrentBalanceWrapper = styled.div`
 export const NavItemsWrapper = styled.div`
   flex-direction: column;
   display: flex;
+
+  transition: transform 0.3s ease-in-out;
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+
+  a {
+    text-transform: uppercase;
+    transition: color 0.3s linear;
+
+    @media (max-width: 576px) {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
 `;

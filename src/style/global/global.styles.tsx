@@ -6,7 +6,12 @@ const GlobalStyle = createGlobalStyle`
     padding:0;
     margin:0;
     font-family: 'Poppins', sans-serif;
+  
+    @media screen and (max-width: 470px) {
+        font-size:13px;
     }
+}
+
 `;
 
 export default GlobalStyle;
