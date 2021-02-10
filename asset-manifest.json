@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/Budget-Application/static/js/main.455af9bd.chunk.js",
-    "main.js.map": "/Budget-Application/static/js/main.455af9bd.chunk.js.map",
+    "main.js": "/Budget-Application/static/js/main.d811b777.chunk.js",
+    "main.js.map": "/Budget-Application/static/js/main.d811b777.chunk.js.map",
     "runtime-main.js": "/Budget-Application/static/js/runtime-main.e9a9d242.js",
     "runtime-main.js.map": "/Budget-Application/static/js/runtime-main.e9a9d242.js.map",
     "static/css/2.b4ebbe46.chunk.css": "/Budget-Application/static/css/2.b4ebbe46.chunk.css",
-    "static/js/2.9b9849e0.chunk.js": "/Budget-Application/static/js/2.9b9849e0.chunk.js",
-    "static/js/2.9b9849e0.chunk.js.map": "/Budget-Application/static/js/2.9b9849e0.chunk.js.map",
+    "static/js/2.583a55eb.chunk.js": "/Budget-Application/static/js/2.583a55eb.chunk.js",
+    "static/js/2.583a55eb.chunk.js.map": "/Budget-Application/static/js/2.583a55eb.chunk.js.map",
     "index.html": "/Budget-Application/index.html",
     "static/css/2.b4ebbe46.chunk.css.map": "/Budget-Application/static/css/2.b4ebbe46.chunk.css.map",
-    "static/js/2.9b9849e0.chunk.js.LICENSE.txt": "/Budget-Application/static/js/2.9b9849e0.chunk.js.LICENSE.txt",
+    "static/js/2.583a55eb.chunk.js.LICENSE.txt": "/Budget-Application/static/js/2.583a55eb.chunk.js.LICENSE.txt",
     "static/media/card.b99ed176.gif": "/Budget-Application/static/media/card.b99ed176.gif",
     "static/media/cardBackground.3b32bef8.png": "/Budget-Application/static/media/cardBackground.3b32bef8.png",
     "static/media/dot.a78d7112.gif": "/Budget-Application/static/media/dot.a78d7112.gif",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.e9a9d242.js",
     "static/css/2.b4ebbe46.chunk.css",
-    "static/js/2.9b9849e0.chunk.js",
-    "static/js/main.455af9bd.chunk.js"
+    "static/js/2.583a55eb.chunk.js",
+    "static/js/main.d811b777.chunk.js"
   ]
 }
