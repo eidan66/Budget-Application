@@ -9,6 +9,9 @@ export const PageWrapper = styled.div`
     flex-direction: column;
     overflow-x: hidden;
   }
+  @media screen and (max-width: 470px) {
+    margin-left: -15px;
+  }
 `;
 
 export const DashboardWrapper = styled.div`
