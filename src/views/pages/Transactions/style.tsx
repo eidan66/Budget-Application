@@ -16,16 +16,11 @@ export const AllTransactionsWrapper = styled.div`
   justify-content: space-evenly;
   height: 56rem;
   overflow-y: scroll;
-  scroll-snap-type: y proximity;
 `;
 
 export const TransactionWrapper = styled.div`
-  scroll-snap-align: start;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* flex: 1 0 21%; */
-  margin-bottom: 2rem;
 
-  /* @media screen and (max-width: 1350); */
+  margin-bottom: 2rem;
 `;
