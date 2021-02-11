@@ -30,9 +30,23 @@ export const CategoriesWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 `;
 
 export const CardWrapper = styled.div`
+  display: inline-block;
+  margin: 1rem;
+
+  & > div {
+    border: 1px solid #d1d1d1;
+    box-shadow: 0 0 17px #d1d1d1;
+  }
+
+  &:hover {
+    -webkit-animation: wobble-hor-top 0.8s both;
+    animation: wobble-hor-top 0.8s both;
+  }
+
   @-webkit-keyframes wobble-hor-top {
     0%,
     100% {
@@ -90,17 +104,5 @@ export const CardWrapper = styled.div`
       -webkit-transform: translateX(-6px) rotate(1.2deg);
       transform: translateX(-6px) rotate(1.2deg);
     }
-  }
-  flex: 0.12 0 21%;
-  margin-bottom: 1rem;
-
-  & > div {
-    border: 1px solid #d1d1d1;
-    box-shadow: 0 0 17px #d1d1d1;
-  }
-
-  &:hover {
-    -webkit-animation: wobble-hor-top 0.8s both;
-    animation: wobble-hor-top 0.8s both;
   }
 `;
