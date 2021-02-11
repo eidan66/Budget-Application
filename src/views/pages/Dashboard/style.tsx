@@ -17,6 +17,11 @@ export const DashboardWrapper = styled.div`
   justify-content: space-evenly;
   padding: 1rem;
   width: 100%;
+
+  @media screen and (max-width: 470px) {
+    padding: 0;
+    margin-top: 2rem;
+  } ;
 `;
 
 export const HeaderWrapper = styled.div`
