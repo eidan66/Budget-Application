@@ -6,11 +6,11 @@ Fully responsive web single page application that present to user his transactio
 
 Desktop mode 💻
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BDKadkpj85w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://youtu.be/BDKadkpj85w
 
 Responsive (Mobile & Tablet Mode) 📱
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oaJKNc4qgb0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://youtu.be/oaJKNc4qgb0
 
 ## Mockups 🖼
 
