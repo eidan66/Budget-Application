@@ -44,7 +44,7 @@ const Map: React.FC<IMaoProps> = ({
   return (
     <S.MapWrapper>
       <S.ExitWrapper onClick={() => history.goBack()}>Go Back...</S.ExitWrapper>
-      <MapContainer style={{ height: '100vh' }} center={position} zoom={13} scrollWheelZoom={true}>
+      <MapContainer style={{ height: '80vh' }} center={position} zoom={13} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
