@@ -8,13 +8,17 @@ export const HomepageWrapper = styled.div`
   height: 100vh;
   flex-direction: row;
   overflow: hidden;
-  position: relative;
+  @media screen and (max-width: 1200px) {
+    position: relative;
+  }
 `;
 
 export const NavbarWrapper = styled.div`
   height: 100vh;
   z-index: 10;
-  position: absolute;
+  @media screen and (max-width: 1200px) {
+    position: absolute;
+  }
 `;
 
 export const RouterWrapper = styled.div`
