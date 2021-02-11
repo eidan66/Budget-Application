@@ -20,3 +20,7 @@ export enum PAYMENT_ACTION {
 export enum LOADER_ACTION {
   SET_LOADER = 'set_loader',
 }
+
+export enum NAVBAR_ACTION {
+  SET_OPEN = 'set_open',
+}
