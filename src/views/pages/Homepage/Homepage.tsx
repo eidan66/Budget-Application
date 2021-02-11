@@ -16,7 +16,6 @@ import { NotFound } from '..';
 
 const Homepage: React.FC = () => {
   const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
-  // const [open, setOpen] = React.useState(false);
 
   const { open, setOpen } = React.useContext(NavbarContext);
   const { userDetails } = React.useContext(UserContext);
