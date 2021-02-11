@@ -4,6 +4,7 @@ export const MapWrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;
 `;
 export const ExitWrapper = styled.div`
   display: flex;
