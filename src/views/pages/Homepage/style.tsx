@@ -29,7 +29,9 @@ export const RouterWrapper = styled.div`
   justify-content: center;
   align-items: baseline;
   width: 100%;
-
+  @media screen and (max-width: 890px) {
+    align-items: unset;
+  }
   @media screen and (max-width: 470px) {
     margin-top: 3rem;
   }
