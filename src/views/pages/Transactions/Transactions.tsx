@@ -29,52 +29,52 @@ const transactionRenderByCategory = (
   return transactions.map((transaction: any) => {
     return transaction.category === category ? (
       <S.TransactionWrapper key={transaction.id}>
-        {/* <Slide direction="left"> */}
-        <ExpenseCard
-          id={transaction.id}
-          onClick={() =>
-            history.push({
-              pathname: '/Map',
-              search: `?position=${[transaction.location.lat, transaction.location.lng]}&avatarSrc=${
-                userData[0].avatar
-              }&first_name=${userData[0].first_name}
+        <Slide direction="left">
+          <ExpenseCard
+            id={transaction.id}
+            onClick={() =>
+              history.push({
+                pathname: '/Map',
+                search: `?position=${[transaction.location.lat, transaction.location.lng]}&avatarSrc=${
+                  userData[0].avatar
+                }&first_name=${userData[0].first_name}
                   &last_name=${userData[0].last_name}&business=${transaction.business}&time=${transaction.time}&date=${
-                transaction.date
-              }&country=${transaction.location.country}&city=${transaction.location.city}&street=${
-                transaction.location.street
-              }&map=${true}`,
-              state: {
-                position: [transaction.location.lat, transaction.location.lng],
-                avatarSrc: userData[0].avatar,
-                first_name: userData[0].first_name,
-                last_name: userData[0].last_name,
-                business: transaction.business,
-                time: transaction.time,
-                date: transaction.date,
-                country: transaction.location.country,
-                city: transaction.location.city,
-                street: transaction.location.street,
-                map: true,
-              },
-            })
-          }
-          map={false}
-          key={transaction.id}
-          amount={transaction.amount}
-          status={status}
-          category={transaction.category}
-          categoryColor={categoryName[0]}
-          business={transaction.company}
-          first_name={userData[0].first_name}
-          last_name={userData[0].last_name}
-          time={transaction.time}
-          date={transaction.date}
-          avatarSrc={userData[0].avatar}
-          type={transaction.paymentType}
-          favsListIds={favsListIds}
-          setPaymentFavorite={setPaymentFavorite}
-        />
-        {/* </Slide> */}
+                  transaction.date
+                }&country=${transaction.location.country}&city=${transaction.location.city}&street=${
+                  transaction.location.street
+                }&map=${true}`,
+                state: {
+                  position: [transaction.location.lat, transaction.location.lng],
+                  avatarSrc: userData[0].avatar,
+                  first_name: userData[0].first_name,
+                  last_name: userData[0].last_name,
+                  business: transaction.business,
+                  time: transaction.time,
+                  date: transaction.date,
+                  country: transaction.location.country,
+                  city: transaction.location.city,
+                  street: transaction.location.street,
+                  map: true,
+                },
+              })
+            }
+            map={false}
+            key={transaction.id}
+            amount={transaction.amount}
+            status={status}
+            category={transaction.category}
+            categoryColor={categoryName[0]}
+            business={transaction.company}
+            first_name={userData[0].first_name}
+            last_name={userData[0].last_name}
+            time={transaction.time}
+            date={transaction.date}
+            avatarSrc={userData[0].avatar}
+            type={transaction.paymentType}
+            favsListIds={favsListIds}
+            setPaymentFavorite={setPaymentFavorite}
+          />
+        </Slide>
       </S.TransactionWrapper>
     ) : (
       ''

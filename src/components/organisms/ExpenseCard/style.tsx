@@ -7,11 +7,6 @@ export const ExpenseWrapper = styled.div`
   padding: 1rem;
   height: 28rem;
   width: 25rem;
-
-  @media screen and (max-width: 470px) {
-    width: auto;
-    height: auto;
-  }
 `;
 
 export const ExpenseDetailsWrapper = styled.div`
