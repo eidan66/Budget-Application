@@ -8,7 +8,7 @@ import { PaymentContext } from '../../../contexts/payment/paymentContext';
 import { UserContext } from '../../../contexts/user/userContext';
 import { CategoriesContext } from '../../../contexts/categories/categoriesContext';
 
-import { Slide } from 'react-awesome-reveal';
+// import { Slide } from 'react-awesome-reveal';
 import { useHistory } from 'react-router';
 
 import { IUserDetails, ICategory } from '../../../interfaces/context';
