@@ -269,6 +269,7 @@ const Charts = () => {
 
   return (
     <S.ChartsWrapper>
+      <S.MobileMessage>Better View on Desktop or Tablet ...</S.MobileMessage>
       <S.PaymentChartWrapper>
         <Chart options={lineChartOptions} series={lineChartSeries} type="line" height={300} />
       </S.PaymentChartWrapper>
