@@ -104,3 +104,14 @@ export interface ILoaderAction {
   type: string;
   payload: ILoader | any;
 }
+
+//  ******** Navbar Context ********  \\
+export interface INavbar {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+}
+
+export interface INavbarAction {
+  type: string;
+  payload: INavbar | any;
+}

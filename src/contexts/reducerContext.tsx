@@ -10,8 +10,17 @@ import {
   IPaymentAction,
   ILoader,
   ILoaderAction,
+  INavbar,
+  INavbarAction,
 } from '../interfaces/context';
-import { CATEGORIES_ACTIONS, APP_ACTIONS, USER_ACTIONS, PAYMENT_ACTION, LOADER_ACTION } from './actionContext';
+import {
+  CATEGORIES_ACTIONS,
+  APP_ACTIONS,
+  USER_ACTIONS,
+  PAYMENT_ACTION,
+  LOADER_ACTION,
+  NAVBAR_ACTION,
+} from './actionContext';
 
 export const categoriesReducer = (state: ICategories, action: ICategoriesAction) => {
   switch (action.type) {
@@ -86,6 +95,19 @@ export const loaderReducer = (state: ILoader, action: ILoaderAction) => {
       return {
         ...state,
         loading: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const navbarReducer = (state: INavbar, action: INavbarAction) => {
+  switch (action.type) {
+    case NAVBAR_ACTION.SET_OPEN:
+      return {
+        ...state,
+        open: action.payload,
       };
 
     default:

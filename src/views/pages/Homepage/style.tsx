@@ -8,11 +8,17 @@ export const HomepageWrapper = styled.div`
   height: 100vh;
   flex-direction: row;
   overflow: hidden;
+  @media screen and (max-width: 1200px) {
+    position: relative;
+  }
 `;
 
 export const NavbarWrapper = styled.div`
   height: 100vh;
   z-index: 10;
+  @media screen and (max-width: 1200px) {
+    position: absolute;
+  }
 `;
 
 export const RouterWrapper = styled.div`
@@ -23,7 +29,9 @@ export const RouterWrapper = styled.div`
   justify-content: center;
   align-items: baseline;
   width: 100%;
-
+  @media screen and (max-width: 890px) {
+    align-items: unset;
+  }
   @media screen and (max-width: 470px) {
     margin-top: 3rem;
   }
@@ -33,7 +41,7 @@ export const PaymentWrapper = styled.div`
   height: 100vh;
   overflow-y: auto;
 
-  @media screen and (max-width: 1105px) {
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `;
