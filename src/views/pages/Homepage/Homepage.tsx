@@ -6,6 +6,7 @@ import type { CurrencyCode } from '../../../../node_modules/currency-code-symbol
 
 import { UserContext } from '../../../contexts/user/userContext';
 import { AppContext } from '../../../contexts/app/appContext';
+import { NavbarContext } from '../../../contexts/navbar/navbarContext';
 
 import useLocalStorage from './../../../hooks/useLocalStorage';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside ';
@@ -15,8 +16,9 @@ import { NotFound } from '..';
 
 const Homepage: React.FC = () => {
   const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
 
+  const { open, setOpen } = React.useContext(NavbarContext);
   const { userDetails } = React.useContext(UserContext);
   const { currency } = React.useContext(AppContext);
   const node = useRef(null);
