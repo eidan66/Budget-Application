@@ -8,11 +8,13 @@ export const HomepageWrapper = styled.div`
   height: 100vh;
   flex-direction: row;
   overflow: hidden;
+  position: relative;
 `;
 
 export const NavbarWrapper = styled.div`
   height: 100vh;
   z-index: 10;
+  position: absolute;
 `;
 
 export const RouterWrapper = styled.div`
