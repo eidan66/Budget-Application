@@ -41,7 +41,7 @@ export const PaymentWrapper = styled.div`
   height: 100vh;
   overflow-y: auto;
 
-  @media screen and (max-width: 1105px) {
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `;

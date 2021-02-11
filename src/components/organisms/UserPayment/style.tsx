@@ -8,6 +8,8 @@ export const UserPaymentWrapper = styled.div`
   border-radius: 1rem;
   align-items: center;
   background-color: #ffe7c5;
+  padding-left: 4rem;
+  padding-right: 4rem;
 `;
 
 export const UserDetailsWrapper = styled.div`
