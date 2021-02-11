@@ -21,6 +21,4 @@ export const PaymentTitleWrapper = styled.div`
 export const UserPaymentHistoryWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 4rem;
-  padding-right: 4rem;
 `;
