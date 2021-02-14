@@ -2,7 +2,7 @@
 
 Fully responsive web single page application that present to user his transactions and finances information.
 
-# Project Link
+# Live Project 
 https://eidan66.github.io/Budget-Application/
 
 ## Preview 🎥
