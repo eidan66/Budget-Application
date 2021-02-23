@@ -6,6 +6,7 @@ import { AppContext } from '../../contexts/app/appContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { getSymbolFromCode } from 'currency-code-symbol-map';
 import type { CurrencyCode } from '../../../node_modules/currency-code-symbol-map/lib/currencyCodeSymbolMapping';
+import { IPaymentDetails } from './../../interfaces/context';
 
 interface IChartContainer {
   chart?: string;
@@ -13,6 +14,7 @@ interface IChartContainer {
 
 const ChartContainer: FC<IChartContainer> = ({ chart }) => {
   const { paymentDetails } = useContext(PaymentContext);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
   const { currency } = React.useContext(AppContext);
 
@@ -27,11 +29,11 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
     return rate.toFixed(0);
   };
 
-  const incomeDataChart = (dataBase: any[]) => {
+  const incomeDataChart = (dataBase: IPaymentDetails[]) => {
     let month = 0;
     const newData = [...Array(12).fill(0)];
 
-    dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
+    dataBase.map((data: { paymentType: string; cancelled: boolean; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Income' && !data.cancelled) {
         month = getTime(data.date);
         newData[month] += parseInt(currencyChecker(currency, data.amount));
@@ -41,11 +43,11 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
     return newData;
   };
 
-  const expenseDataChart = (dataBase: any[]) => {
+  const expenseDataChart = (dataBase: IPaymentDetails[]) => {
     let month = 0;
     const newData = [...Array(12).fill(0)];
 
-    dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
+    dataBase.map((data: { paymentType: string; cancelled: boolean; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Expenses' && !data.cancelled) {
         month = getTime(data.date);
         newData[month] += parseInt(currencyChecker(currency, data.amount));
@@ -54,11 +56,11 @@ const ChartContainer: FC<IChartContainer> = ({ chart }) => {
 
     return newData;
   };
-  const canceledDataChart = (dataBase: any[]) => {
+  const canceledDataChart = (dataBase: IPaymentDetails[]) => {
     let month = 0;
     const newData = [...Array(12).fill(0)];
 
-    dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
+    dataBase.map((data: { paymentType: string; cancelled: boolean; date: string | number | Date; amount: string }) => {
       if (data.cancelled) {
         month = getTime(data.date);
         newData[month] += parseInt(currencyChecker(currency, data.amount));

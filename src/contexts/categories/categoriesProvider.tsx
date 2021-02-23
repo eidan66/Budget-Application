@@ -4,7 +4,12 @@ import { CATEGORIES_ACTIONS } from '../actionContext';
 import { categoriesReducer } from '../reducerContext';
 import { initialState, CategoriesContext } from './categoriesContext';
 
-export const CategoriesContextProvider = (props: any) => {
+interface IChildren {
+  children: React.ReactNode;
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const CategoriesContextProvider = ({ children }: IChildren) => {
   const [state, dispatch] = React.useReducer(categoriesReducer, initialState);
 
   const addCategory = (categories: ICategory) => {
@@ -21,7 +26,7 @@ export const CategoriesContextProvider = (props: any) => {
         addCategory,
       }}
     >
-      {props.children}
+      {children}
     </CategoriesContext.Provider>
   );
 };

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Settings = () => {
+const Settings: React.FC = (): JSX.Element => {
   const { currency, setCurrency } = React.useContext(AppContext);
 
   const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);

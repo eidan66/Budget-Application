@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import { FC, useContext } from 'react';
 import { Typography } from '../../atoms';
 import { UserDetailsBox, PaymentHistory } from '../../molecules';
 import { numberWithCommas, amountColorPicker } from '../../../helpers';
@@ -7,6 +7,7 @@ import useLocalStorage from './../../../hooks/useLocalStorage';
 
 import { PaymentContext } from '../../../contexts/payment/paymentContext';
 import { AppContext } from '../../../contexts/app/appContext';
+import { IPaymentDetails } from './../../../interfaces/context';
 
 interface IUserPaymentProps {
   first_name: string;
@@ -17,6 +18,7 @@ interface IUserPaymentProps {
 }
 
 const UserPayment: FC<IUserPaymentProps> = ({ first_name, last_name, email, avatar }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
   const { paymentDetails } = useContext(PaymentContext);
   const { currency } = useContext(AppContext);
@@ -32,7 +34,7 @@ const UserPayment: FC<IUserPaymentProps> = ({ first_name, last_name, email, avat
     return rate.toFixed(0);
   };
 
-  const userPaymentRender = (payments: any[]) => {
+  const userPaymentRender = (payments: IPaymentDetails[]) => {
     return payments
       .slice(0, 10)
       .map(

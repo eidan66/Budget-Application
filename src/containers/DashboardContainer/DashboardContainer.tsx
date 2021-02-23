@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import { Dashboard } from '../../views/pages';
 import { getLastNMonths, percentDiff } from '../../helpers';
@@ -7,7 +8,9 @@ import { UserContext } from '../../contexts/user/userContext';
 import { AppContext } from '../../contexts/app/appContext';
 
 import useLocalStorage from '../../hooks/useLocalStorage';
+import { IPaymentDetails } from '../../interfaces/context';
 const DashboardContainer = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
 
   const { paymentDetails } = React.useContext(PaymentContext);
@@ -24,8 +27,8 @@ const DashboardContainer = () => {
 
     return rate.toFixed(0);
   };
-  const revenue = (paymentDetails: any, revenueType: string, calcBeforeLast3?: boolean) => {
-    let lastMonths: any[];
+  const revenue = (paymentDetails: IPaymentDetails[], revenueType: string, calcBeforeLast3?: boolean) => {
+    let lastMonths: number[];
     calcBeforeLast3 ? (lastMonths = getLastNMonths(6).slice(0, 3)) : (lastMonths = getLastNMonths(3));
 
     let totalRevenue = 0;

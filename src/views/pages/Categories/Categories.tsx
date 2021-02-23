@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { ExpenseMiniCard } from '../../../components/molecules';
 import { Typography } from '../../../components/atoms';
-// import { TransactionsContainer } from '../../../containers';
 import * as S from './style';
 
 import { CategoriesContext } from '../../../contexts/categories/categoriesContext';

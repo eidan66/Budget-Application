@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Chart from 'react-apexcharts';
 
 import * as S from './style';
 
 interface IChart {
   lineChartOptions?: object;
-  lineChartSeries?: Array<any>;
+  lineChartSeries?: Array<object>;
   barChartOptions?: object;
-  barChartSeries?: Array<any>;
+  barChartSeries?: Array<object>;
 }
 
 interface IChartsProps {
