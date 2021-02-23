@@ -7,7 +7,7 @@ interface IExpenseMiniCard {
   category?: string;
   amount?: string;
   status?: string;
-  onClick?: (() => void) | any;
+  onClick?: () => void;
   type?: 'Cancelled' | 'Income' | 'Expense';
 }
 

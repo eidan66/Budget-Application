@@ -5,6 +5,7 @@ import { ICategories } from '../../interfaces/context';
 
 export const initialState = {
   categories: [],
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   addCategory: () => {},
 };
 

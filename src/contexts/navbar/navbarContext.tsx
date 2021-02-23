@@ -5,6 +5,7 @@ import { INavbar } from '../../interfaces/context';
 
 export const initialState = {
   open: false,
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setOpen: () => {},
 };
 

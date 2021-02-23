@@ -4,10 +4,6 @@ import { Typography } from './../../atoms/';
 import { numberWithCommas } from '../../../helpers';
 import { getSymbolFromCode } from 'currency-code-symbol-map';
 import type { CurrencyCode } from '../../../../node_modules/currency-code-symbol-map/lib/currencyCodeSymbolMapping';
-
-// import '../../../types/currency-symbol-map/index.d.ts';
-// import getSymbolFromCurrency from 'currency-symbol-map';
-
 interface ICurrentBalanceProps {
   currentBalance: string;
   userCurrency: CurrencyCode;

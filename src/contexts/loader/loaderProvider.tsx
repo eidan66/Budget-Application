@@ -3,7 +3,12 @@ import { LoaderContext, initialState } from './loaderContext';
 import { loaderReducer } from '../reducerContext';
 import { LOADER_ACTION } from '../actionContext';
 
-export const LoaderContextProvider = (props: any) => {
+interface IChildren {
+  children: React.ReactNode;
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const LoaderContextProvider = ({ children }: IChildren) => {
   const [state, dispatch] = useReducer(loaderReducer, initialState);
 
   const setLoader = (loading: boolean) => {
@@ -13,5 +18,5 @@ export const LoaderContextProvider = (props: any) => {
     });
   };
 
-  return <LoaderContext.Provider value={{ ...state, setLoader }}>{props.children}</LoaderContext.Provider>;
+  return <LoaderContext.Provider value={{ ...state, setLoader }}>{children}</LoaderContext.Provider>;
 };

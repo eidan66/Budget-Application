@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useRef } from 'react';
 import { BrowserRouter, Route, Switch, RouteComponentProps } from 'react-router-dom';
 import routes from '../../../config/routes';
@@ -15,6 +16,7 @@ import * as S from './style';
 import { NotFound } from '..';
 
 const Homepage: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
 
   const { open, setOpen } = React.useContext(NavbarContext);
@@ -76,8 +78,3 @@ const Homepage: React.FC = () => {
 };
 
 export default Homepage;
-
-/* 
-
-
-*/

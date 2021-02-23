@@ -1,12 +1,19 @@
 import React from 'react';
+import { IPaymentDetails } from '../../interfaces/context';
 import { PAYMENT_ACTION } from '../actionContext';
 import { paymentReducer } from '../reducerContext';
 import { PaymentContext, initialState } from './paymentContext';
 
-export const PaymentContextProvide = (props: any) => {
+interface IChildren {
+  children: React.ReactNode;
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const PaymentContextProvide = ({ children }: IChildren) => {
   const [state, dispatch] = React.useReducer(paymentReducer, initialState);
 
-  const setPaymentDetails = (paymentDetails: any) => {
+  const setPaymentDetails = (paymentDetails: IPaymentDetails) => {
+    ``;
     dispatch({
       type: PAYMENT_ACTION.SET_PAYMENT_DETAILS,
       payload: paymentDetails,
@@ -20,7 +27,7 @@ export const PaymentContextProvide = (props: any) => {
         setPaymentDetails,
       }}
     >
-      {props.children}
+      {children}
     </PaymentContext.Provider>
   );
 };

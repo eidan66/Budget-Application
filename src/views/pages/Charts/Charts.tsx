@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { getTime, numberWithCommas } from '../../../helpers';
@@ -9,13 +10,12 @@ import { getSymbolFromCode } from 'currency-code-symbol-map';
 import type { CurrencyCode } from '../../../../node_modules/currency-code-symbol-map/lib/currencyCodeSymbolMapping';
 
 import * as S from './style';
-interface IObject {
-  [key: string]: number;
-}
+import { IPaymentDetails } from '../../../interfaces/context';
 
 const Charts = () => {
   const { paymentDetails } = React.useContext(PaymentContext);
   const { categories } = React.useContext(CategoriesContext);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currencyList, setCurrencyList] = useLocalStorage('currencyList', []);
   const { currency } = React.useContext(AppContext);
 
@@ -39,7 +39,7 @@ const Charts = () => {
   };
 
   const categoriesDateArray = arrayCategoriesChart();
-  const categoriesDataChart = (dataBase: any[], categoriesData: any, paymentType: any) => {
+  const categoriesDataChart = (dataBase: IPaymentDetails[], categoriesData: string[], paymentType: string) => {
     const categoriesArray = [...Array(categoriesData.length).fill(0)];
     categoriesData.map((category: string, index: number) => {
       dataBase.map((data: { paymentType: string; category: string; amount: string; cancelled: boolean }) => {
@@ -55,11 +55,11 @@ const Charts = () => {
     return categoriesArray;
   };
 
-  const incomeDataChart = (dataBase: any[]) => {
+  const incomeDataChart = (dataBase: IPaymentDetails[]) => {
     let month = 0;
     const newData = [...Array(12).fill(0)];
 
-    dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
+    dataBase.map((data: { paymentType: string; cancelled: boolean; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Income' && !data.cancelled) {
         month = getTime(data.date);
         newData[month] += parseInt(currencyChecker(currency, data.amount));
@@ -69,11 +69,11 @@ const Charts = () => {
     return newData;
   };
 
-  const expenseDataChart = (dataBase: any[]) => {
+  const expenseDataChart = (dataBase: IPaymentDetails[]) => {
     let month = 0;
     const newData = [...Array(12).fill(0)];
 
-    dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
+    dataBase.map((data: { paymentType: string; cancelled: boolean; date: string | number | Date; amount: string }) => {
       if (data.paymentType === 'Expenses' && !data.cancelled) {
         month = getTime(data.date);
         newData[month] += parseInt(currencyChecker(currency, data.amount));
@@ -83,11 +83,11 @@ const Charts = () => {
     return newData;
   };
 
-  const canceledDataChart = (dataBase: any[]) => {
+  const canceledDataChart = (dataBase: IPaymentDetails[]) => {
     let month = 0;
     const newData = [...Array(12).fill(0)];
 
-    dataBase.map((data: { paymentType: string; cancelled: any; date: string | number | Date; amount: string }) => {
+    dataBase.map((data: { paymentType: string; cancelled: boolean; date: string | number | Date; amount: string }) => {
       if (data.cancelled) {
         month = getTime(data.date);
         newData[month] += parseInt(currencyChecker(currency, data.amount));

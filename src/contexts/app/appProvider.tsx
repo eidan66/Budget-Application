@@ -2,8 +2,11 @@ import { useReducer } from 'react';
 import { AppContext, initialState } from './appContext';
 import { appReducer } from '../reducerContext';
 import { APP_ACTIONS } from '../actionContext';
-
-export const AppContextProvide = (props: any) => {
+interface IChildren {
+  children: React.ReactNode;
+}
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const AppContextProvide = ({ children }: IChildren) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
   const setThemesMode = (themesMode: string) => {
@@ -38,7 +41,7 @@ export const AppContextProvide = (props: any) => {
   //
   return (
     <AppContext.Provider value={{ ...state, setThemesMode, setCurrency, setSorted, setCategoriesFlag }}>
-      {props.children}
+      {children}
     </AppContext.Provider>
   );
 };

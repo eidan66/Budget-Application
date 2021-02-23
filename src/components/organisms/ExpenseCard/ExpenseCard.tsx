@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { ExpenseMiniCard, ExpensesDetails } from '../../molecules';
 import Icon from './../../atoms/Icon/Icon';
 import * as S from './style';
@@ -45,7 +45,6 @@ const ExpenseCard: FC<IExpenseCardProps> = ({
   onClick,
 }) => {
   const [toggle, setToggle] = useState(false);
-  // const { favoritePaymentID, setPaymentFavorites } = useContext(FavoritesContext);
 
   useEffect(() => {
     if (favsListIds.length) {
