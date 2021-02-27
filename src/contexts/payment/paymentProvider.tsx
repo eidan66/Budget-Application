@@ -12,7 +12,7 @@ interface IChildren {
 export const PaymentContextProvide = ({ children }: IChildren) => {
   const [state, dispatch] = React.useReducer(paymentReducer, initialState);
 
-  const setPaymentDetails = (paymentDetails: IPaymentDetails) => {
+  const setPaymentDetails = (paymentDetails: IPaymentDetails[]) => {
     ``;
     dispatch({
       type: PAYMENT_ACTION.SET_PAYMENT_DETAILS,
