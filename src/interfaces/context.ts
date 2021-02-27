@@ -1,3 +1,5 @@
+import { APP_ACTIONS } from '../contexts/actionContext';
+
 // ******** Categories Context ********  \\
 export interface ICategory {
   name: string;
@@ -6,13 +8,13 @@ export interface ICategory {
 }
 
 export interface ICategories {
-  categories: Array<ICategory>;
-  addCategory: (categories: ICategory) => void;
+  categories: ICategory[];
+  addCategory: (category: ICategory) => void;
 }
 
 export interface ICategoriesAction {
   type: string;
-  payload: Array<ICategories> | any;
+  payload: ICategory;
 }
 
 //  ******** App Context ********  \\
@@ -26,11 +28,16 @@ export interface IApp {
   setSorted: (sorted: boolean) => void;
   setCategoriesFlag: (categoriesFlag: boolean) => void;
 }
-
-export interface IAppAction {
-  type: string;
-  payload: Array<IApp> | any;
+export interface IAppAction1 {
+  type: APP_ACTIONS.SET_THEME_MODE | APP_ACTIONS.SET_CURRENCY;
+  payload: string;
 }
+export interface IAppAction2 {
+  type: APP_ACTIONS.SET_SORTED | APP_ACTIONS.SET_CATEGORIES_FLAG;
+  payload: boolean;
+}
+
+export type IAppAction = IAppAction1 | IAppAction2;
 
 //  ******** User Context ********  \\
 
@@ -52,12 +59,12 @@ export interface IUserDetails {
 
 export interface IUser {
   userDetails: Array<IUserDetails>;
-  setUserDetails: (userDetails: any) => void;
+  setUserDetails: (userDetails: IUserDetails) => void;
 }
 
 export interface IUserAction {
   type: string;
-  payload: Array<IUser> | any;
+  payload: IUserDetails;
 }
 
 //  ******** Payment Context ********  \\
@@ -86,12 +93,12 @@ export interface IPaymentDetails {
 
 export interface IPayment {
   paymentDetails: Array<IPaymentDetails>;
-  setPaymentDetails: (paymentDetails: any) => void;
+  setPaymentDetails: (paymentDetails: IPaymentDetails[]) => void;
 }
 
 export interface IPaymentAction {
   type: string;
-  payload: Array<IPayment> | any;
+  payload: IPaymentDetails[];
 }
 
 //  ******** Loader Context ********  \\
@@ -102,7 +109,7 @@ export interface ILoader {
 
 export interface ILoaderAction {
   type: string;
-  payload: ILoader | any;
+  payload: boolean;
 }
 
 //  ******** Navbar Context ********  \\
@@ -113,5 +120,5 @@ export interface INavbar {
 
 export interface INavbarAction {
   type: string;
-  payload: INavbar | any;
+  payload: boolean;
 }

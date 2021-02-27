@@ -3,7 +3,6 @@ import {
   ICategories,
   ICategoriesAction,
   IApp,
-  IAppAction,
   IUser,
   IUserAction,
   IPayment,
@@ -12,6 +11,7 @@ import {
   ILoaderAction,
   INavbar,
   INavbarAction,
+  IAppAction,
 } from '../interfaces/context';
 import {
   CATEGORIES_ACTIONS,
@@ -35,12 +35,12 @@ export const categoriesReducer = (state: ICategories, action: ICategoriesAction)
   }
 };
 
-export const appReducer = (state: IApp, action: IAppAction) => {
+export const appReducer = (state: IApp, action: IAppAction): IApp => {
   switch (action.type) {
     case APP_ACTIONS.SET_THEME_MODE:
       return {
         ...state,
-        themeMode: action.payload,
+        themesMode: action.payload,
       };
     case APP_ACTIONS.SET_CURRENCY:
       return {

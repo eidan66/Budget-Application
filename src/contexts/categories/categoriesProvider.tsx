@@ -12,10 +12,10 @@ interface IChildren {
 export const CategoriesContextProvider = ({ children }: IChildren) => {
   const [state, dispatch] = React.useReducer(categoriesReducer, initialState);
 
-  const addCategory = (categories: ICategory) => {
+  const addCategory = (category: ICategory) => {
     dispatch({
       type: CATEGORIES_ACTIONS.SET_CATEGORIES,
-      payload: categories,
+      payload: category,
     });
   };
 
